@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientCommon"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectServerObjects"/>
+	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-material-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-material-addins-1.6.2.jar"/>
+	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-material-themes-1.6.0.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

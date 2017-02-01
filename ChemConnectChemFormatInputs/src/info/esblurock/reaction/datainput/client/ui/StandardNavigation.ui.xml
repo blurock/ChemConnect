@@ -1,0 +1,125 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:gwt.material.design.client.ui" xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+	<ui:with field='res'
+		type='info.esblurock.reaction.client.ui.resource.MaterialResources' />
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	
+	header, main, footer {
+		padding-left: 320px;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<header>
+			<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
+				paddingLeft="20">
+				<m:MaterialNavBrand ui:field="toptext" text="Data Entry" />
+			</m:MaterialNavBar>
+
+			<m:MaterialSideNav width="250" m:id="mysidebar" 
+			alwaysShowActivator="true"
+			allowBodyScroll="true"
+				type="FIXED" closeOnClick="true">
+				<ma:sideprofile.MaterialSideProfile
+					resource="{res.blackboardbackground}">
+					<m:MaterialLink text="Navigate" activates="dropProfile"
+						iconType="ARROW_DROP_DOWN" iconPosition="RIGHT" textColor="white" />
+				</ma:sideprofile.MaterialSideProfile>
+				<m:MaterialCollapsible>
+					<m:MaterialCollapsibleItem>
+						<m:MaterialCollapsibleHeader>
+							<m:MaterialLink text="Contact Input" textColor="deep-purple lighten-1" />
+						</m:MaterialCollapsibleHeader>
+						<m:MaterialCollapsibleBody>
+							<m:MaterialRow>
+								<m:MaterialColumn>
+									<m:MaterialLink ui:field="inputorganization"
+										iconPosition="LEFT" text="Organization" textColor="blue" />
+								</m:MaterialColumn>
+							</m:MaterialRow>
+							<m:MaterialRow>
+								<m:MaterialColumn>
+									<m:MaterialLink ui:field="inputcontact"
+										iconPosition="LEFT" text="User" textColor="blue" />
+								</m:MaterialColumn>
+							</m:MaterialRow>
+						</m:MaterialCollapsibleBody>
+					</m:MaterialCollapsibleItem>
+					<m:MaterialCollapsibleItem>
+						<m:MaterialCollapsibleHeader>
+							<m:MaterialLink text="Data Input" textColor="deep-purple lighten-1" />
+						</m:MaterialCollapsibleHeader>
+						<m:MaterialCollapsibleBody>
+							<m:MaterialCollapsible>
+								<m:MaterialCollapsibleItem>
+									<m:MaterialCollapsibleHeader>
+										<m:MaterialLink text="CHEMKIN" textColor="teal lighten-2" />
+									</m:MaterialCollapsibleHeader>
+									<m:MaterialCollapsibleBody>
+										<m:MaterialLink ui:field="chemkin" text="Mechanism" textColor="blue" />
+										<m:MaterialLink ui:field="nasapolynomials" text="Thermodynamics" textColor="blue" />
+									</m:MaterialCollapsibleBody>
+								</m:MaterialCollapsibleItem>
+								<m:MaterialCollapsibleItem>
+									<m:MaterialCollapsibleHeader>
+										<m:MaterialLink text="2D graphical information" textColor="teal lighten-2" />
+									</m:MaterialCollapsibleHeader>
+									<m:MaterialCollapsibleBody>
+										<m:MaterialLink ui:field="sdfmolecules" text="SDF Molecules" textColor="blue" />
+										<m:MaterialLink ui:field="sdfsubstructures" text="SDF Substructures" textColor="blue" />
+										<m:MaterialLink ui:field="thergasmolecules" text="JTHERGAS molecules" textColor="blue" />
+									</m:MaterialCollapsibleBody>
+								</m:MaterialCollapsibleItem>
+							</m:MaterialCollapsible>
+						</m:MaterialCollapsibleBody>
+					</m:MaterialCollapsibleItem>
+					<m:MaterialCollapsibleItem>
+						<m:MaterialCollapsibleHeader>
+							<m:MaterialLink text="Transactions" textColor="deep-purple lighten-1" />
+						</m:MaterialCollapsibleHeader>
+						<m:MaterialCollapsibleBody>
+							<!-- 
+							<m:MaterialRow>
+								<m:MaterialColumn>
+									<m:MaterialLink ui:field="uploadsets"
+										iconPosition="LEFT" text="File Sets" textColor="blue" />
+								</m:MaterialColumn>
+							</m:MaterialRow>
+							<m:MaterialRow>
+								<m:MaterialColumn>
+									<m:MaterialLink ui:field="toprocess"
+										iconPosition="LEFT" text="To Process" textColor="blue" />
+								</m:MaterialColumn>
+							</m:MaterialRow>
+							 -->
+							<m:MaterialRow>
+								<m:MaterialColumn>
+									<m:MaterialLink ui:field="transactions"
+										iconPosition="LEFT" text="Transactions" textColor="blue" />
+								</m:MaterialColumn>
+							</m:MaterialRow>
+							<m:MaterialRow>
+								<m:MaterialColumn>
+								<m:MaterialLink ui:field="standardKeywords"
+										iconPosition="LEFT" text="Standard Keywords" textColor="blue" />
+								</m:MaterialColumn>
+							</m:MaterialRow>
+						</m:MaterialCollapsibleBody>
+					</m:MaterialCollapsibleItem>
+				</m:MaterialCollapsible>
+			</m:MaterialSideNav>
+			<!--Drop down -->
+			<m:MaterialDropDown activator="dropProfile">
+				<m:MaterialLink ui:field="toplink" text="Top page" fontSize="1em" 
+					iconPosition="LEFT" iconType="HOME"/>
+				<m:MaterialLink ui:field="querylink" text="Query" fontSize="1em"  
+					iconPosition="LEFT" iconType="SEARCH"/>
+			</m:MaterialDropDown>
+
+		</header>
+	</g:HTMLPanel>
+</ui:UiBinder> 

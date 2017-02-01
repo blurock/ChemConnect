@@ -1,0 +1,68 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:gwt.material.design.client.ui" 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="keylabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink ui:field="key" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="keywordlabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink  ui:field="keyword" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="onelinelabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink ui:field="oneline" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="sourcekeylabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink ui:field="sourcekey" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="sourcedatelabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink ui:field="sourcedate" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="entrykeylabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink ui:field="entrykey" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s2">
+				<m:MaterialLabel ui:field="entrydatelabel" textColor="black"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s10">
+				<m:MaterialLink ui:field="entrydate" textColor="black"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+	</g:HTMLPanel>
+ </ui:UiBinder> 

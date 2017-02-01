@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>info.esblurock.reaction.datainput.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/chemconnectchemformatinputs/greet</url-pattern>
+  </servlet-mapping>
+  
+	<servlet>
+		<servlet-name>loginservice</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginservice</servlet-name>
+		<url-pattern>/chemconnectchemformatinputs/loginservice</url-pattern>
+		<url-pattern>/loginservice</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>transactionservice</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.transaction.TransactionServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>transactionservice</servlet-name>
+		<url-pattern>/chemconnectchemformatinputs/transactionservice</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>textToDatabaseService</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.datatext.TextToDatabaseImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>textToDatabaseService</servlet-name>
+		<url-pattern>/chemconnectchemformatinputs/texttodatabase</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>fileUploaderServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.FileUploadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>fileUploaderServlet</servlet-name>
+		<url-pattern>/fileupload</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>processServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.process.ProcessServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>processServlet</servlet-name>
+		<url-pattern>/chemconnect/processservlet</url-pattern>
+	</servlet-mapping>
+  
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>ChemConnectChemFormatInputs.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

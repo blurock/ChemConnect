@@ -1,0 +1,23 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:gwt.material.design.client.ui" 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<m:MaterialModal ui:field="modal" type="FIXED_FOOTER" dismissable="true" inDuration="500" outDuration="800">
+		<m:MaterialModalContent ui:field="modalcontent">
+			<m:MaterialTitle ui:field="title" />
+		</m:MaterialModalContent>
+
+		<m:MaterialModalFooter>
+			<m:MaterialButton ui:field="close" waves="GREEN"
+				type="FLAT" text="Close" />
+			<m:MaterialButton ui:field="basket" waves="GREEN"
+				type="FLAT" text="Save"/>
+		</m:MaterialModalFooter>
+	</m:MaterialModal>
+</ui:UiBinder> 

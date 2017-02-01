@@ -1,0 +1,65 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+<m:MaterialModal ui:field="modal"  type="DEFAULT" dismissable="false" inDuration="500" outDuration="500">
+ 		<m:MaterialModalContent ui:field="modalcontent">
+			<m:MaterialTitle ui:field="title" />
+		
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="keywordlabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="keyword" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="userlabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="user" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="filenamelabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="filename"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="numberlineslabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="numberlines"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="entrydatelabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="entrydate"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		</m:MaterialModalContent>
+		<m:MaterialModalFooter>
+				<m:MaterialButton ui:field="btnprocess"
+					textColor="text-black  indigo lighten-3" iconType="LABEL" type="FLAT" />
+				<m:MaterialButton ui:field="btndelete"
+					textColor="text-black   indigo lighten-3" iconType="DELETE"
+					type="FLAT" />
+		</m:MaterialModalFooter>
+	</m:MaterialModal>
+</ui:UiBinder> 

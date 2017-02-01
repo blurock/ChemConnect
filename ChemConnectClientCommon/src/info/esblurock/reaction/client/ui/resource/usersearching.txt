@@ -1,0 +1,36 @@
+<center>
+<h1>Searching through interconnected data</h1>
+
+<p style="font-size:30px ">
+The basis of the search is <i>keywords</i>. 
+</p>
+</center>
+<p style="font-size:20px">
+These keywords can be species labels, isomer expressions, reaction expressions, source names, 
+and specific reference keywords. The database is searched for these keywords. The result is related data (and how it is related). The related data can be individual pieces of information, in the form of a keyword, or, if it exists, a complete data object. If a result is a keyword, that keyword further can be searched (by clicking it) to find further related information. In this way the user wanders through the network of related data to find the specific information.
+</p>
+<br>
+<p style="font-size:15px">
+For example, if one enters a species label name, several pieces of information can arise:
+</p>
+<ul style="color:black">
+<li>the species as it appears in published data, such as a mechanism (the mechanism name 
+is appended to the name to distinguish how this species is used in that particular mechanism), 
+<li>the canonical isomer name, 
+<li>the reactions in which that species label is used, 
+<li>and 2D-species data using that species label. 
+</ul>
+<p style="font-size:15px">
+The user can then click any of these pieces of information to explore the database further. 
+<br>
+In an example of exploring the database further, maybe the species label 
+given does not match a name used in other mechanisms. 
+This information can be found by clicking the related isomer keyword. 
+This will give all the specific species labels in each mechanism in which this isomer exists. 
+Some of these labels could be the result of a different labelling of the mechanism developer or actually a different structural isomer.
+If a specific, mechanism related, species label is clicked, 
+then the user can explore how this species reacts within the mechanism, 
+as a product or as a reactant along with the specific reaction constant information. 
+By exploring the reaction further, the user can compare the rate constants used 
+in each of the mechanisms.
+</p>

@@ -1,0 +1,56 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+<m:MaterialModal ui:field="modal" type="FIXED_FOOTER" dismissable="false" inDuration="500" outDuration="500">
+		<m:MaterialModalContent ui:field="modalcontent">
+			<g:HTMLPanel>
+
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s2">
+						<m:MaterialButton ui:field="testbutton"
+							tooltip="Test the object without storing" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s10">
+						<m:MaterialLabel ui:field="testlabel"
+							text="Test the object without storing" fontSize="2" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s2">
+						<m:MaterialButton ui:field="processbutton" iconType="LAUNCH"
+							tooltip="Process the object to database" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s10">
+						<m:MaterialLabel ui:field="processlabel"
+							text="Process the object to database" fontSize="2" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s2">
+						<m:MaterialButton ui:field="deletebutton" iconType="DELETE"
+							tooltip="Delete the object from the database" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s10">
+						<m:MaterialLabel ui:field="deletelabel"
+							text="Delete the object from the database" fontSize="2" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+
+
+			</g:HTMLPanel>
+
+		</m:MaterialModalContent>
+
+		<m:MaterialModalFooter>
+			<m:MaterialButton ui:field="btnOK" waves="GREEN"
+				type="FLAT" text="Close" />
+		</m:MaterialModalFooter>
+	</m:MaterialModal>
+</ui:UiBinder> 

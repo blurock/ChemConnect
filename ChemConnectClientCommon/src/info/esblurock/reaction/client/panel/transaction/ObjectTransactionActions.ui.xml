@@ -1,0 +1,67 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:m="urn:import:gwt.material.design.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<m:MaterialModal ui:field="modal" type="BOTTOM_SHEET" dismissable="true" inDuration="500" outDuration="500">		
+	<m:MaterialModalContent ui:field="modalcontent">
+			<m:MaterialTitle ui:field="title" />
+		
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="storedObjectKeylabel"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="storedObjectKey"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="userlabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="user" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="keywordlabel"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="keyword"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="inputDatelabel" />
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="inputDate"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s3">
+				<m:MaterialLink ui:field="transactionObjectTypelabel"/>
+			</m:MaterialColumn>
+			<m:MaterialColumn grid="s9">
+				<m:MaterialLink ui:field="transactionObjectType"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12">
+				<m:MaterialLink ui:field="btndelete" text="Delete" 
+					backgroundColor="grey" textColor="black" type="FLAT" iconType="DELETE"/>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		</m:MaterialModalContent>
+		<m:MaterialModalFooter>
+				<m:MaterialLink ui:field="close" text="Close"
+					textColor="black" iconType="CLEAR" type="FLAT" />
+		</m:MaterialModalFooter>
+	</m:MaterialModal>
+</ui:UiBinder> 

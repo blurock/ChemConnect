@@ -1,0 +1,8 @@
+/classes/
+/test-classes/
+**/*.jar
+**/*.cache.js
+**/*.gwt.rpc
+**/*.symbolMap
+**/gwt-unitCache*
+
