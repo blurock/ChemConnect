@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>greetServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.server.GreetingServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>loginservice</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>greetServlet</servlet-name>
+		<url-pattern>/chemconnectserverobjects/greet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>loginservice</servlet-name>
+		<url-pattern>/chemconnectserverobjects/loginservice</url-pattern>
+		<url-pattern>/loginservice</url-pattern>
+	</servlet-mapping>
+
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>ChemConnectServerObjects.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>
