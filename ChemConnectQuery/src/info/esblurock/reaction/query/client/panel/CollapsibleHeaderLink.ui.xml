@@ -1,0 +1,29 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:m="urn:import:gwt.material.design.client.ui" 
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<m:MaterialCollapsibleItem>
+		<m:MaterialCollapsibleHeader>
+			<m:MaterialLink ui:field="link" text="First" iconType="POLYMER"
+				iconPosition="LEFT" iconColor="grey lighten-1"/>
+			<m:MaterialLink ui:field="rest" text="First" iconType="EXPAND_MORE"
+				iconPosition="LEFT" iconColor="grey lighten-1"/>
+			<m:MaterialIcon ui:field="expandnext" iconType="SEARCH"
+				iconPosition="LEFT" iconColor="grey lighten-1" />
+			<m:MaterialIcon ui:field="deletesub" iconType="CLOSE"
+				iconPosition="RIGHT" iconColor="grey lighten-1"/>
+			<m:MaterialIcon ui:field="objectinfo" iconType="DESCRIPTION"
+				iconPosition="RIGHT" iconColor="grey lighten-1"/>
+		</m:MaterialCollapsibleHeader>
+		<m:MaterialCollapsibleBody ui:field="body">
+			<m:MaterialCollapsible ui:field="collapsible">
+			</m:MaterialCollapsible>
+		</m:MaterialCollapsibleBody>
+	</m:MaterialCollapsibleItem>
+</ui:UiBinder> 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5"
+         xmlns="http://java.sun.com/xml/ns/javaee">
+
+  <!-- Servlets -->
+  <servlet>
+    <servlet-name>greetServlet</servlet-name>
+    <servlet-class>info.esblurock.reaction.query.server.GreetingServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/chemconnectquery/greet</url-pattern>
+  </servlet-mapping>
+  
+		<servlet>
+		<servlet-name>loginservice</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginservice</servlet-name>
+		<url-pattern>/chemconnectquery/loginservice</url-pattern>
+		<url-pattern>/loginservice</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>storedescriptiondata</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.description.StoreDescriptionDataImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>storedescriptiondata</servlet-name>
+		<url-pattern>/chemconnectquery/storedescriptiondata</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>reactionQueryService</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.queries.ReactionSearchServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>reactionQueryService</servlet-name>
+		<url-pattern>/chemconnectquery/reactionqueryservice</url-pattern>
+	</servlet-mapping>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>ChemConnectQuery.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>
