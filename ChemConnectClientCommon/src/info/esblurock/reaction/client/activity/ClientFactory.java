@@ -1,5 +1,4 @@
 package info.esblurock.reaction.client.activity;
-//import info.blurock.hellomvp.client.ui.HelloView;
 
 
 import info.esblurock.reaction.client.ui.view.ReactionFirstView;
@@ -7,6 +6,7 @@ import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
 import info.esblurock.reaction.client.ui.view.ReactionQueryView;
 import info.esblurock.reaction.client.ui.view.ReactionTopView;
+import info.esblurock.reaction.client.ui.view.XMLParseDocumentView;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.PlaceController;
@@ -19,4 +19,5 @@ public interface ClientFactory {
 	ReactionQueryView getReactionQueryView();
 	ReactionLoginValidationView getReactionLoginValidationView();
 	ReactionInformationView getReactionInformationView();
+	XMLParseDocumentView getXMLParseDocumentView();
 }

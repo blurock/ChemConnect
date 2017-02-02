@@ -23,6 +23,7 @@ public class ReactionInformationPlace extends Place {
 		public ReactionInformationPlace getPlace(String token)  {
 			return new ReactionInformationPlace(token);
 		}
+		
 	}
 	
 }

@@ -5,5 +5,14 @@
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-fileupload-1.3.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtupload-1.0.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientCommon"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-1.6.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-addins-1.6.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-themes-1.6.0.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

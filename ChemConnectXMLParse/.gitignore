@@ -1,2 +1,9 @@
 /test-classes/
 **/local_db.bin
+/classes/
+**/*.jar
+**/*.cache.js
+**/*.gwt.rpc
+**/*.symbolMap
+**/gwt-unitCache*
+
