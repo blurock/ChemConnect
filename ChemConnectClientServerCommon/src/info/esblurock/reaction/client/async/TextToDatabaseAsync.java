@@ -34,4 +34,6 @@ public interface TextToDatabaseAsync {
 
 	void fileFromUploadFileTransaction(String user, String fileName, AsyncCallback<String> callback);
 
+	void fileFromUploadFileTransactionSession(String fileName, AsyncCallback<String> callback);
+
 }

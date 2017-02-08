@@ -1,24 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
               http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-         version="2.5"
-         xmlns="http://java.sun.com/xml/ns/javaee">
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
 
-  <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>info.esblurock.reaction.xmlparse.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/chemconnectxmlparse/greet</url-pattern>
-  </servlet-mapping>
-  
-  <!-- Default page to serve -->
-  <welcome-file-list>
-    <welcome-file>ChemConnectXMLParse.html</welcome-file>
-  </welcome-file-list>
+	<!-- Servlets -->
+	<servlet>
+		<servlet-name>greetServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.xmlparse.server.GreetingServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>greetServlet</servlet-name>
+		<url-pattern>/chemconnectxmlparse/greet</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginservice</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loginservice</servlet-name>
+		<url-pattern>/chemconnectxmlparse/loginservice</url-pattern>
+		<url-pattern>/loginservice</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>processServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.process.ProcessServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>processServlet</servlet-name>
+		<url-pattern>/chemconnectxmlparse/processservlet</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.MultipleFileUpload</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>/fileupload</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>textToDatabaseService</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.datatext.TextToDatabaseImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>textToDatabaseService</servlet-name>
+		<url-pattern>/chemconnectxmlparse/texttodatabase</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>processrespecth</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.parse.xml.ProcessReSpecThImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>processrespecth</servlet-name>
+		<url-pattern>/chemconnectxmlparse/processrespecth</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- Default page to serve -->
+	<welcome-file-list>
+		<welcome-file>ChemConnectXMLParse.html</welcome-file>
+	</welcome-file-list>
 
 </web-app>

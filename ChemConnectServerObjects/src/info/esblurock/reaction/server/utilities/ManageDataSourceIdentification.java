@@ -24,6 +24,7 @@ public class ManageDataSourceIdentification {
 		count.increment();
 		log.info("Final UploadFileCount  count=" + count.getCountAsString());
 		pm.makePersistent(count);
+		pm.flush();
 		pm.close();
 		return count.getCountAsString();
 

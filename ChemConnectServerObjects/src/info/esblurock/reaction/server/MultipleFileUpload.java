@@ -33,15 +33,12 @@ public class MultipleFileUpload extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-
         if (! ServletFileUpload.isMultipartContent(request)) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST,
                     "Not a multipart request");
             return;
         }
-
         ServletFileUpload upload = new ServletFileUpload(); // from Commons
-
         try {
             FileItemIterator iter = upload.getItemIterator(request);
             HttpSession session = request.getSession();
@@ -51,15 +48,16 @@ public class MultipleFileUpload extends HttpServlet {
 			ServletOutputStream out = response.getOutputStream();
             response.setBufferSize(32768);
             String outputSourceCode = ManageDataSourceIdentification.getDataSourceIdentification(user.getName());
-            
-            while(iter.hasNext()) {
+            System.out.println("Multifile Upload: start 2.1");
+            if(iter.hasNext()) {
                 FileItemStream fileItem = iter.next();
-          
+                System.out.println("Multifile Upload: " + fileItem.getName());
                 InputStreamToLineDatabase input = new InputStreamToLineDatabase();
+                String code = outputSourceCode + ":" + fileItem.getName();
                 UploadFileTransaction utransaction = 
                 		new UploadFileTransaction(user.getName(), 
                 				fileItem.getName(), 
-                				outputSourceCode, 
+                				code, 
                 				CreateBufferedReaderForSourceFile.uploadFileAsSource, 0);
                 InputStream in = fileItem.openStream();
                 InputStreamReader reader = new InputStreamReader(in);
@@ -67,6 +65,12 @@ public class MultipleFileUpload extends HttpServlet {
                 input.uploadFile(utransaction, breader);
     			WriteObjectTransactionToDatabase.writeObjectWithoutTransaction(utransaction);
                 in.close();
+                if(iter.hasNext()) {
+                	fileItem = iter.next();
+                	System.out.println("Multifile Upload: extra: " + fileItem.getName());
+                }
+            } else {
+            	System.out.println("Multifile Upload: no file");
             }
             out.flush();
             out.close();

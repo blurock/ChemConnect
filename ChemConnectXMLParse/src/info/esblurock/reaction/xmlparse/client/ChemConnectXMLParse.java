@@ -1,6 +1,8 @@
 package info.esblurock.reaction.xmlparse.client;
 
 import info.esblurock.reaction.client.activity.ClientFactory;
+import info.esblurock.reaction.client.async.LoginService;
+import info.esblurock.reaction.client.async.LoginServiceAsync;
 import info.esblurock.reaction.xmlparse.client.place.XMLParseDocumentPlace;
 import info.esblurock.reaction.xmlparse.client.ui.XMLParseDocumentImpl;
 import info.esblurock.reaction.client.mvp.AppActivityMapper;
@@ -50,6 +52,8 @@ public class ChemConnectXMLParse implements EntryPoint {
 		RootPanel.get().add(impl);
 		historyHandler.handleCurrentHistory();
 		
-		
+		LoginServiceAsync async = LoginService.Util.getInstance();
+		SimpleLoginCallback callback = new SimpleLoginCallback();
+		async.loginServer("Administration", "laguna", callback);
 	}
 }

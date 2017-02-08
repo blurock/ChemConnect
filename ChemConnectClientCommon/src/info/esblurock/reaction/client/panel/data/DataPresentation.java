@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.google.gwt.i18n.client.NumberFormat;
-import com.google.gwt.user.client.Window;
 
 import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialRow;

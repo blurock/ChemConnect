@@ -134,16 +134,8 @@ public class TransactionInfoQueries {
 	 */
 	static public UploadFileTransaction getFirstUploadFileTransactionFromKeywordUserSourceCodeAndObjectType(String user,
 			String filename) throws IOException {
-		/*
-		PersistenceManager pm = PMF.get().getPersistenceManager();
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-*/
 		Filter sourceCodeFilter = new FilterPredicate("filename", FilterOperator.EQUAL, filename);
 		Filter userFilter = new FilterPredicate("user", FilterOperator.EQUAL, user);
-		/*
-		Filter typeFilter = new FilterPredicate("sourceType", FilterOperator.EQUAL,
-				CreateBufferedReaderForSourceFile.uploadFileAsSource);
-				*/
 		Filter andfilter = CompositeFilterOperator.and(userFilter, sourceCodeFilter);
 		List<DatabaseObject> objs = QueryBase.getDatabaseObjectsFromFilter(UploadFileTransaction.class.getName(), andfilter);
 		UploadFileTransaction info = null;
@@ -151,14 +143,21 @@ public class TransactionInfoQueries {
 			int sourceID = 0;
 			for (DatabaseObject obj : objs) {
 				UploadFileTransaction nextinfo = (UploadFileTransaction) obj;
-				int source = Integer.valueOf(nextinfo.getFileCode());
+				int source = 0;
+				int index = nextinfo.getFileCode().indexOf(":");
+				if(index < 0) {
+					source = Integer.valueOf(nextinfo.getFileCode());
+				} else {
+					String code = nextinfo.getFileCode().substring(0, index);
+					source = Integer.valueOf(code);
+				}
 				if (source > sourceID) {
 					info = nextinfo;
 					sourceID = source;
 				}
 			}
 		} else {
-			throw new IOException("UploadFileTransaction not found with object key: " + user + "," + filename);
+			throw new IOException("NOTFOUND: UploadFileTransaction not found with object key: " + user + "," + filename);
 		}
 		return info;
 	}

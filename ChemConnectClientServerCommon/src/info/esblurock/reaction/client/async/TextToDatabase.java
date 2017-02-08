@@ -46,5 +46,5 @@ public interface TextToDatabase extends RemoteService {
 			String keyword)  throws IOException;
 	
 	String fileFromUploadFileTransaction(String user, String fileName) throws IOException;
-
+	String fileFromUploadFileTransactionSession(String fileName) throws IOException;
 }

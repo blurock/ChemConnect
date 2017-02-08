@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </ReSpecThVersion>
+    <experimentType>Ignition delay measurement</experimentType>
+    <bibliographyLink preferredKey="Chaumeix, N., Pichon, S., Lafosse, F., Paillard, C.-E., International Journal of Hydrogen Energy, 2007, (32) 2216-2226, Fig. 12., left, open diamond"/>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property description="" label="P" name="pressure" units="atm">
+            <value>2.05</value>
+        </property>
+        <property name="initial composition">
+            <component>
+                <speciesLink preferredKey="H2"/>
+                <amount units="mole fraction">0.00667</amount>
+            </component>
+            <component>
+                <speciesLink preferredKey="O2"/>
+                <amount units="mole fraction">0.00333</amount>
+            </component>
+            <component>
+                <speciesLink preferredKey="Ar"/>
+                <amount units="mole fraction">0.99</amount>
+            </component>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="">
+        <dataGroupLink dataGroupID="" dataPointID=""/>
+        <property description="" id="x1" label="T" plotaxis="x" plotscale="inv" name="temperature" units="K"/>
+        <property description="" id="x2" label="tau" plotaxis="y" plotscale="log" name="ignition delay" units="us"/>
+        <dataPoint>
+            <x1>1181.06</x1>
+            <x2>560.39</x2>
+        </dataPoint>
+        <dataPoint>
+            <x1>1214.82</x1>
+            <x2>367.61</x2>
+        </dataPoint>
+        <dataPoint>
+            <x1>1260.08</x1>
+            <x2>388.63</x2>
+        </dataPoint>
+        <dataPoint>
+            <x1>1272.78</x1>
+            <x2>314.04</x2>
+        </dataPoint>
+        <dataPoint>
+            <x1>1295.84</x1>
+            <x2>339.77</x2>
+        </dataPoint>
+        <dataPoint>
+            <x1>1321.77</x1>
+            <x2>286.25</x2>
+        </dataPoint>
+        <dataPoint>
+            <x1>1343.27</x1>
+            <x2>268.27</x2>
+        </dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+</experiment>

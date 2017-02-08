@@ -18,6 +18,7 @@ import info.esblurock.reaction.client.async.TextToDatabase;
 import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.GenerateKeywordFromDescription;
 import info.esblurock.reaction.data.PMF;
+import info.esblurock.reaction.data.UserDTO;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
@@ -33,7 +34,6 @@ import info.esblurock.reaction.server.process.DataProcesses;
 import info.esblurock.reaction.server.process.ProcessBase;
 import info.esblurock.reaction.server.process.description.DataDescriptionSpecification;
 import info.esblurock.reaction.server.process.description.DataSetReferencesSpecifications;
-import info.esblurock.reaction.server.process.description.StoreRegisteredDescription;
 import info.esblurock.reaction.server.queries.QueryBase;
 import info.esblurock.reaction.server.queries.TransactionInfoQueries;
 import info.esblurock.reaction.server.upload.InputStreamToLineDatabase;
@@ -86,21 +86,36 @@ public class TextToDatabaseImpl extends ServerBase implements TextToDatabase {
 		return ans;
 	}
 
+	public String fileFromUploadFileTransactionSession(String fileName) throws IOException {
+		ContextAndSessionUtilities util = getUtilities();
+		UserDTO user = util.getUserInfo();
+		return fileFromUploadFileTransaction(user.getName(), fileName);
+	}
+
 	public String fileFromUploadFileTransaction(String user, String fileName) throws IOException {
+		verify(uploadText, TaskTypes.dataInput);
 		StringBuffer buffer = new StringBuffer();
 		UploadFileTransaction upload = TransactionInfoQueries
 				.getFirstUploadFileTransactionFromKeywordUserSourceCodeAndObjectType(user, fileName);
-		System.out.println("idCode='" + upload.getFileCode());
-		
-		String propertyname = "fileCode";
-		String propertyvalue = upload.getFileCode();
-		List<DatabaseObject> objs = 
-				QueryBase.getDatabaseObjectsFromSingleProperty(FileUploadTextBlock.class.getName(), 
-				propertyname, propertyvalue);
-		for(DatabaseObject obj : objs) {
-			FileUploadTextBlock fileupload = (FileUploadTextBlock) obj;
-			String text = fileupload.getTextBlock().getValue();
-			buffer.append(text);
+		if (upload != null) {
+			System.out.println("idCode='" + upload.getFileCode());
+
+			String propertyname = "fileCode";
+			String propertyvalue = upload.getFileCode();
+			List<DatabaseObject> objs = QueryBase.getDatabaseObjectsFromSingleProperty(
+					FileUploadTextBlock.class.getName(), propertyname, propertyvalue);
+			if (objs.size() > 0) {
+				for (DatabaseObject obj : objs) {
+					FileUploadTextBlock fileupload = (FileUploadTextBlock) obj;
+					String text = fileupload.getTextBlock().getValue();
+					buffer.append(text);
+				}
+			} else {
+				throw new IOException("NOTFOUND: Text not read: " + user + "," + fileName);
+			}
+		} else {
+			throw new IOException(
+					"NOTFOUND: UploadFileTransaction not found with object key: " + user + "," + fileName);
 		}
 		return buffer.toString();
 	}
