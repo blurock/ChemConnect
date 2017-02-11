@@ -63,6 +63,7 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 		init(filename);
 		setSourceText(text);
 		this.top = top;
+		
 	}
 
 	void init(String filename) {
@@ -71,6 +72,7 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 		xmlParsed = false;
 		retryread.setVisible(true);
 		delete.setVisible(true);
+		parsedxml = null;
 	}
 
 	public void setSourceText(String source) {
@@ -79,22 +81,24 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 		xmlParsed = false;
 		retryread.setVisible(true);
 		ProcessReSpecThAsync async = ProcessReSpecTh.Util.getInstance();
-		ProcessReSpecThXMLCallback callback = new ProcessReSpecThXMLCallback(this,fileName.getText());
+		ProcessReSpecThXMLCallback callback = new ProcessReSpecThXMLCallback(this,fileName.getText(),top);
 		async.parseReSpecThXML(source, callback);
 	}
 	public void insertXMLInfo(ReSpecTHXMLFileBase parsedxml) {
 		reference.setText(parsedxml.getBibliographyLink());
 		retryread.setVisible(false);
 		this.parsedxml = parsedxml;
-		
+		top.addDataSource(this);
 	}
-	
+	public ReSpecTHXMLFileBase getParsedInfo() {
+		return parsedxml;
+	}
 	public void setText(String text) {
-		fileName.setText(text);
+		reference.setText(text);
 	}
 
 	public String getText() {
-		return fileName.getText();
+		return reference.getText();
 	}
 
 	@UiHandler("retryread")
@@ -104,7 +108,7 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 				retryread.setVisible(false);
 			} else {
 				ProcessReSpecThAsync async = ProcessReSpecTh.Util.getInstance();
-				ProcessReSpecThXMLCallback callback = new ProcessReSpecThXMLCallback(this,fileName.getText());
+				ProcessReSpecThXMLCallback callback = new ProcessReSpecThXMLCallback(this,fileName.getText(),top);
 				async.parseReSpecThXML(fileText.getText(), callback);
 			}
 		} else {
@@ -112,8 +116,8 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 			uploadCallback.setFilename(fileName.getText());
 			TextToDatabaseAsync async = TextToDatabase.Util.getInstance();
 			async.fileFromUploadFileTransactionSession(fileName.getText(), uploadCallback);
-			
 		}
+		this.removeFromParent();
 	}
 
 	@Override

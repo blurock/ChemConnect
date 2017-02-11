@@ -31,10 +31,8 @@
 					<m:MaterialRow>
 						<m:MaterialColumn grid="s6">
 							<ma:fileuploader.MaterialFileUploader
-								ui:field="cardUploader" grid="l4"
-								acceptedFiles="text/xml"
-								url="/fileupload" preview="false" maxFileSize="20" shadow="0"
-								clickable="cardUpload">
+								ui:field="cardUploader" grid="l4" acceptedFiles="text/xml" url="/fileupload"
+								preview="false" maxFileSize="20" shadow="0" clickable="cardUpload">
 								<m:MaterialCard>
 									<m:MaterialCardImage>
 										<m:MaterialImage ui:field="imgPreview"
@@ -48,9 +46,9 @@
 										<m:MaterialProgress ui:field="progress"
 											layoutPosition="ABSOLUTE" bottom="0" left="0" type="DETERMINATE"
 											percent="0" />
-										<m:MaterialButton ui:field="uploadButton" m:id="cardUpload"
-											layoutPosition="ABSOLUTE" top="-25" right="25" type="FLOATING"
-											backgroundColor="PINK" size="LARGE" iconType="CLOUD_UPLOAD"
+										<m:MaterialButton ui:field="uploadButton"
+											m:id="cardUpload" layoutPosition="ABSOLUTE" top="-25" right="25"
+											type="FLOATING" backgroundColor="PINK" size="LARGE" iconType="CLOUD_UPLOAD"
 											iconColor="WHITE" />
 									</m:MaterialCardContent>
 								</m:MaterialCard>
@@ -71,7 +69,36 @@
 					<m:MaterialLink ui:field="sourceFiles" textColor="black" />
 				</m:MaterialCollapsibleHeader>
 				<m:MaterialCollapsibleBody>
-					<m:MaterialCollapsible ui:field="setOfSourceFiles" />
+					<m:MaterialCollapsible ui:field="setOfSourceFiles">
+						<m:MaterialCollapsibleItem>
+							<m:MaterialCollapsibleHeader
+								backgroundColor="grey">
+								<m:MaterialLink ui:field="indirectlabel"
+									textColor="black" />
+							</m:MaterialCollapsibleHeader>
+							<m:MaterialCollapsibleBody>
+								<m:MaterialCollapsible ui:field="indirect" />
+							</m:MaterialCollapsibleBody>
+						</m:MaterialCollapsibleItem>
+						<m:MaterialCollapsibleItem>
+							<m:MaterialCollapsibleHeader
+								backgroundColor="grey">
+								<m:MaterialLink ui:field="directlabel" textColor="black" />
+							</m:MaterialCollapsibleHeader>
+							<m:MaterialCollapsibleBody>
+								<m:MaterialCollapsible ui:field="direct" />
+							</m:MaterialCollapsibleBody>
+						</m:MaterialCollapsibleItem>
+						<m:MaterialCollapsibleItem>
+							<m:MaterialCollapsibleHeader
+								backgroundColor="grey">
+								<m:MaterialLink ui:field="unclassifiedlabel" textColor="black" />
+							</m:MaterialCollapsibleHeader>
+							<m:MaterialCollapsibleBody>
+								<m:MaterialCollapsible ui:field="unclassified" />
+							</m:MaterialCollapsibleBody>
+						</m:MaterialCollapsibleItem>
+					</m:MaterialCollapsible>
 				</m:MaterialCollapsibleBody>
 			</m:MaterialCollapsibleItem>
 			<m:MaterialCollapsibleItem>

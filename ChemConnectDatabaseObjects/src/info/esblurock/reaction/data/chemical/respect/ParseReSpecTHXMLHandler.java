@@ -135,7 +135,11 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
     		component.setAmountunits(amountunits);
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.speciesLinkS)) {
     		String speciesLink = attributes.getValue(ReSpecTHXMLFileBase.preferredKey);
-    		component.setSpeciesLink(speciesLink);
+    		if(property != null) {
+    			property.setSpeciesLink(speciesLink);
+    		} else if(component != null) {
+    			component.setSpeciesLink(speciesLink);
+    		}
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.dataPointS)) {
     		point = new ReSpecThDataPoint(dataGroupPoints.size());
     		dataPointProperty = true;

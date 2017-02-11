@@ -32,7 +32,7 @@ public class ReSpecThXMLExperiment extends ReSpecTHXMLFileBase {
 	
 	
 	public ReSpecThXMLExperiment() {
-		xmlExperimentCategory = "experiment";
+		xmlExperimentCategory = experimentS;
 		commonProperties = new ArrayList<ReSpecThProperty>();
 		dataGroupProperties = new ArrayList<ReSpecThProperty>();
 	}

@@ -20,24 +20,19 @@ public class UploadXMLFileCallback implements AsyncCallback<String> {
 	
 	@Override
 	public void onFailure(Throwable caught) {
-		if(caught.toString().startsWith("NOTFOUND")) {
+		if(caught.toString().contains("NOTFOUND")) {
 			Window.alert("Retry read: " + filename);
 			XMLDataSource display = new XMLDataSource(filename,top);
 			top.addDataSource(display);
 		} else {
 			Window.alert(caught.toString());
+			XMLDataSource display = new XMLDataSource(filename,top);
+			top.addDataSource(display);
 		}
 	}
 
 	@Override
 	public void onSuccess(String result) {
-		int count = 0;
-		int index = result.indexOf("kmeasurement");
-		while(index > 0) {
-			count++;
-			index = result.indexOf("kmeasurement",index+12);
-		}
-		MaterialToast.fireToast("file: " + filename + " (" + count + ")");
 			XMLDataSource display = new XMLDataSource(filename, result,top);
 			top.addDataSource(display);
 	}

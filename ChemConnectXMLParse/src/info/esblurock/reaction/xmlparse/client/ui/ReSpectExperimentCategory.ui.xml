@@ -11,26 +11,10 @@
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader
 			backgroundColor="grey">
-			<m:MaterialLink ui:field="reference" textColor="black" />
-			<m:MaterialLink ui:field="retryread" iconType="AUTORENEW" iconPosition="LEFT" />
-			<m:MaterialLink ui:field="delete"  iconType="DELETE" iconPosition="LEFT" />
+			<m:MaterialLink ui:field="label" textColor="black" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
-		<g:HTMLPanel>
-			<m:MaterialRow>
-				<m:MaterialColumn grid="s4">
-					<m:MaterialLink ui:field="fileName" textColor="white" />
-				</m:MaterialColumn>
-			</m:MaterialRow>
-			<m:MaterialRow>
-				<m:MaterialColumn grid="s12">
-					<g:ScrollPanel height="400px">
-						<m:MaterialTextArea ui:field="fileText"
-							textColor="black" backgroundColor="white" />
-					</g:ScrollPanel>
-				</m:MaterialColumn>
-			</m:MaterialRow>
-			</g:HTMLPanel>
+			<m:MaterialCollapsible ui:field="experiments" />
 		</m:MaterialCollapsibleBody>
 	</m:MaterialCollapsibleItem>
 </ui:UiBinder> 
