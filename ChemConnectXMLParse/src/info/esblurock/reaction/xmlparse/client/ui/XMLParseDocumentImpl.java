@@ -5,7 +5,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -31,7 +30,9 @@ import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThXMLExperiment;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThXMLKExperiment;
 import info.esblurock.reaction.xmlparse.client.UploadXMLFileCallback;
+import info.esblurock.reaction.xmlparse.client.ui.respect.ReSpecThDataSet;
 import info.esblurock.reaction.xmlparse.client.xmlfiles.XMLDataSource;
+import info.esblurock.reaction.xmlparse.resources.XMLParseResource;
 
 public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentView {
 
@@ -40,6 +41,8 @@ public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentV
 	interface XMLParseDocumentImplUiBinder extends UiBinder<Widget, XMLParseDocumentImpl> {
 	}
 
+	XMLParseResource resource = GWT.create(XMLParseResource.class);
+	
 	String name;
 	Presenter listener;
 
@@ -79,6 +82,8 @@ public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentV
 	MaterialLink indirectlabel;	
 	@UiField
 	MaterialLink directlabel;	
+	@UiField
+	MaterialLink unclassifiedlabel;
 	
 	int fileCount;
 	
@@ -104,7 +109,7 @@ public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentV
 		public void onSuccess(SuccessEvent<UploadFile> event) {
 			String filename = event.getTarget().getName();
 			fileCount++;
-			String message = "Upload: " + fileCount + " files";
+			String message = "Upload" + ": " + fileCount + " " + "files";
 			lblName.setText(message);
 			lblSize.setText(event.getTarget().getType());
 			UploadXMLFileCallback uploadCallback = new UploadXMLFileCallback(top);
@@ -116,12 +121,14 @@ public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentV
 	}
 	
 	void init() {
-		inputFiles.setText("Input files");
-		sourceFiles.setText("File Sources");
-		dataSetName.setPlaceholder("Data Set Name");
-		htmlText.setPlaceholder("HTML address");
-		directlabel.setText("Direct");
-		indirectlabel.setText("Indirect");
+		inputFiles.setText(resource.inputfiles());
+		sourceFiles.setText(resource.filesources());
+		dataSetName.setPlaceholder(resource.datasetname());
+		htmlText.setPlaceholder(resource.htmladdress());
+		directlabel.setText(resource.direct());
+		indirectlabel.setText(resource.indirect());
+		unclassifiedlabel.setText(resource.unclassified());
+		dataSets.setText(resource.datasets());
 		
 		fileCount = 0;
 		// Added the progress to card uploader
@@ -199,7 +206,7 @@ public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentV
 			}
 		}
 		if(!added) {
-			ReSpectExperimentCategory item = new ReSpectExperimentCategory(displayname);
+			ReSpectExperimentCategory item = new ReSpectExperimentCategory(displayname,this);
 			item.addExperiment(display);
 			category.add(item);
 		}
@@ -220,5 +227,8 @@ public class XMLParseDocumentImpl extends Composite implements XMLParseDocumentV
 				unclassified.add(display);
 			}
 		}
+	}
+	public void addSetOfExperiments(ReSpecThDataSet dataset) {
+		setOfDataSets.add(dataset);
 	}
 }

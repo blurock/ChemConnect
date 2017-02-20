@@ -1,18 +1,13 @@
 package info.esblurock.reaction.xmlparse.client.ui;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialCollapsible;
-import gwt.material.design.client.ui.MaterialCollapsibleItem;
 import gwt.material.design.client.ui.MaterialLink;
 import info.esblurock.reaction.xmlparse.client.xmlfiles.XMLDataSource;
 
@@ -32,9 +27,12 @@ public class ReSpectExperimentCategory extends Composite implements HasText {
 	@UiField
 	MaterialCollapsible experiments;
 
-	public ReSpectExperimentCategory(String name) {
+	XMLParseDocumentImpl top;
+	
+	public ReSpectExperimentCategory(String name, XMLParseDocumentImpl top) {
 		initWidget(uiBinder.createAndBindUi(this));
 		label.setText(name);
+		this.top = top;
 	}
 
 	public void setText(String text) {
@@ -62,7 +60,7 @@ public class ReSpectExperimentCategory extends Composite implements HasText {
 			ReSpecThCommonPaperSet set = (ReSpecThCommonPaperSet) experiments.getWidget(index);
 			set.addExperiment(display);
 		} else {
-			ReSpecThCommonPaperSet newset = new ReSpecThCommonPaperSet(display.getText());
+			ReSpecThCommonPaperSet newset = new ReSpecThCommonPaperSet(display.getText(), top);
 			experiments.add(newset);
 			newset.addExperiment(display);
 		}

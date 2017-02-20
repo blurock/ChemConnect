@@ -14,11 +14,13 @@ public class ReSpecThProperty implements Serializable {
 	String value;
 	String component;
 	String speciesLink;
+	String description;
 	
 	ArrayList<ReSpecThComponent> components;
 	boolean initialComponents;
 	public ReSpecThProperty() {
 		initialComponents = false;
+		description = "";
 	}
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
@@ -99,6 +101,12 @@ public class ReSpecThProperty implements Serializable {
 	}
 	public void addComponent(ReSpecThComponent component) {
 		components.add(component);
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
 	}
 	
 

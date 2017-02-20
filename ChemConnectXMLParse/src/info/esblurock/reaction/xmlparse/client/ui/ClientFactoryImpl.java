@@ -15,6 +15,7 @@ import com.google.gwt.place.shared.PlaceController;
 
 public class ClientFactoryImpl implements ClientFactory {
 	private final EventBus eventBus = new SimpleEventBus();
+	@SuppressWarnings("deprecation")
 	private final PlaceController placeController = new PlaceController(eventBus);
 	//private final ReactionTopView reactionTopView = new ReactionTopImpl();
 	//private final ReactionFirstView reactionFirstView = new ReactionFirstImpl();

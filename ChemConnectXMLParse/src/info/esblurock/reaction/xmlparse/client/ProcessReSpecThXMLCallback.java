@@ -24,12 +24,14 @@ public class ProcessReSpecThXMLCallback implements AsyncCallback<ReSpecTHXMLFile
 	@Override
 	public void onFailure(Throwable caught) {
 		MaterialToast.fireToast(filename + ":   Error in parsing: retry");
+		Window.alert(caught.toString());
 		datasource.insertXMLInfo(null);
 		top.addDataSource(datasource);
 	}
 
 	@Override
 	public void onSuccess(ReSpecTHXMLFileBase result) {
+		Window.alert("ProcessReSpecThXMLCallback\n" + result.toString());
 		datasource.insertXMLInfo(result);
 	}
 

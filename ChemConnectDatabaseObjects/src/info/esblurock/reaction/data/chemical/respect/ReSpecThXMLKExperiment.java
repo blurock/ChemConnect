@@ -16,19 +16,11 @@ public class ReSpecThXMLKExperiment extends ReSpecTHXMLFileBase {
 	String reaction;
 	String order;
 	String bulkgas;
-	ArrayList<ReSpecThProperty> commonProperties;
-	ArrayList<ReSpecThProperty> dataGroupProperties;
 	
 	public ReSpecThXMLKExperiment() {
 		xmlExperimentCategory = kexperimentS;
 		commonProperties = new ArrayList<ReSpecThProperty>();
 		dataGroupProperties = new ArrayList<ReSpecThProperty>();
-	}
-	public void addCommonProperty(ReSpecThProperty property) {
-		commonProperties.add(property);
-	}
-	public void addDataGroupProperty(ReSpecThProperty property) {
-		dataGroupProperties.add(property);
 	}
 	public String getOrder() {
 		return order;

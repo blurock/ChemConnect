@@ -9,9 +9,30 @@
 	}
 	</ui:style>
 	<m:MaterialCollapsibleItem>
+			<m:MaterialModal ui:field="addToDataSet" 
+				type="FIXED_FOOTER" dismissable="true" inDuration="500" outDuration="500">
+			<m:MaterialModalContent>
+				<m:MaterialRow>
+					<m:MaterialColumn grid="s6">
+						<m:MaterialTextBox ui:field="source"  placeholder="Source" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s6">
+						<m:MaterialTextBox ui:field="keyword"  placeholder="Keyword" />
+					</m:MaterialColumn>
+				</m:MaterialRow>
+			</m:MaterialModalContent>
+			<m:MaterialModalFooter>
+				<m:MaterialButton ui:field="addDataSetButton"   text="New Data Set"/>
+				<m:MaterialButton ui:field="closeButton" text="Close"/>
+			</m:MaterialModalFooter>			
+			</m:MaterialModal>
+	
+	
+	
 		<m:MaterialCollapsibleHeader
 			backgroundColor="grey">
-			<m:MaterialLink ui:field="label" textColor="black" />
+			<m:MaterialLink ui:field="label" textColor="black"/>
+			<m:MaterialLink ui:field="sendtodataset" iconType="INPUT" iconPosition="LEFT" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
 			<m:MaterialCollapsible ui:field="experiments" />

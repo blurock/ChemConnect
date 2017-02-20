@@ -1,8 +1,5 @@
 package info.esblurock.reaction.xmlparse.client.xmlfiles;
 
-import java.io.IOException;
-import java.util.Comparator;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -85,8 +82,12 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 		async.parseReSpecThXML(source, callback);
 	}
 	public void insertXMLInfo(ReSpecTHXMLFileBase parsedxml) {
-		reference.setText(parsedxml.getBibliographyLink());
-		retryread.setVisible(false);
+		if(parsedxml != null) {
+			reference.setText(parsedxml.getBibliographyLink());
+			retryread.setVisible(false);
+		} else {
+			retryread.setVisible(true);
+		}
 		this.parsedxml = parsedxml;
 		top.addDataSource(this);
 	}
@@ -122,7 +123,12 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 
 	@Override
 	public int compareTo(XMLDataSource o) {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+	public String getFileName() {
+		return fileName.getText();
+	}
+	public ReSpecTHXMLFileBase getParsedFile() {
+		return parsedxml;
 	}
 }

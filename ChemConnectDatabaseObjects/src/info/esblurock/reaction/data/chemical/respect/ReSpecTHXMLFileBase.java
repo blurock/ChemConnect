@@ -35,7 +35,10 @@ public class ReSpecTHXMLFileBase implements Serializable {
 	protected String ReSpecThVersion;
 	protected String bibliographyLink;
 	protected ArrayList<ReSpecThDataPoint> dataPoints;
-	
+
+	protected ArrayList<ReSpecThProperty> commonProperties;
+	protected ArrayList<ReSpecThProperty> dataGroupProperties;
+
 	public ReSpecTHXMLFileBase() {
 	}
 	
@@ -73,6 +76,13 @@ public class ReSpecTHXMLFileBase implements Serializable {
 		this.xmlExperimentCategory = xmlExperimentCategory;
 	}
 
+	public void addCommonProperty(ReSpecThProperty property) {
+		commonProperties.add(property);
+	}
+	public void addDataGroupProperty(ReSpecThProperty property) {
+		dataGroupProperties.add(property);
+	}
+
 	public String toString() {
 		StringBuffer buffer = new StringBuffer();
 		buffer.append("Type             : " + xmlExperimentCategory);
@@ -96,4 +106,17 @@ public class ReSpecTHXMLFileBase implements Serializable {
 	public void addDataPoint(ReSpecThDataPoint point) {
 		dataPoints.add(point);
 	}
+
+	public ArrayList<ReSpecThDataPoint> getDataPoints() {
+		return dataPoints;
+	}
+
+	public ArrayList<ReSpecThProperty> getCommonProperties() {
+		return commonProperties;
+	}
+
+	public ArrayList<ReSpecThProperty> getDataGroupProperties() {
+		return dataGroupProperties;
+	}
+	
 }

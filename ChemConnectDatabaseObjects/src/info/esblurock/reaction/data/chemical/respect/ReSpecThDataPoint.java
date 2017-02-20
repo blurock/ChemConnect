@@ -27,4 +27,7 @@ public class ReSpecThDataPoint implements Serializable {
 		buffer.append("\n");
 		return buffer.toString();
 	}
+	public ArrayList<String> getValues() {
+		return values;
+	}
 }

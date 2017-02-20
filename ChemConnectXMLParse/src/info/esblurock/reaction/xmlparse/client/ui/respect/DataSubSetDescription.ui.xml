@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<m:MaterialCollapsibleItem>
+		<m:MaterialCollapsibleHeader
+			backgroundColor="cyan lighten-5">
+			<m:MaterialLink ui:field="description" textColor="blue" />
+		</m:MaterialCollapsibleHeader>
+		<m:MaterialCollapsibleBody>
+			<g:HTMLPanel>
+				<mMaterialRow>
+					<m:MaterialColumn grid="s6">
+						<m:MaterialTextBox ui:field="version" />
+					</m:MaterialColumn>
+					<m:MaterialColumn grid="s6">
+						<m:MaterialTextBox ui:field="respect" />
+					</m:MaterialColumn>
+				</mMaterialRow>
+				<mMaterialRow>
+					<m:MaterialColumn grid="s12">
+					<m:MaterialTextBox ui:field="reference" />
+					</m:MaterialColumn>
+				</mMaterialRow>
+				<mMaterialRow>
+					<m:MaterialColumn grid="s12">
+					<m:MaterialTextBox ui:field="author" />
+					</m:MaterialColumn>
+				</mMaterialRow>
+			</g:HTMLPanel>
+		</m:MaterialCollapsibleBody>
+	</m:MaterialCollapsibleItem>
+</ui:UiBinder> 

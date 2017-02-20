@@ -234,10 +234,16 @@ public class DataDescription extends Composite implements HasText {
 	}
 	
 	public String createObjectKeyword() {
-		String name = getSource() + "#" + getKeyWord();
+		return createObjectKeyword(getSource(),getKeyWord());
+	}
+	public String createObjectKeyword(String source, String keyword) {
+		String name = source + "#" + keyword;
 		return name;
 	}
-	
+	public void setSourceAndKeyword(String src, String key) {
+		sourcekey.setText(src);
+		keyword.setText(key);
+	}
 	public HashSet<String> getKeywords() {
 		HashSet<String> keys = new HashSet<String>();
 		Iterator<Widget> iter = keywordpanel.iterator();

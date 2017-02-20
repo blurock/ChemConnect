@@ -26,8 +26,6 @@ public class ReSpecThXMLExperiment extends ReSpecTHXMLFileBase {
 	String timeshiftType;
 	String timeshiftAmount;
 	String experimentType;
-	ArrayList<ReSpecThProperty> commonProperties;
-	ArrayList<ReSpecThProperty> dataGroupProperties;
 	
 	
 	
@@ -37,12 +35,6 @@ public class ReSpecThXMLExperiment extends ReSpecTHXMLFileBase {
 		dataGroupProperties = new ArrayList<ReSpecThProperty>();
 	}
 
-	public void addCommonProperty(ReSpecThProperty property) {
-		commonProperties.add(property);
-	}
-	public void addDataGroupProperty(ReSpecThProperty property) {
-		dataGroupProperties.add(property);
-	}
 	public String toString() {
 		String base = super.toString();
 		StringBuffer buffer = new StringBuffer();

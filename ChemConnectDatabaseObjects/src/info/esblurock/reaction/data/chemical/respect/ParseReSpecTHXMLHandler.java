@@ -1,6 +1,5 @@
 package info.esblurock.reaction.data.chemical.respect;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import org.xml.sax.Attributes;

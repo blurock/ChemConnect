@@ -1,0 +1,33 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:descr="urn:import:info.esblurock.reaction.client.panel.description">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<m:MaterialCollapsibleItem>
+		<m:MaterialCollapsibleHeader
+			backgroundColor="cyan lighten-5">
+			<m:MaterialLink ui:field="datasetname" textColor="blue"/>
+		</m:MaterialCollapsibleHeader>
+		<m:MaterialCollapsibleBody>
+			<m:MaterialCollapsible>
+				<descr:DataDescription ui:field="description" />
+				<descr:SetOfReferenceDescriptions
+					ui:field="references" />
+				<m:MaterialCollapsibleItem>
+					<m:MaterialCollapsibleHeader
+						backgroundColor="cyan lighten-5">
+						<m:MaterialLink ui:field="datasets" textColor="blue" />
+					</m:MaterialCollapsibleHeader>
+					<m:MaterialCollapsibleBody>
+					<m:MaterialCollapsible ui:field="experiments"/>
+					</m:MaterialCollapsibleBody>
+				</m:MaterialCollapsibleItem>
+			</m:MaterialCollapsible>
+		</m:MaterialCollapsibleBody>
+	</m:MaterialCollapsibleItem>
+</ui:UiBinder> 
