@@ -21,9 +21,6 @@ public class DataSubSetDescription extends Composite implements HasText {
 	interface DataSubSetDescriptionUiBinder extends UiBinder<Widget, DataSubSetDescription> {
 	}
 
-	public DataSubSetDescription() {
-		initWidget(uiBinder.createAndBindUi(this));
-	}
 
 	XMLParseResource resource = GWT.create(XMLParseResource.class);
 	@UiField
@@ -37,18 +34,16 @@ public class DataSubSetDescription extends Composite implements HasText {
 	@UiField
 	MaterialTextBox author;
 
-	public DataSubSetDescription(String desc) {
+	public DataSubSetDescription() {
 		initWidget(uiBinder.createAndBindUi(this));
-		description.setText(desc);
-		reference.setText(desc);
 		init();
 	}
 	
 	void init() {
-		version.setText(resource.version());
-		respect.setText(resource.respect());
-		reference.setText(resource.reference());
-		author.setText(resource.author());
+		version.setPlaceholder(resource.version());
+		respect.setPlaceholder(resource.respect());
+		reference.setPlaceholder(resource.reference());
+		author.setPlaceholder(resource.author());
 	}
 
 	public void fill(ReSpecTHXMLFileBase respectbase) {

@@ -31,7 +31,6 @@ public class ProcessReSpecThXMLCallback implements AsyncCallback<ReSpecTHXMLFile
 
 	@Override
 	public void onSuccess(ReSpecTHXMLFileBase result) {
-		Window.alert("ProcessReSpecThXMLCallback\n" + result.toString());
 		datasource.insertXMLInfo(result);
 	}
 

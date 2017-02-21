@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
@@ -18,9 +17,11 @@ import com.googlecode.gwt.charts.client.table.Table;
 import com.googlecode.gwt.charts.client.table.TableOptions;
 
 import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThDataPoint;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThProperty;
+import info.esblurock.reaction.xmlparse.resources.XMLParseResource;
 
 public class ReSpecThDataMatrixDisplay extends Composite implements HasText {
 
@@ -29,51 +30,37 @@ public class ReSpecThDataMatrixDisplay extends Composite implements HasText {
 	interface ReSpecThDataMatrixDisplayUiBinder extends UiBinder<Widget, ReSpecThDataMatrixDisplay> {
 	}
 
+	XMLParseResource resource = GWT.create(XMLParseResource.class);
+	
 	@UiField
 	MaterialLink datapointtablelabel;
 	@UiField
 	HTMLPanel datapanel;
-
-	private Table table;
+	
 	ReSpecTHXMLFileBase respect;
 
+/*
 	public ReSpecThDataMatrixDisplay() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
-
+*/
 	public ReSpecThDataMatrixDisplay(ReSpecTHXMLFileBase respect) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.respect = respect;
 		initialize();
 	}
 
-	class BuildChart implements Runnable {
-
-		@Override
-		public void run() {
-			table = new Table();
-			datapanel.add(table);
-			draw();
-		}
-		
-	}
 	private void initialize() {
-		ChartLoader chartLoader = new ChartLoader(ChartPackage.TABLE);
-		BuildChart build = new BuildChart();
-		chartLoader.loadApi(build);
+		datapointtablelabel.setText(resource.datapoints());
 	}
-	private void draw() {
-
-		// Prepare the data
+	public void draw() {
+		Table table = new Table();
 		DataTable dataTable = DataTable.create();
 		for(ReSpecThProperty point : respect.getDataGroupProperties()) {
 			dataTable.addColumn(ColumnType.STRING, point.getLabel());
 		}
 		ArrayList<ReSpecThDataPoint> points = respect.getDataPoints();
 		dataTable.addRows(points.size());
-		
-		Window.alert("Draw Table: " + points.size());
-		
 		int row = 0;
 		for(ReSpecThDataPoint point : points) {
 			int column = 0;
@@ -86,18 +73,15 @@ public class ReSpecThDataMatrixDisplay extends Composite implements HasText {
 		TableOptions options = TableOptions.create();
 		options.setAlternatingRowStyle(true);
 		options.setShowRowNumber(true);
-
-		// Draw the chart
 		table.draw(dataTable, options);
-		Window.alert("Draw Table: drawn");
-
+		datapanel.add(table);
 	}
 	public void setText(String text) {
 		datapointtablelabel.setText(text);
 	}
 
 	public String getText() {
-		return datapointtablelabel.getText();
+		return respect.getBibliographyLink();
 	}
 
 }

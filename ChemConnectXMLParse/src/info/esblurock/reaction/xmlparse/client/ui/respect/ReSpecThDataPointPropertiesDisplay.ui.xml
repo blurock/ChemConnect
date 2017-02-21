@@ -13,7 +13,9 @@
 						<m:MaterialLink ui:field="datapointslabel" textColor="blue"/>
 					</m:MaterialCollapsibleHeader>
 					<m:MaterialCollapsibleBody>
+					<g:ScrollPanel ui:field="datapointsscroll" width="300px">
 					<g:HTMLPanel ui:field="datapoints"/>
+					</g:ScrollPanel>
 					</m:MaterialCollapsibleBody>
 				</m:MaterialCollapsibleItem>
 </ui:UiBinder> 

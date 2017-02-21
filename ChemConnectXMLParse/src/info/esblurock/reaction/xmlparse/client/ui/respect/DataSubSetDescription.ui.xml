@@ -15,7 +15,7 @@
 			<g:HTMLPanel>
 				<mMaterialRow>
 					<m:MaterialColumn grid="s6">
-						<m:MaterialTextBox ui:field="version" />
+						<m:MaterialTextBox ui:field="version"/>
 					</m:MaterialColumn>
 					<m:MaterialColumn grid="s6">
 						<m:MaterialTextBox ui:field="respect" />

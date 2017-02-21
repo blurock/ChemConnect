@@ -1,14 +1,17 @@
 package info.esblurock.reaction.xmlparse.client.ui.respect;
 
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialRow;
+import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThProperty;
 
 public class ReSpecThPlotAxisDisplay extends Composite implements HasText {
@@ -41,6 +44,8 @@ public class ReSpecThPlotAxisDisplay extends Composite implements HasText {
 		description.setText(descr);
 	}
 	public void fill(ReSpecThProperty property) {
+		MaterialToast.fireToast("ReSpecThPlotAxisDisplay  1");
+		Window.alert("ReSpecThPlotAxisDisplay\n" + property.toString());
 		this.property = property;
 		if(property.getDescription().length() != 0) {
 			description.setText(property.getDescription());

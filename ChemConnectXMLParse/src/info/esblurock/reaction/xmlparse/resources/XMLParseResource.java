@@ -43,11 +43,20 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   String commonproperties();
 
   /**
-   * Translated "Data Points".
+   * Translated "Axis Labels and Explanations".
    * 
-   * @return translated "Data Points"
+   * @return translated "Axis Labels and Explanations"
    */
-  @DefaultStringValue("Data Points")
+  @DefaultStringValue("Axis Labels and Explanations")
+  @Key("datapointheaders")
+  String datapointheaders();
+
+  /**
+   * Translated "Data Point Matrix".
+   * 
+   * @return translated "Data Point Matrix"
+   */
+  @DefaultStringValue("Data Point Matrix")
   @Key("datapoints")
   String datapoints();
 

@@ -1,5 +1,7 @@
 package info.esblurock.reaction.xmlparse.client.ui;
 
+import java.util.ArrayList;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
@@ -14,7 +16,6 @@ import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialModal;
 import gwt.material.design.client.ui.MaterialTextBox;
-import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.xmlparse.client.ui.respect.ReSpecThDataSet;
 import info.esblurock.reaction.xmlparse.client.xmlfiles.XMLDataSource;
 import info.esblurock.reaction.xmlparse.resources.XMLParseResource;
@@ -106,13 +107,13 @@ public class ReSpecThCommonPaperSet extends Composite implements HasText {
 			ReSpecThDataSet dataset = new ReSpecThDataSet(source.getText(), keyword.getText());
 			top.addSetOfExperiments(dataset);
 			int sze = experiments.getWidgetCount();
+			ArrayList<XMLDataSource> data = new ArrayList<XMLDataSource>();
 			for (int i = 0; i < sze; i++) {
 				XMLDataSource display = (XMLDataSource) experiments.getWidget(i);
-				dataset.addExperiment(display);
-				MaterialToast.fireToast("Experiment: " + display.getFileName());
+				data.add(display);
 			}
+			dataset.addSet(data);
 		}
-		MaterialToast.fireToast("Data set added");
 		addToDataSet.closeModal();
 	}
 }

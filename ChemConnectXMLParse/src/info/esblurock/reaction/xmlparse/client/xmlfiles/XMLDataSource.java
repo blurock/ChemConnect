@@ -81,6 +81,16 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 		ProcessReSpecThXMLCallback callback = new ProcessReSpecThXMLCallback(this,fileName.getText(),top);
 		async.parseReSpecThXML(source, callback);
 	}
+	public void setSourceTextOnly(String filename, String text) {
+		fileText.setText(text);
+		fileName.setText(filename);
+		reference.setText(filename);
+		fileRead = false;
+		xmlParsed = false;
+		retryread.setVisible(false);
+		delete.setVisible(false);
+		parsedxml = null;
+	}
 	public void insertXMLInfo(ReSpecTHXMLFileBase parsedxml) {
 		if(parsedxml != null) {
 			reference.setText(parsedxml.getBibliographyLink());
@@ -127,6 +137,9 @@ public class XMLDataSource extends Composite implements HasText, Comparable<XMLD
 	}
 	public String getFileName() {
 		return fileName.getText();
+	}
+	public String getFileText() {
+		return fileText.getText();
 	}
 	public ReSpecTHXMLFileBase getParsedFile() {
 		return parsedxml;

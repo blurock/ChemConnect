@@ -7,9 +7,11 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThProperty;
 import info.esblurock.reaction.xmlparse.resources.XMLParseResource;
 
@@ -26,6 +28,8 @@ public class ReSpecThDataPointPropertiesDisplay extends Composite implements Has
 	@UiField
 	MaterialLink datapointslabel;
 	@UiField
+	ScrollPanel datapointsscroll;
+	@UiField
 	HTMLPanel datapoints;
 
 	ArrayList<ReSpecThProperty> dataGroupProperties;
@@ -36,7 +40,7 @@ public class ReSpecThDataPointPropertiesDisplay extends Composite implements Has
 	}
 
 	void init() {
-		datapointslabel.setText(resource.datapoints());
+		datapointslabel.setText(resource.datapointheaders());
 	}
 	
 	public void fill(ArrayList<ReSpecThProperty> dataGroupProperties) {

@@ -1,17 +1,23 @@
 package info.esblurock.reaction.xmlparse.client.ui.respect;
 
+import java.util.ArrayList;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
+import com.googlecode.gwt.charts.client.ChartLoader;
+import com.googlecode.gwt.charts.client.ChartPackage;
 
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.client.panel.description.DataDescription;
 import info.esblurock.reaction.client.panel.description.SetOfReferenceDescriptions;
 import info.esblurock.reaction.xmlparse.client.xmlfiles.XMLDataSource;
+import info.esblurock.reaction.xmlparse.resources.XMLParseResource;
 
 public class ReSpecThDataSet extends Composite implements HasText {
 
@@ -24,6 +30,8 @@ public class ReSpecThDataSet extends Composite implements HasText {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	XMLParseResource resource = GWT.create(XMLParseResource.class);
+	
 	@UiField
 	MaterialLink datasetname;
 	@UiField
@@ -40,6 +48,7 @@ public class ReSpecThDataSet extends Composite implements HasText {
 		String dataSetName = description.createObjectKeyword(source,keyword);
 		datasetname.setText(dataSetName);
 		description.setSourceAndKeyword(source, keyword);
+		datasets.setText(resource.datasets());
 	}
 
 	public void setText(String text) {
@@ -54,4 +63,33 @@ public class ReSpecThDataSet extends Composite implements HasText {
 		experiments.add(display);
 		
 	}
+	class BuildChart implements Runnable {
+
+		ArrayList<ReSpecThDataMatrixDisplay> displaylst = new ArrayList<ReSpecThDataMatrixDisplay>();
+		public void addDisplay(ReSpecThDataMatrixDisplay display) {
+			displaylst.add(display);
+		}
+		
+		@Override
+		public void run() {
+			for(ReSpecThDataMatrixDisplay display : displaylst) {
+			MaterialToast.fireToast("MatrixDisplay: " + display.getText());
+			display.draw();
+			}
+		}
+		
+	}
+
+	public void addSet(ArrayList<XMLDataSource> data) {
+		ChartLoader chartLoader = new ChartLoader(ChartPackage.TABLE);
+		BuildChart build = new BuildChart();
+		for(XMLDataSource source : data) {
+			ReSpecThExperimentDisplay display = new ReSpecThExperimentDisplay(source);
+			experiments.add(display);
+			build.addDisplay(display.getMatrixDisplay());
+		}
+		chartLoader.loadApi(build);
+
+	}
+	
 }

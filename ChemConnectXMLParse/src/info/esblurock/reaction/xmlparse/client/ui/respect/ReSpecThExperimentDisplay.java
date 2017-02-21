@@ -3,13 +3,13 @@ package info.esblurock.reaction.xmlparse.client.ui.respect;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.xmlparse.client.xmlfiles.XMLDataSource;
 
@@ -30,12 +30,10 @@ public class ReSpecThExperimentDisplay extends Composite implements HasText {
 	MaterialCollapsible information;
 
 	XMLDataSource exp;
+	ReSpecThDataMatrixDisplay pointsdisplay;
 	
 	public ReSpecThExperimentDisplay(XMLDataSource exp) {
 		initWidget(uiBinder.createAndBindUi(this));
-		
-		Window.alert("ReSpecThExperimentDisplay: ");
-		Window.alert("ReSpecThExperimentDisplay: " + exp.getFileName());
 		this.exp = exp;
 		String filename = exp.getFileName();
 		ReSpecTHXMLFileBase parsed = exp.getParsedFile();
@@ -44,6 +42,11 @@ public class ReSpecThExperimentDisplay extends Composite implements HasText {
 		DataSubSetDescription description = new DataSubSetDescription();
 		description.fill(parsed);
 		information.add(description);
+
+		XMLDataSource datasource = new XMLDataSource();
+		datasource.setSourceTextOnly(exp.getFileName(),exp.getFileText());
+		information.add(datasource);
+
 		if(parsed.getCommonProperties().size() > 0) {
 			ReSpecThCommonPropertiesDisplay common = new ReSpecThCommonPropertiesDisplay();
 			common.fill(parsed.getCommonProperties());
@@ -52,12 +55,13 @@ public class ReSpecThExperimentDisplay extends Composite implements HasText {
 		ReSpecThDataPointPropertiesDisplay datapoint = new ReSpecThDataPointPropertiesDisplay();
 		datapoint.fill(parsed.getDataGroupProperties());
 		information.add(datapoint);
-		Window.alert("Add Data points: " + exp.getFileName());
-		ReSpecThDataMatrixDisplay pointsdisplay = new ReSpecThDataMatrixDisplay(parsed);
+		pointsdisplay = new ReSpecThDataMatrixDisplay(parsed);
 		information.add(pointsdisplay);
 	}
 
-	
+	public ReSpecThDataMatrixDisplay getMatrixDisplay() {
+		return pointsdisplay;
+	}
 	
 	public void setText(String text) {
 		experiment.setText(text);
