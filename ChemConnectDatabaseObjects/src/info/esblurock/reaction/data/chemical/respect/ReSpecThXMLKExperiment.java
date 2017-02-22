@@ -1,7 +1,5 @@
 package info.esblurock.reaction.data.chemical.respect;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 
 public class ReSpecThXMLKExperiment extends ReSpecTHXMLFileBase {
 
@@ -18,9 +16,8 @@ public class ReSpecThXMLKExperiment extends ReSpecTHXMLFileBase {
 	String bulkgas;
 	
 	public ReSpecThXMLKExperiment() {
+		super();
 		xmlExperimentCategory = kexperimentS;
-		commonProperties = new ArrayList<ReSpecThProperty>();
-		dataGroupProperties = new ArrayList<ReSpecThProperty>();
 	}
 	public String getOrder() {
 		return order;

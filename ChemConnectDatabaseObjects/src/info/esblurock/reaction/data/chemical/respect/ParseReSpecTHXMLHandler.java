@@ -26,6 +26,7 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
 	ArrayList<String> dataGroupPoints;
 	ReSpecThDataPoint point;
 	boolean dataPointProperty;
+	String value;
 	
 	public ParseReSpecTHXMLHandler() {
 		experimentBase = null;
@@ -127,6 +128,7 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
     		property.setName(name);
     		property.setLabel(label);
     		property.setUnits(units);
+    		value = null;
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.componentS)) {
     		component = new ReSpecThComponent();
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.amountS)) {
@@ -169,18 +171,22 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
     		}
     		if(experiment != null) {
     			if(commonProperty) {
+    				property.setValue(value);
     				experiment.addCommonProperty(property);
      			} else {
     				experiment.addDataGroupProperty(property);
     			}
     		} else if(kexperiment != null) {
     			if(commonProperty) {
+    				property.setValue(value);
     				kexperiment.addCommonProperty(property);
     			} else {
     				kexperiment.addDataGroupProperty(property);
     			}
     			
     		}
+    	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.valueS)) {
+    		value = elementBody;
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.amountS)) {
     		component.setAmount(elementBody);
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.componentS)) {

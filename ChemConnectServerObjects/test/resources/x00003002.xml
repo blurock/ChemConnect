@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </ReSpecThVersion>
+    <bibliographyLink preferredKey="N. Leplat, P. Dagaut, C. Togbe, J. Vandooren, Combust. Flame 158 (2011) 705-725, Fig. 8, C3H6 not taken"/>
+    <apparatus>
+        <kind>stirred reactor</kind>
+    </apparatus>
+    <experimentType>Jet stirred reactor measurement</experimentType>
+    <commonProperties>
+        <property description="" label="P"   name="pressure"       units="atm"><value>1</value></property>
+        <property description="" label="V"   name="volume"         units="cm3"><value>30</value></property>
+        <property description="" label="tau" name="residence time" units="s"  ><value>0.07</value></property>
+        <property name="initial composition">
+            <component><speciesLink preferredKey="C2H5OH" /><amount units="mole fraction">0.002</amount></component>
+            <component><speciesLink preferredKey="O2"     /><amount units="mole fraction">0.012</amount></component>
+            <component><speciesLink preferredKey="N2"     /><amount units="mole fraction">0.986</amount></component>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="">
+        <dataGroupLink dataGroupID="" dataPointID=""/>
+        <property description="" id="x1"  label="T"        name="temperature" units="K"/>
+        <property description="" id="x2"  label="[H2O]"    name="composition" units="mole fraction"><speciesLink preferredKey="H2O"    /></property>
+        <property description="" id="x3"  label="[CO2]"    name="composition" units="mole fraction"><speciesLink preferredKey="CO2"    /></property>
+        <property description="" id="x4"  label="[CO]"     name="composition" units="mole fraction"><speciesLink preferredKey="CO"     /></property>
+        <property description="" id="x5"  label="[CH2O]"   name="composition" units="mole fraction"><speciesLink preferredKey="CH2O"   /></property>
+        <property description="" id="x6"  label="[CH4]"    name="composition" units="mole fraction"><speciesLink preferredKey="CH4"    /></property>
+        <property description="" id="x7"  label="[C2H2]"   name="composition" units="mole fraction"><speciesLink preferredKey="C2H2"   /></property>
+        <property description="" id="x8"  label="[C2H4]"   name="composition" units="mole fraction"><speciesLink preferredKey="C2H4"   /></property>
+        <property description="" id="x9"  label="[C2H6]"   name="composition" units="mole fraction"><speciesLink preferredKey="C2H6"   /></property>
+        <property description="" id="x10" label="[CH3CHO]" name="composition" units="mole fraction"><speciesLink preferredKey="CH3CHO" /></property>
+        <property description="" id="x11" label="[C2H5OH]" name="composition" units="mole fraction"><speciesLink preferredKey="C2H5OH" /></property>
+        <property description="" id="x12" label="[H2]"     name="composition" units="mole fraction"><speciesLink preferredKey="H2"     /></property>
+        <property description="" id="x13" label="[O2]"     name="composition" units="mole fraction"><speciesLink preferredKey="O2"     /></property>
+            <dataPoint><x1>0891</x1><x2>7.20E-05</x2><x3>6.00E-07</x3><x4>7.00E-07</x4><x5>6.00E-07</x5><x6>5.56E-07</x6><x7>0.00E+00</x7><x8>1.74E-06</x8><x9>0.00E+00</x9><x10>3.62E-05</x10><x11>1.96E-03</x11><x12>6.40E-07</x12><x13>1.03E-02</x13></dataPoint>
+            <dataPoint><x1>0920</x1><x2>9.00E-05</x2><x3>1.40E-06</x3><x4>1.30E-06</x4><x5>1.90E-06</x5><x6>1.04E-06</x6><x7>4.19E-07</x7><x8>5.81E-06</x8><x9>5.75E-08</x9><x10>6.50E-05</x10><x11>1.82E-03</x11><x12>2.26E-06</x12><x13>1.02E-02</x13></dataPoint>
+            <dataPoint><x1>0950</x1><x2>1.79E-04</x2><x3>3.50E-06</x3><x4>8.50E-06</x4><x5>1.20E-05</x5><x6>5.56E-06</x6><x7>2.30E-07</x7><x8>2.22E-05</x8><x9>3.03E-07</x9><x10>1.41E-04</x10><x11>1.76E-03</x11><x12>7.75E-06</x12><x13>1.04E-02</x13></dataPoint>
+            <dataPoint><x1>0980</x1><x2>4.17E-04</x2><x3>7.30E-06</x3><x4>6.80E-05</x4><x5>4.70E-05</x5><x6>2.04E-05</x6><x7>5.87E-08</x7><x8>6.06E-05</x8><x9>2.33E-06</x9><x10>2.48E-04</x10><x11>1.59E-03</x11><x12>3.69E-05</x12><x13>1.02E-02</x13></dataPoint>
+            <dataPoint><x1>1010</x1><x2>7.55E-04</x2><x3>1.44E-05</x3><x4>2.19E-04</x4><x5>9.40E-05</x5><x6>5.22E-05</x6><x7>1.41E-07</x7><x8>1.18E-04</x8><x9>7.96E-06</x9><x10>3.30E-04</x10><x11>1.32E-03</x11><x12>1.15E-04</x12><x13>9.87E-03</x13></dataPoint>
+            <dataPoint><x1>1040</x1><x2>1.10E-03</x2><x3>2.30E-05</x3><x4>4.34E-04</x4><x5>1.30E-04</x5><x6>1.16E-04</x6><x7>3.82E-07</x7><x8>2.09E-04</x8><x9>2.01E-05</x9><x10>3.66E-04</x10><x11>1.09E-03</x11><x12>2.84E-04</x12><x13>1.00E-02</x13></dataPoint>
+            <dataPoint><x1>1070</x1><x2>1.46E-03</x2><x3>3.50E-05</x3><x4>7.05E-04</x4><x5>1.50E-04</x5><x6>1.63E-04</x6><x7>9.40E-07</x7><x8>2.76E-04</x8><x9>3.14E-05</x9><x10>3.59E-04</x10><x11>7.85E-04</x11><x12>4.43E-04</x12><x13>1.04E-02</x13></dataPoint>
+            <dataPoint><x1>1100</x1><x2>1.88E-03</x2><x3>5.98E-05</x3><x4>1.10E-03</x4><x5>1.48E-04</x5><x6>2.56E-04</x6><x7>2.67E-06</x7><x8>3.89E-04</x8><x9>5.09E-05</x9><x10>2.80E-04</x10><x11>4.89E-04</x11><x12>7.81E-04</x12><x13>1.05E-02</x13></dataPoint>
+            <dataPoint><x1>1130</x1><x2>2.77E-03</x2><x3>1.96E-04</x3><x4>1.93E-03</x4><x5>1.09E-04</x5><x6>2.84E-04</x6><x7>5.89E-06</x7><x8>3.68E-04</x8><x9>6.07E-05</x9><x10>1.33E-04</x10><x11>1.82E-04</x11><x12>1.11E-03</x12><x13>1.01E-02</x13></dataPoint>
+            <dataPoint><x1>1160</x1><x2>6.40E-03</x2><x3>3.70E-03</x3><x4>6.03E-04</x4><x5>0.00E+00</x5><x6>7.93E-07</x6><x7>0.00E+00</x7><x8>3.41E-07</x8><x9>0.00E+00</x9><x10>0.00E+00</x10><x11>1.18E-06</x11><x12>1.85E-05</x12><x13>5.12E-03</x13></dataPoint>
+    </dataGroup>
+</experiment>

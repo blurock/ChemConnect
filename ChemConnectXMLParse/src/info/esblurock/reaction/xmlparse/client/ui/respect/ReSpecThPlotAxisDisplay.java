@@ -44,8 +44,6 @@ public class ReSpecThPlotAxisDisplay extends Composite implements HasText {
 		description.setText(descr);
 	}
 	public void fill(ReSpecThProperty property) {
-		MaterialToast.fireToast("ReSpecThPlotAxisDisplay  1");
-		Window.alert("ReSpecThPlotAxisDisplay\n" + property.toString());
 		this.property = property;
 		if(property.getDescription().length() != 0) {
 			description.setText(property.getDescription());

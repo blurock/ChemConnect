@@ -44,9 +44,7 @@ public class ReSpecThCommonPropertiesDisplay extends Composite implements HasTex
 
 	public void fill(ArrayList<ReSpecThProperty> common) {
 		this.common = common;
-		Window.alert("Common: " + common.size());
 		for(ReSpecThProperty property: common) {
-			Window.alert(common.toString());
 			ReSpecThCommonPropertyDisplay display = new ReSpecThCommonPropertyDisplay();
 			display.fill(property);
 			commonproperties.add(display);

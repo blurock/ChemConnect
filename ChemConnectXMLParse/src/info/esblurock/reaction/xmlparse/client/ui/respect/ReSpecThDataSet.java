@@ -73,7 +73,6 @@ public class ReSpecThDataSet extends Composite implements HasText {
 		@Override
 		public void run() {
 			for(ReSpecThDataMatrixDisplay display : displaylst) {
-			MaterialToast.fireToast("MatrixDisplay: " + display.getText());
 			display.draw();
 			}
 		}

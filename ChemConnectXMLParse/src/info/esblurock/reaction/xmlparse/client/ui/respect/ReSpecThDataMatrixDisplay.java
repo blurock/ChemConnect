@@ -9,15 +9,12 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.gwt.charts.client.ChartLoader;
-import com.googlecode.gwt.charts.client.ChartPackage;
 import com.googlecode.gwt.charts.client.ColumnType;
 import com.googlecode.gwt.charts.client.DataTable;
 import com.googlecode.gwt.charts.client.table.Table;
 import com.googlecode.gwt.charts.client.table.TableOptions;
 
 import gwt.material.design.client.ui.MaterialLink;
-import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThDataPoint;
 import info.esblurock.reaction.data.chemical.respect.ReSpecThProperty;

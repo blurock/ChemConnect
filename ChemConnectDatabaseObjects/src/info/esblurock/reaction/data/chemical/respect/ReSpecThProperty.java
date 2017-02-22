@@ -108,6 +108,11 @@ public class ReSpecThProperty implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+	public boolean isInitialComponents() {
+		return initialComponents;
+	}
+	public ArrayList<ReSpecThComponent> getComponents() {
+		return components;
+	}
 
 }

@@ -7,16 +7,35 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-	<m:MaterialRow>
+	<m:MaterialRow ui:field="propertyrow">
+		<m:MaterialColumn>
+			<m:MaterialLabel ui:field="parametername" grid="s4" />
+		</m:MaterialColumn>
 		<m:MaterialColumn>
 			<m:MaterialLabel ui:field="parametervalue" grid="s4" />
 		</m:MaterialColumn>
 		<m:MaterialColumn>
 			<m:MaterialLabel ui:field="parameterunits" grid="s4" />
 		</m:MaterialColumn>
+	</m:MaterialRow>
+	<m:MaterialRow ui:field="componentrow">
 		<m:MaterialColumn>
-			<m:MaterialLabel ui:field="parametername" grid="s4" />
+			<m:MaterialLabel ui:field="initialcomponent" grid="s2" />
 		</m:MaterialColumn>
+		<m:MaterialColumn>
+			<m:MaterialLabel ui:field="species" grid="s4" />
+		</m:MaterialColumn>
+		<m:MaterialColumn>
+			<m:MaterialLabel ui:field="amount" grid="s3" />
+		</m:MaterialColumn>
+		<m:MaterialColumn>
+			<m:MaterialLabel ui:field="units" grid="s3" />
+		</m:MaterialColumn>
+	</m:MaterialRow>
+	<m:MaterialRow ui:field="componentsrow">
+	<m:MaterialColumn>
+		<g:HTMLPanel ui:field="components"/>
+	</m:MaterialColumn>
 	</m:MaterialRow>
 	<m:MaterialRow ui:field="descriptionrow">
 		<m:MaterialColumn>

@@ -16,6 +16,33 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   String ClassName();
 
   /**
+   * Translated "Amount".
+   * 
+   * @return translated "Amount"
+   */
+  @DefaultStringValue("Amount")
+  @Key("amount")
+  String amount();
+
+  /**
+   * Translated "Apparatus: Kind".
+   * 
+   * @return translated "Apparatus: Kind"
+   */
+  @DefaultStringValue("Apparatus: Kind")
+  @Key("apparatuskind")
+  String apparatuskind();
+
+  /**
+   * Translated "Apparatus: Mode".
+   * 
+   * @return translated "Apparatus: Mode"
+   */
+  @DefaultStringValue("Apparatus: Mode")
+  @Key("apparatusmode")
+  String apparatusmode();
+
+  /**
    * Translated "File Creator".
    * 
    * @return translated "File Creator"
@@ -23,6 +50,15 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("File Creator")
   @Key("author")
   String author();
+
+  /**
+   * Translated "Bulk Gas".
+   * 
+   * @return translated "Bulk Gas"
+   */
+  @DefaultStringValue("Bulk Gas")
+  @Key("bulkgas")
+  String bulkgas();
 
   /**
    * Translated "Close".
@@ -41,6 +77,15 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Common Properties")
   @Key("commonproperties")
   String commonproperties();
+
+  /**
+   * Translated "Component".
+   * 
+   * @return translated "Component"
+   */
+  @DefaultStringValue("Component")
+  @Key("component")
+  String component();
 
   /**
    * Translated "Axis Labels and Explanations".
@@ -95,6 +140,24 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Direct Experiment")
   @Key("direct")
   String direct();
+
+  /**
+   * Translated "Experiment".
+   * 
+   * @return translated "Experiment"
+   */
+  @DefaultStringValue("Experiment")
+  @Key("experiment")
+  String experiment();
+
+  /**
+   * Translated "Experiment Type".
+   * 
+   * @return translated "Experiment Type"
+   */
+  @DefaultStringValue("Experiment Type")
+  @Key("experimenttype")
+  String experimenttype();
 
   /**
    * Translated "files".
@@ -160,6 +223,24 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   String newdataset();
 
   /**
+   * Translated "Order".
+   * 
+   * @return translated "Order"
+   */
+  @DefaultStringValue("Order")
+  @Key("order")
+  String order();
+
+  /**
+   * Translated "Reaction".
+   * 
+   * @return translated "Reaction"
+   */
+  @DefaultStringValue("Reaction")
+  @Key("reaction")
+  String reaction();
+
+  /**
    * Translated "Reference".
    * 
    * @return translated "Reference"
@@ -187,6 +268,24 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   String source();
 
   /**
+   * Translated "Target".
+   * 
+   * @return translated "Target"
+   */
+  @DefaultStringValue("Target")
+  @Key("target")
+  String target();
+
+  /**
+   * Translated "Type".
+   * 
+   * @return translated "Type"
+   */
+  @DefaultStringValue("Type")
+  @Key("type")
+  String type();
+
+  /**
    * Translated "Unclassified".
    * 
    * @return translated "Unclassified"
@@ -194,6 +293,15 @@ public interface XMLParseResource extends com.google.gwt.i18n.client.Constants {
   @DefaultStringValue("Unclassified")
   @Key("unclassified")
   String unclassified();
+
+  /**
+   * Translated "Units".
+   * 
+   * @return translated "Units"
+   */
+  @DefaultStringValue("Units")
+  @Key("unit")
+  String unit();
 
   /**
    * Translated "Upload".

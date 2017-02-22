@@ -1,6 +1,5 @@
 package info.esblurock.reaction.data.chemical.respect;
 
-import java.util.ArrayList;
 
 public class ReSpecThXMLExperiment extends ReSpecTHXMLFileBase {
 	
@@ -30,9 +29,8 @@ public class ReSpecThXMLExperiment extends ReSpecTHXMLFileBase {
 	
 	
 	public ReSpecThXMLExperiment() {
+		super();
 		xmlExperimentCategory = experimentS;
-		commonProperties = new ArrayList<ReSpecThProperty>();
-		dataGroupProperties = new ArrayList<ReSpecThProperty>();
 	}
 
 	public String toString() {

@@ -40,6 +40,8 @@ public class ReSpecTHXMLFileBase implements Serializable {
 	protected ArrayList<ReSpecThProperty> dataGroupProperties;
 
 	public ReSpecTHXMLFileBase() {
+		commonProperties = new ArrayList<ReSpecThProperty>();
+		dataGroupProperties = new ArrayList<ReSpecThProperty>();
 	}
 	
 	public void initializeDataPoints() {

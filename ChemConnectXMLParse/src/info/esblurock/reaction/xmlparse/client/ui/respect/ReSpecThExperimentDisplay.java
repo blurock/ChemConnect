@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLink;
-import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.xmlparse.client.xmlfiles.XMLDataSource;
 
@@ -46,6 +45,9 @@ public class ReSpecThExperimentDisplay extends Composite implements HasText {
 		XMLDataSource datasource = new XMLDataSource();
 		datasource.setSourceTextOnly(exp.getFileName(),exp.getFileText());
 		information.add(datasource);
+		
+		ReSpecThExperimentValues values = new ReSpecThExperimentValues(parsed);
+		information.add(values);
 
 		if(parsed.getCommonProperties().size() > 0) {
 			ReSpecThCommonPropertiesDisplay common = new ReSpecThCommonPropertiesDisplay();
