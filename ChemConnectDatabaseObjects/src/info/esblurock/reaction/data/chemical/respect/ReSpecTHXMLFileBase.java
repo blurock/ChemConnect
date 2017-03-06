@@ -27,6 +27,8 @@ public class ReSpecTHXMLFileBase implements Serializable {
 	public static String initialCompositionS = "initial composition";
 	public static String amountS = "amount";
 	public static String dataPointS = "dataPoint";
+	public static String plotAxisS = "dataPoint";
+	public static String plotScaleS = "dataPoint";
 	
 	
 	protected String xmlExperimentCategory;
@@ -34,8 +36,8 @@ public class ReSpecTHXMLFileBase implements Serializable {
 	protected String fileVersion;
 	protected String ReSpecThVersion;
 	protected String bibliographyLink;
+	
 	protected ArrayList<ReSpecThDataPoint> dataPoints;
-
 	protected ArrayList<ReSpecThProperty> commonProperties;
 	protected ArrayList<ReSpecThProperty> dataGroupProperties;
 

@@ -21,6 +21,7 @@ public class StorageAndRetrievalUtilities {
 		
 	}
 	public static void storeListOfTransactionInfo(ArrayList<TransactionInfo> infos) {
+		System.out.println("storeListOfTransactionInfo: " + infos.size());
 		PersistenceManager pm = PMF.get().getPersistenceManager();
     	pm.makePersistentAll(infos);
     	pm.close();

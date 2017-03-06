@@ -19,6 +19,7 @@ import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.GenerateKeywordFromDescription;
 import info.esblurock.reaction.data.PMF;
 import info.esblurock.reaction.data.UserDTO;
+import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
@@ -34,6 +35,8 @@ import info.esblurock.reaction.server.process.DataProcesses;
 import info.esblurock.reaction.server.process.ProcessBase;
 import info.esblurock.reaction.server.process.description.DataDescriptionSpecification;
 import info.esblurock.reaction.server.process.description.DataSetReferencesSpecifications;
+import info.esblurock.reaction.server.process.respect.ReSpecThDataBaseInputSpecification;
+import info.esblurock.reaction.server.process.respect.ReSpecThDataSetToDatabase;
 import info.esblurock.reaction.server.queries.QueryBase;
 import info.esblurock.reaction.server.queries.TransactionInfoQueries;
 import info.esblurock.reaction.server.upload.InputStreamToLineDatabase;
@@ -265,4 +268,23 @@ public class TextToDatabaseImpl extends ServerBase implements TextToDatabase {
 		System.out.println(set);
 		return set;
 	}
+
+	@Override
+	public String registerReSpecThExperimentalData(String keyword, ArrayList<String> fileNames,
+			ArrayList<ReSpecTHXMLFileBase> experimentdata) throws IOException {
+		ContextAndSessionUtilities util = getUtilities();
+		String userS = util.getUserName();
+		String source = "ReSpecTh XML to database: '" + keyword;
+		System.out.println(source + " for " + userS);
+		RegisterTransaction.register(util.getUserInfo(), TaskTypes.dataInput, source, RegisterTransaction.checkLevel1);
+
+		String idCode = ManageDataSourceIdentification.getDataSourceIdentification(userS);
+		ReSpecThDataBaseInputSpecification spec = new ReSpecThDataBaseInputSpecification(userS,keyword,idCode,
+				fileNames,experimentdata);
+		
+		String processS = "ReSpecThDataSetToDatabase";
+		ReSpecThDataSetToDatabase process = (ReSpecThDataSetToDatabase) DataProcesses.getProcess(processS, spec);
+		return process.process();
+	}
+
 }

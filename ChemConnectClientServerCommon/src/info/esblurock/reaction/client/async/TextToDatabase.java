@@ -1,5 +1,6 @@
 package info.esblurock.reaction.client.async;
 
+import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
@@ -47,4 +48,6 @@ public interface TextToDatabase extends RemoteService {
 	
 	String fileFromUploadFileTransaction(String user, String fileName) throws IOException;
 	String fileFromUploadFileTransactionSession(String fileName) throws IOException;
+	
+	String registerReSpecThExperimentalData(String keyword, ArrayList<String> fileNames, ArrayList<ReSpecTHXMLFileBase> experimentdata) throws IOException;
 }

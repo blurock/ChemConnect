@@ -2,6 +2,7 @@ package info.esblurock.reaction.query.client.panel.repository.data;
 
 import java.util.ArrayList;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialToast;
@@ -58,6 +59,15 @@ public enum RepositoryDataVisualization {
 			items.add(item2);
 			return items;
 		}
+	}, ReSpecThExperimentalData {
+
+		@Override
+		public ArrayList<Widget> getDataSetVisualizationItems(String datasetkey) {
+			Window.alert("ReSpecThExperimentalData visualization not implemented yet");
+			ArrayList<Widget> items = new ArrayList<Widget>();
+			return items;
+		}
+		
 	};
 
 	public abstract ArrayList<Widget> getDataSetVisualizationItems(String datasetkey);

@@ -17,6 +17,7 @@ import gwt.material.design.client.ui.MaterialLink;
 
 import info.esblurock.reaction.client.async.StoreDescriptionData;
 import info.esblurock.reaction.client.async.StoreDescriptionDataAsync;
+import info.esblurock.reaction.data.description.DataSetReference;
 
 public class SetOfReferenceDescriptions extends Composite implements HasText {
 
@@ -90,4 +91,15 @@ public class SetOfReferenceDescriptions extends Composite implements HasText {
 		FillInDataSetReferencesCallback callback = new FillInDataSetReferencesCallback(this);
 		async.getDataSetReferences(datasetkeyword, callback);
 	}
+	public ArrayList<DataSetReference> getReferences(String keyword) {
+		ArrayList<DataSetReference> reflist = new ArrayList<DataSetReference>();
+		for(ReferenceDescriptions ref : getReferences()) {
+			DataSetReference references = new DataSetReference(keyword,
+					ref.getDOI(),ref.getTitleString(),ref.getReference(),
+					ref.getAuthors(),ref.getLastNames());
+			reflist.add(references);
+		}
+		return reflist;
+	}
+
 }

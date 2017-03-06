@@ -1,7 +1,6 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
-	xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
 	xmlns:descr="urn:import:info.esblurock.reaction.client.panel.description">
 	<ui:style>
 	.important {
@@ -11,23 +10,55 @@
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader
 			backgroundColor="cyan lighten-5">
-			<m:MaterialLink ui:field="datasetname" textColor="blue"/>
+			<m:MaterialLink ui:field="datasetname" textColor="blue" />
+			<m:MaterialIcon ui:field="storedata" iconType="INPUT"
+				iconPosition="RIGHT" />
+			<m:MaterialIcon ui:field="delete" iconType="CLOSE"
+				iconPosition="RIGHT" />
 		</m:MaterialCollapsibleHeader>
+
 		<m:MaterialCollapsibleBody>
-			<m:MaterialCollapsible>
-				<descr:DataDescription ui:field="description" />
-				<descr:SetOfReferenceDescriptions
-					ui:field="references" />
-				<m:MaterialCollapsibleItem>
-					<m:MaterialCollapsibleHeader
-						backgroundColor="cyan lighten-5">
-						<m:MaterialLink ui:field="datasets" textColor="blue" />
-					</m:MaterialCollapsibleHeader>
-					<m:MaterialCollapsibleBody>
-					<m:MaterialCollapsible ui:field="experiments"/>
-					</m:MaterialCollapsibleBody>
-				</m:MaterialCollapsibleItem>
-			</m:MaterialCollapsible>
+			<g:HTMLPanel>
+				<m:MaterialModal ui:field="datasavemodal" type="FIXED_FOOTER"
+					dismissable="true" inDuration="500" outDuration="500">
+					<m:MaterialModalContent>
+						<m:MaterialRow>
+							<m:MaterialColumn grid="s12">
+								<m:MaterialLink ui:field="modalsavetext" />
+							</m:MaterialColumn>
+						</m:MaterialRow>
+						<m:MaterialRow>
+							<m:MaterialColumn grid="s6">
+								<m:MaterialLink ui:field="modalsource" />
+							</m:MaterialColumn>
+							<m:MaterialColumn grid="s6">
+								<m:MaterialLink ui:field="modalkeyword" />
+							</m:MaterialColumn>
+						</m:MaterialRow>
+					</m:MaterialModalContent>
+					<m:MaterialModalFooter>
+						<m:MaterialButton ui:field="modalsave" text="Save" />
+						<m:MaterialButton ui:field="modalsaveclose" text="Close" />
+					</m:MaterialModalFooter>
+				</m:MaterialModal>
+
+
+
+				<m:MaterialCollapsible>
+					<descr:DataDescription ui:field="description" />
+					<descr:SetOfReferenceDescriptions
+						ui:field="references" />
+					<m:MaterialCollapsibleItem>
+						<m:MaterialCollapsibleHeader
+							backgroundColor="cyan lighten-5">
+							<m:MaterialLink ui:field="datasets" textColor="blue" />
+						</m:MaterialCollapsibleHeader>
+						<m:MaterialCollapsibleBody>
+							<m:MaterialCollapsible ui:field="experiments" />
+						</m:MaterialCollapsibleBody>
+					</m:MaterialCollapsibleItem>
+				</m:MaterialCollapsible>
+			</g:HTMLPanel>
 		</m:MaterialCollapsibleBody>
 	</m:MaterialCollapsibleItem>
 </ui:UiBinder> 

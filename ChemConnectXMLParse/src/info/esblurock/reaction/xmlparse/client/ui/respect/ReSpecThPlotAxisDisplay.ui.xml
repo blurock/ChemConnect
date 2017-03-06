@@ -18,6 +18,14 @@
 			<m:MaterialLabel ui:field="parameterunits" grid="s4" />
 		</m:MaterialColumn>
 	</m:MaterialRow>
+		<m:MaterialColumn>
+			<m:MaterialLabel ui:field="plotAxis" grid="s4" />
+		</m:MaterialColumn>
+		<m:MaterialColumn>
+			<m:MaterialLabel ui:field="plotScale" grid="s4" />
+		</m:MaterialColumn>
+	<m:MaterialRow>
+	</m:MaterialRow>
 	<m:MaterialRow ui:field="descriptionrow">
 		<m:MaterialColumn>
 			<m:MaterialLabel ui:field="description" grid="s12" />

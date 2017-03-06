@@ -33,6 +33,10 @@ public class ReSpecThPlotAxisDisplay extends Composite implements HasText {
 	MaterialLabel name;
 	@UiField
 	MaterialLabel parameterunits;
+	@UiField
+	MaterialLabel plotAxis;
+	@UiField
+	MaterialLabel plotScale;
 
 	ReSpecThProperty property;
 	
@@ -59,6 +63,12 @@ public class ReSpecThPlotAxisDisplay extends Composite implements HasText {
 		String parameter = property.getLabel() + "(" + property.getId() + ")";
 		label.setText(parameter);
 		parameterunits.setText(property.getUnits());
+		if(property.getPlotAxis() != null) {
+			plotAxis.setText(property.getPlotAxis());
+		}
+		if(property.getPlotScale() != null) {
+			plotScale.setText(property.getPlotScale());
+		}
 	}
 	public void setText(String text) {
 		description.setText(text);

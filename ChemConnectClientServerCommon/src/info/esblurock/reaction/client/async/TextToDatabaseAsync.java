@@ -1,5 +1,6 @@
 package info.esblurock.reaction.client.async;
 
+import info.esblurock.reaction.data.chemical.respect.ReSpecTHXMLFileBase;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
@@ -35,5 +36,8 @@ public interface TextToDatabaseAsync {
 	void fileFromUploadFileTransaction(String user, String fileName, AsyncCallback<String> callback);
 
 	void fileFromUploadFileTransactionSession(String fileName, AsyncCallback<String> callback);
+
+	void registerReSpecThExperimentalData(String keyword, ArrayList<String> fileNames,
+			ArrayList<ReSpecTHXMLFileBase> experimentdata, AsyncCallback<String> callback);
 
 }

@@ -120,6 +120,8 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
     		String name = attributes.getValue(ReSpecTHXMLFileBase.nameS);
     		String label = attributes.getValue(ReSpecTHXMLFileBase.labelS);
     		String units = attributes.getValue(ReSpecTHXMLFileBase.unitsS);
+    		String plotaxis = attributes.getValue(ReSpecTHXMLFileBase.plotAxisS);
+    		String plotscale = attributes.getValue(ReSpecTHXMLFileBase.plotScaleS);
     		if(name.equalsIgnoreCase(ReSpecTHXMLFileBase.initialCompositionS)) {
     			property.initializeComponents();
     			componentElement = true;
@@ -128,6 +130,8 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
     		property.setName(name);
     		property.setLabel(label);
     		property.setUnits(units);
+    		property.setPlotAxis(plotaxis);
+    		property.setPlotScale(plotscale);
     		value = null;
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.componentS)) {
     		component = new ReSpecThComponent();
@@ -138,7 +142,8 @@ public class ParseReSpecTHXMLHandler extends DefaultHandler {
     		String speciesLink = attributes.getValue(ReSpecTHXMLFileBase.preferredKey);
     		if(property != null) {
     			property.setSpeciesLink(speciesLink);
-    		} else if(component != null) {
+    		} 
+    		if(component != null) {
     			component.setSpeciesLink(speciesLink);
     		}
     	} else if(qName.equalsIgnoreCase(ReSpecTHXMLFileBase.dataPointS)) {

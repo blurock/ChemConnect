@@ -12,6 +12,8 @@ public class ReSpecThProperty implements Serializable {
 	String name;
 	String units;
 	String value;
+	String plotAxis;
+	String plotScale;
 	String component;
 	String speciesLink;
 	String description;
@@ -114,5 +116,16 @@ public class ReSpecThProperty implements Serializable {
 	public ArrayList<ReSpecThComponent> getComponents() {
 		return components;
 	}
-
+	public String getPlotAxis() {
+		return plotAxis;
+	}
+	public void setPlotAxis(String plotAxis) {
+		this.plotAxis = plotAxis;
+	}
+	public String getPlotScale() {
+		return plotScale;
+	}
+	public void setPlotScale(String plotScale) {
+		this.plotScale = plotScale;
+	}
 }

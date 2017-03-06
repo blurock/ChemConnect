@@ -26,6 +26,7 @@ import info.esblurock.reaction.server.process.upload.ReadReactMolCorrespondences
 import info.esblurock.reaction.server.process.upload.ValidateReactSDFMolecules;
 import info.esblurock.reaction.server.process.upload.ValidateReactMolCorrespondences;
 import info.esblurock.reaction.server.process.react.ReactSDFMoleculesToDatabase;
+import info.esblurock.reaction.server.process.respect.ReSpecThDataSetToDatabase;
 import info.esblurock.reaction.server.process.react.ReactSDFMoleculesProcessRDF;
 
 public enum DataProcesses {
@@ -570,6 +571,29 @@ public enum DataProcesses {
 		public boolean asBackgroundJob() {
 			return true;
 		}
+	}, ReSpecThDataSetToDatabase {
+
+		@Override
+		public ProcessBase getProcess(ProcessInputSpecificationsBase specs) {
+			ReSpecThDataSetToDatabase process = new ReSpecThDataSetToDatabase(specs);
+			return process;
+		}
+
+		@Override
+		public ProcessBase getEmptyProcess() {
+			return new ReSpecThDataSetToDatabase();
+		}
+
+		@Override
+		public String getTaskType() {
+			return TaskTypes.dataInput;
+		}
+
+		@Override
+		public boolean asBackgroundJob() {
+			return false;
+		}
+		
 	};
 	public abstract ProcessBase getProcess(ProcessInputSpecificationsBase specs);
 	public abstract ProcessBase getEmptyProcess();
