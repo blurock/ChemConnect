@@ -11,6 +11,7 @@ import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
 import info.esblurock.reaction.client.ui.view.ReactionQueryView;
 import info.esblurock.reaction.client.ui.view.ReactionTopView;
+import info.esblurock.reaction.client.ui.view.XMLParseDocumentView;
 
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
@@ -54,6 +55,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public ReactionInformationView getReactionInformationView() {
 		return reactionInformationView;
+	}
+	@Override
+	public XMLParseDocumentView getXMLParseDocumentView() {
+		return null;
 	}
 
 

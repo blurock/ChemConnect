@@ -168,7 +168,7 @@ public class SetOfInputs extends Composite {
 		modalcontent.clear();
 		modalcontent.add(valid);
 		valid.setGrid(lst);
-		modal.openModal();		
+		modal.openModal();	
 	}
 	
 	public void askRegisterModal(String result) {

@@ -54,7 +54,6 @@ public class ReactionMoleculeListPanel extends Composite implements HasText {
 				}
 			}
 		}
-		Window.alert("Done ReactionMoleculeListPanel");
 	}
 
 	private void addMolecule(String name, Double weight) {

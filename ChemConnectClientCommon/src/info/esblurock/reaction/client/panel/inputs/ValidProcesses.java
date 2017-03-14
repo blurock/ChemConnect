@@ -126,9 +126,13 @@ public class ValidProcesses extends Composite implements HasText {
 			public String getValue(String object) {
 				String shortname = FindShortNameFromString.findShortName(object, ".");
 				String description = shortname;
+				try {
 				ProcessDescriptionsForInterface desc = ProcessDescriptionsForInterface.valueOf(shortname);
 				if(desc != null) {
 					description = desc.getDescription();
+				}
+				} catch(Exception ex) {
+					Window.alert("Process description not found");
 				}
 				return description;
 			}

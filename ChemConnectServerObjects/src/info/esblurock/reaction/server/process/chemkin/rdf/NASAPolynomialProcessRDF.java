@@ -78,6 +78,7 @@ public class NASAPolynomialProcessRDF extends ProcessBase {
 		List<DatabaseObject> nasalist = ChemicalMechanismDataQuery.nasaPolynomialsFromMechanismName(keyword);
 		for (DatabaseObject object : nasalist) {
 			NASAPolynomialData data = (NASAPolynomialData) object;
+			store.storeObjectRDF(data);
 			String standard = CreateIsomerData.standardIsomerName(data.getMoleculeComposition());
 			String fullname = GenerateKeywords.generateMoleculeKeyword(keyword, data.getMoleculeName());
 				store.setKeyword(fullname);

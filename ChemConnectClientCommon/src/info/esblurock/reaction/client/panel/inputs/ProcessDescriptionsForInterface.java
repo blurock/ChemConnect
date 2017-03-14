@@ -177,7 +177,15 @@ public enum ProcessDescriptionsForInterface {
 			return description.ReactMoleCorrespondencesProcessRDF();
 		}
 		
-	};
+	}, ReSpecThDataSetToDatabase {
+
+		@Override
+		public String getDescription() {
+			return "ReSpecThDataSetToDatabase";
+		}
+		
+	}
+	;
 	
 	ProcessDescriptions description = GWT.create(ProcessDescriptions.class);
 

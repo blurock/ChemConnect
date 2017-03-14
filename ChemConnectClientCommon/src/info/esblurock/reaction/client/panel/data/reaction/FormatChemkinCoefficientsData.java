@@ -7,6 +7,8 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.ScrollPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialColumn;
@@ -30,9 +32,10 @@ public class FormatChemkinCoefficientsData extends Composite implements HasText 
 	MaterialLabel coefficientType,ALabel,A,nLabel,n,EaLabel,Ea;
 	
 	@UiField
-	MaterialRow arrheniusRow,coefficientsRow;
+	MaterialRow coefficientsRow;
+	//MaterialRow arrheniusRow,coefficientsRow;
 	@UiField
-	HTMLPanel arrheniuschart;
+	MaterialRow arrheniuschart;
 	
 	ChemkinCoefficientsData coefficients;
 
@@ -43,19 +46,23 @@ public class FormatChemkinCoefficientsData extends Composite implements HasText 
 		coefficientType.setText(type);
 		loadArrheniusCoefficients(coeffs);
 		loadCoefficients(coeffs);
-		DrawArrheniusPlot plot = new DrawArrheniusPlot(coeffs);
+		DrawArrheniusChart plot = new DrawArrheniusChart();
+		plot.fill(coeffs);
+		//ExampleChart plot = new ExampleChart();
+		//DrawArrheniusPlot plot = new DrawArrheniusPlot(coeffs);
 		//arrheniuschart.setSize("400px", "400px");
+		
 		arrheniuschart.add(plot);
 	}
 
 	void loadArrheniusCoefficients(ChemkinCoefficientsData coeffs) {
 		if(coeffs.forward || coeffs.reverse || coeffs.high || coeffs.low) {
-			arrheniusRow.setVisible(true);
+			arrheniuschart.setVisible(true);
 		A.setText(coeffs.getA());
 		n.setText(coeffs.getN());
 		Ea.setText(coeffs.getEa());
 		} else {
-			arrheniusRow.setVisible(false);
+			arrheniuschart.setVisible(false);
 		}
 	}
 	

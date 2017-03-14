@@ -1,7 +1,8 @@
 package info.esblurock.reaction.client.panel.data.reaction;
 
+import java.util.Date;
+
 import com.google.gwt.dom.client.Style.Unit;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.googlecode.gwt.charts.client.ChartLoader;
 import com.googlecode.gwt.charts.client.ChartPackage;
@@ -15,36 +16,27 @@ import com.googlecode.gwt.charts.client.controls.filter.ChartRangeFilterOptions;
 import com.googlecode.gwt.charts.client.controls.filter.ChartRangeFilterState;
 import com.googlecode.gwt.charts.client.controls.filter.ChartRangeFilterStateRange;
 import com.googlecode.gwt.charts.client.controls.filter.ChartRangeFilterUi;
-import com.googlecode.gwt.charts.client.corechart.LineChart;
 import com.googlecode.gwt.charts.client.corechart.LineChartOptions;
-import com.googlecode.gwt.charts.client.options.AxisTitlesPosition;
 import com.googlecode.gwt.charts.client.options.ChartArea;
-import com.googlecode.gwt.charts.client.options.HAxis;
 import com.googlecode.gwt.charts.client.options.Legend;
 import com.googlecode.gwt.charts.client.options.LegendPosition;
-import com.googlecode.gwt.charts.client.options.VAxis;
 
-import info.esblurock.reaction.data.chemical.reaction.ChemkinCoefficientsData;
+public class ChartRangeFilterExample extends DockLayoutPanel {
+	private Dashboard dashboard;
+	private ChartWrapper<LineChartOptions> lineChart;
+	private ChartRangeFilter numberRangeFilter;
 
-public class DrawArrheniusPlot  extends DockLayoutPanel {
-
-	ChemkinCoefficientsData coefficients;
-	
-	public DrawArrheniusPlot(ChemkinCoefficientsData coeffs) {
+	public ChartRangeFilterExample() {
 		super(Unit.PX);
-		this.coefficients = coeffs;
 		initialize();
 	}
-	Dashboard dashboard;
-	ChartWrapper<LineChartOptions> lineChart;
-	ChartRangeFilter numberRangeFilter;
-	
+
 	private void initialize() {
 		ChartLoader chartLoader = new ChartLoader(ChartPackage.CONTROLS);
 		chartLoader.loadApi(new Runnable() {
 
 			@Override
-			public void run() {				
+			public void run() {
 				addNorth(getDashboardWidget(), 0);
 				addSouth(getNumberRangeFilter(), 100);
 				add(getLineChart());
@@ -52,7 +44,7 @@ public class DrawArrheniusPlot  extends DockLayoutPanel {
 			}
 		});
 	}
-	
+
 	private Dashboard getDashboardWidget() {
 		if (dashboard == null) {
 			dashboard = new Dashboard();
@@ -76,7 +68,7 @@ public class DrawArrheniusPlot  extends DockLayoutPanel {
 	}
 
 	private void draw() {
-		
+		// Set control options
 		ChartRangeFilterOptions chartRangeFilterOptions = ChartRangeFilterOptions.create();
 		chartRangeFilterOptions.setFilterColumnIndex(0); // Filter by the date axis
 		LineChartOptions controlChartOptions = LineChartOptions.create();
@@ -88,64 +80,48 @@ public class DrawArrheniusPlot  extends DockLayoutPanel {
 		ChartRangeFilterUi chartRangeFilterUi = ChartRangeFilterUi.create();
 		chartRangeFilterUi.setChartType(ChartType.LINE);
 		chartRangeFilterUi.setChartOptions(controlChartOptions);
-		
-		double tmin = 300;
-		double tmax = 3000;
-		double tmininv = 1.0/tmax;
-		double tmaxinv = 1.0/tmin;
-		double trange = 0.50*(tmaxinv - tmininv);
-		Window.alert("trange: " + trange + ", " + tmininv + ", " + tmaxinv);
-		
-		chartRangeFilterUi.setMinRangeSize(trange);
+		chartRangeFilterUi.setMinRangeSize(2 * 24 * 60 * 60 * 1000); // 2 days in milliseconds
 		chartRangeFilterOptions.setUi(chartRangeFilterUi);
-		
 		ChartRangeFilterStateRange stateRange = ChartRangeFilterStateRange.create();
-		stateRange.setStart(tmininv);
-		stateRange.setEnd(tmaxinv);
-		
+		Date start = new Date(2012, 2, 9);
+		Date end   = new Date(2012, 3,20);
+		stateRange.setStart(start);
+		stateRange.setEnd(end);
 		ChartRangeFilterState controlState = ChartRangeFilterState.create();
 		controlState.setRange(stateRange);
 		numberRangeFilter.setState(controlState);
 		numberRangeFilter.setOptions(chartRangeFilterOptions);
 
-		
-		
 		// Set chart options
-		/*
 		LineChartOptions lineChartOptions = LineChartOptions.create();
 		lineChartOptions.setLineWidth(3);
 		lineChartOptions.setLegend(Legend.create(LegendPosition.NONE));
 		lineChartOptions.setChartArea(chartArea);
 		lineChart.setOptions(lineChartOptions);
-	*/
-		
+
+		// Generate random data
 		DataTable dataTable = DataTable.create();
-		dataTable.addColumn(ColumnType.NUMBER, "1/temperature");
-		dataTable.addColumn(ColumnType.NUMBER, "ln(k)");
-		dataTable.addRows(200);
-		
-		double A = Double.parseDouble(coefficients.getA());
-		double logA = Math.log10(A);
-		double Ea = Double.parseDouble(coefficients.getEa());
-		double R = 1.9872036;
-		double EoverR = Ea/R;
-		double n = Double.parseDouble(coefficients.getN());
-		
-		double tinvinterval = (tmaxinv - tmininv)/200.0;
-		double tinv = 0.0;
-		for(int count = 0; count < 200; count++) {
-			double T = 1.0/tinv;
-			double k = A * Math.pow(T, n)*Math.exp(-EoverR/T);
-			double logT = Math.log10(T);
-			double lnk = logA + EoverR * tinv + n*logT;
-			dataTable.setValue(count, 0, tinv);
-			dataTable.setValue(count, 1, lnk);
-			tinv += tinvinterval;
+		dataTable.addColumn(ColumnType.DATE, "Date");
+		dataTable.addColumn(ColumnType.NUMBER, "Stock value");
+		dataTable.addRows(121);
+
+		double open, close = 300;
+		double low, high;
+		for (int day = 1; day < 121; ++day) {
+			double change = (Math.sin(day / 2.5 + Math.PI) + Math.sin(day / 3) - Math.cos(day * 0.7)) * 150;
+			change = change >= 0 ? change + 10 : change - 10;
+			open = close;
+			close = Math.max(50, open + change);
+			low = Math.min(open, close) - (Math.cos(day * 1.7) + 1) * 15;
+			low = Math.max(0, low);
+			high = Math.max(open, close) + (Math.cos(day * 1.3) + 1) * 15;
+			Date dayD = new Date(2012, 1, day);
+			dataTable.setValue(day, 0, dayD);
+			dataTable.setValue(day, 1, Math.round(high));
 		}
+
+		// Draw the chart
 		dashboard.bind(numberRangeFilter, lineChart);
 		dashboard.draw(dataTable);
-		
-		Window.alert(" Done with chart");
-	}	
-
+	}
 }

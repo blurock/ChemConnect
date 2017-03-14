@@ -50,11 +50,13 @@ public class RegisteredProcesses {
 			DataProcesses processEnum = processes[i];
 			ProcessBase process = processEnum.getEmptyProcess();
 			ArrayList<String> input = process.getInputTransactionObjectNames();
+			if(input.size() > 0) {
 			if(completed.containsAll(input)) {
 				ArrayList<String> output = process.getOutputTransactionObjectNames();
 				if(!completed.containsAll(output)) {
 					valid.add(process.getClass().getName());
 				}
+			}
 			}
 		}
 		return valid;

@@ -22,7 +22,6 @@ public class SetUpProcessesCallback  implements AsyncCallback<List<String>> {
 
 	@Override
 	public void onSuccess(List<String> result) {
-		Window.alert("SetUpProcessesCallback: onSuccess: '" + keyword + "': " + result);
 		inputs.showValidProcesses(keyword, result);
 	}
 }
