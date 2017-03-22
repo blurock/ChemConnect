@@ -17,8 +17,11 @@ import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialLabel;
-
+import gwt.material.design.client.ui.MaterialRow;
+import info.esblurock.reaction.client.async.ComputeChemicalQuantitiesService;
+import info.esblurock.reaction.client.async.ComputeChemicalQuantitiesServiceAsync;
 import info.esblurock.reaction.data.chemical.thermo.NASAPolynomialData;
+import info.esblurock.reaction.data.chemical.thermo.ThermodynamicValues;
 
 public class NASAThermoPanel extends Composite implements HasText {
 
@@ -51,6 +54,13 @@ public class NASAThermoPanel extends Composite implements HasText {
 	@UiField
 	HTMLPanel panel;
 	
+	@UiField
+	MaterialRow enthalpyrow;
+	@UiField
+	MaterialRow entropyrow;
+	@UiField
+	MaterialRow cprow;
+	
 	NASAPolynomialData nasa;
 	
 	public NASAThermoPanel(NASAPolynomialData nasa) {
@@ -59,12 +69,6 @@ public class NASAThermoPanel extends Composite implements HasText {
 		ArrayList<Double> lc = nasa.getLower();
 		ArrayList<Double> uc = nasa.getUpper();
 		this.nasa = nasa;		
-		
-		//NASAPolynomial poly = new NASAPolynomial();
-		
-		//FormatNASAPolynomialData formatter = new FormatNASAPolynomialData();
-		//formatter.convertNASAPolynomial(nasa);
-		
 		enthalpy.setText(nasa.getStandardEnthalpy().toString());
 		entropy.setText(nasa.getStandardEntropy().toString());
 		
@@ -85,6 +89,7 @@ public class NASAThermoPanel extends Composite implements HasText {
 		coefficientFormat(upper6,uc.get(5));
 		coefficientFormat(upper7,uc.get(6));
 		
+		calculateThermodynamicValues();
 		
 		//line1.setText(formatter.getLine1());
 		//line2.setText(formatter.getLine2());
@@ -102,6 +107,11 @@ public class NASAThermoPanel extends Composite implements HasText {
 		*/
 	}
 
+	void calculateThermodynamicValues() {
+		ComputeChemicalQuantitiesServiceAsync async = ComputeChemicalQuantitiesService.Util.getInstance();
+		CalculateNASAThermoGraphsCallback callback = new CalculateNASAThermoGraphsCallback(this);
+		async.computeThermodynamicQuantity(nasa, callback);
+	}
 	void coefficientFormat(MaterialLabel lbl, Double num) {
 		lbl.getElement().getStyle().setFontSize(0.8, Unit.EM);
 		lbl.setText(NumberFormat.getScientificFormat().overrideFractionDigits(4).format(num.doubleValue()));
@@ -114,6 +124,18 @@ public class NASAThermoPanel extends Composite implements HasText {
 	@UiHandler("calculateEntropy")
 	void onEntropyClick(ClickEvent e) {
 		Window.alert("Calculate Entropy at given temperature");
+	}
+	public void addThermodynamicGraphs(ThermodynamicValues values) {
+		//Window.alert("Temperatures: " + values.getTemperatures());
+		//Window.alert("Cp: " + values.getCpValues());
+		//Window.alert("Entropy: " + values.getEntropyValues());
+		//Window.alert("Enthalpy: " + values.getEnthalpyValues());
+		DrawThermodynamicsEnthalpyGraph enthalpy = new DrawThermodynamicsEnthalpyGraph(this);
+		enthalpy.fillThermodynamics(values);
+		DrawThermodynamicsEntropyGraph entropy = new DrawThermodynamicsEntropyGraph(this);
+		entropy.fillThermodynamics(values);
+		DrawThermodynamicsCpGraph cp = new DrawThermodynamicsCpGraph(this);
+		cp.fillThermodynamics(values);
 	}
 	/*
 	@Override
@@ -248,7 +270,15 @@ public class NASAThermoPanel extends Composite implements HasText {
 	}
 	
 	*/
-	
+	public void addEnthaplyGraph(DrawThermodynamicsGraph thermo) {
+		enthalpyrow.add(thermo);
+	}
+	public void addEntropyGraph(DrawThermodynamicsGraph thermo) {
+		entropyrow.add(thermo);
+	}
+	public void addCpGraph(DrawThermodynamicsGraph thermo) {
+		cprow.add(thermo);
+	}
 	
 	public void setText(String text) {
 		
@@ -257,5 +287,6 @@ public class NASAThermoPanel extends Composite implements HasText {
 	public String getText() {
 		return null;
 	}
+
 
 }

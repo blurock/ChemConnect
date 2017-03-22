@@ -1,5 +1,8 @@
 package info.esblurock.reaction.client.panel.data.reaction;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 /*
  * #%L
  * GwtMaterial
@@ -22,8 +25,11 @@ package info.esblurock.reaction.client.panel.data.reaction;
 
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 import com.googlecode.gwt.charts.client.ChartLoader;
@@ -42,6 +48,10 @@ import com.googlecode.gwt.charts.client.options.TextPosition;
 import com.googlecode.gwt.charts.client.options.VAxis;
 import gwt.material.design.client.ui.MaterialCardContent;
 import gwt.material.design.client.ui.MaterialCardTitle;
+import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialTextArea;
+import gwt.material.design.client.ui.MaterialTextBox;
+import gwt.material.design.client.ui.MaterialToast;
 
 public class MaterialAreaChart extends Composite {
 
@@ -52,10 +62,21 @@ public class MaterialAreaChart extends Composite {
 
 	@UiField
 	MaterialCardContent cardContent;
+	@UiField
 	MaterialCardTitle cardtitle;
+	@UiField
+	MaterialCardContent revealContent;
+	@UiField
+	MaterialLink calculate;
+	@UiField
+	MaterialTextBox calculateValues;
+	@UiField
+	MaterialTextArea answer;
+	
 	//private AreaChart chart;
 	private LineChart chart;
 	boolean isLoop = false;
+	boolean doubleValueB;
 	
 	private double[][] values;
 	private String[] sets;
@@ -70,6 +91,7 @@ public class MaterialAreaChart extends Composite {
 	public MaterialAreaChart() {
 		initWidget(uiBinder.createAndBindUi(this));
 		logScale = false;
+		doubleValueB = true;
 		initialize();
 	}
 
@@ -185,48 +207,44 @@ public class MaterialAreaChart extends Composite {
 
 		return options;
 	}
-	/*
-	private AreaChartOptions getOptions() {
-		//Grid Lines
-		Gridlines lines = Gridlines.create();
-		lines.setColor("fff");
-
-		// Text Positions X and Y Axis
-		HAxis hAxis = HAxis.create();
-		hAxis.setTextPosition(TextPosition.NONE);
-
-		VAxis vAxis = VAxis.create();
-		vAxis.setTextPosition(TextPosition.NONE);
-		vAxis.setGridlines(lines);
-		hAxis.setGridlines(lines);
-		// Legend
-		Legend legend = Legend.create();
-		legend.setPosition(LegendPosition.TOP);
-		legend.setAligment(LegendAlignment.END);
-
-		// Set options
-		AreaChartOptions options = AreaChartOptions.create();
-		options.setIsStacked(true);
-		options.setAreaOpacity(1);
-		options.setVAxis(vAxis);
-		options.setHAxis(hAxis);
-		options.setLegend(legend);
-		options.setColors("2196f3", "42a5f5", "64b5f6", "90caf9", "bbdefb");
+	public void addAnswers(ArrayList< ArrayList<Double> > answers) {
 		
-		ChartArea area = ChartArea.create();
-		area.setTop(0);
-		area.setLeft(0);
-		area.setWidth("100%");
-		area.setHeight("100%");
-		options.setChartArea(area);
-		
-		//Set Animation
-		Animation animation = Animation.create();
-		animation.setDuration(500);
-		animation.setEasing(AnimationEasing.OUT);
-		options.setAnimation(animation);
-		
-		return options;
 	}
-*/
+	protected ArrayList<String> valuesS;
+	protected ArrayList<Double> valuesD;
+	protected void calculate(String values) throws IOException {
+		String rest = values;
+		valuesS = new ArrayList<String>();
+		int pos = rest.indexOf(",");
+		while(pos > 0) {
+			String value = rest.substring(0, pos);
+			valuesS.add(value);
+			rest = rest.substring(pos+1);
+			pos = rest.indexOf(",");
+		}
+		valuesS.add(rest);
+		if(doubleValueB) {
+			valuesD = new ArrayList<Double>();
+			for(String value:valuesS) {
+				try {
+					Double valueD = new Double(value);
+					valuesD.add(valueD);
+				} catch(Exception ex) {
+					throw new IOException("Expecting list of numbers, error in parsing (comma delimited)");
+				}
+			}
+		} else {
+			valuesD = null;
+		}
+		Window.alert("Parsed: " + valuesS);
+	}
+	
+	@UiHandler("calculate")
+	void calculate(ClickEvent event) {
+		try {
+			calculate(calculateValues.getText());
+		} catch (IOException e) {
+			MaterialToast.fireToast(e.getMessage());
+		}
+	}
 }

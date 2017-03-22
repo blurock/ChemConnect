@@ -14,10 +14,10 @@
 		</m:MaterialModalContent>
 
 		<m:MaterialModalFooter>
-			<m:MaterialButton ui:field="close" waves="GREEN"
-				type="FLAT" text="Close" />
-			<m:MaterialButton ui:field="basket" waves="GREEN"
-				type="FLAT" text="Save"/>
+				<!--  m:MaterialLink ui:field="close" text="Top page" fontSize="1em" 
+					iconPosition="LEFT" iconType="CLOSE"/ -->
+				<m:MaterialLink ui:field="basket" text="Query" fontSize="1em"  
+					iconPosition="LEFT" iconType="SAVE"/>
 		</m:MaterialModalFooter>
 	</m:MaterialModal>
 </ui:UiBinder> 

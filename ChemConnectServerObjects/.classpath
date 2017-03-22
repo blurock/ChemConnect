@@ -6,7 +6,6 @@
 	<classpathentry exported="true" kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry exported="true" kind="lib" path="/Users/edwardblurock/.git/WebApp/WebApp/war/WEB-INF/lib/gwtupload-1.0.3.jar"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ChemConnectDatabaseObjects"/>
 	<classpathentry exported="true" kind="lib" path="/Users/edwardblurock/.git/WebApp/WebApp/war/WEB-INF/lib/commons-fileupload-1.3.2.jar"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/JReaction"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/JTherGas"/>
@@ -14,5 +13,6 @@
 	<classpathentry kind="lib" path="/Users/edwardblurock/.git/WebApp/WebApp/war/WEB-INF/lib/cdk-1.5.13.jar"/>
 	<classpathentry kind="lib" path="/Users/edwardblurock/.git/WebApp/WebApp/war/WEB-INF/lib/json-20140107.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

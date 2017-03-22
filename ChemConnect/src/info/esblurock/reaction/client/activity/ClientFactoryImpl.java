@@ -10,6 +10,7 @@ import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
 import info.esblurock.reaction.client.ui.view.ReactionQueryView;
 import info.esblurock.reaction.client.ui.view.ReactionTopView;
+import info.esblurock.reaction.client.ui.view.XMLParseDocumentView;
 import info.esblurock.reaction.datainput.client.ui.ReactionFirstImpl;
 import info.esblurock.reaction.query.client.ui.ReactionQueryImpl;
 
@@ -53,6 +54,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public ReactionInformationView getReactionInformationView() {
 		return reactionInformationView;
+	}
+	@Override
+	public XMLParseDocumentView getXMLParseDocumentView() {
+		return null;
 	}
 
 

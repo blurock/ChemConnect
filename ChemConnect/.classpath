@@ -2,21 +2,38 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" output="test-classes" path="test"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientCommon"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectServerObjects"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ChemConnectClientCommon"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ChemConnectDatabaseObjects"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ChemConnectClientServerCommon"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ChemConnectServerObjects"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JReaction"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JTherGas"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/JThermodynamics"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectChemFormatInputs"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectQuery"/>
-	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-charts-0.9.10.jar"/>
-	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-material-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-material-addins-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/ChemConnectClientCommon/war/WEB-INF/lib/gwt-material-themes-1.6.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-charts-0.9.10.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-1.6.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-addins-1.6.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-themes-1.6.0.jar"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/gwt-user.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/doc/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/gwt-codeserver.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/doc/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/gwt-dev.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/doc/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/validation-api-1.0.0.GA-sources.jar"/>
+	<classpathentry kind="lib" path="/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/validation-api-1.0.0.GA.jar" sourcepath="/Users/edwardblurock/.p2/pool/plugins/com.gwtplugins.gwt.eclipse.sdkbundle.gwt27_2.7.0.201611042254/gwt-2.7.0/validation-api-1.0.0.GA-sources.jar"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

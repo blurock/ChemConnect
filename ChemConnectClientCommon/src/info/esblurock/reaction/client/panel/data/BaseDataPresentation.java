@@ -12,6 +12,8 @@ import com.google.gwt.user.client.ui.Widget;
 import gwt.material.design.client.constants.IconType;
 import gwt.material.design.client.constants.ModalType;
 import gwt.material.design.client.ui.MaterialButton;
+import gwt.material.design.client.ui.MaterialIcon;
+import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialModal;
 import gwt.material.design.client.ui.MaterialModalContent;
 import gwt.material.design.client.ui.MaterialTitle;
@@ -28,18 +30,19 @@ public class BaseDataPresentation extends Composite implements HasText {
 	@UiField
 	MaterialTitle title;
 	@UiField
-	MaterialButton close;
-	@UiField
 	MaterialModalContent modalcontent;
 	@UiField
 	MaterialModal modal;
+	//@UiField
+	//MaterialLink close;
 	@UiField
-	MaterialButton basket;
+	MaterialLink basket;
 	
 	DatabaseObject object;
 	
 	public BaseDataPresentation() {
 		initWidget(uiBinder.createAndBindUi(this));
+		init();
 	}
 
 	public BaseDataPresentation(String text, String description, DatabaseObject object) {
@@ -51,17 +54,18 @@ public class BaseDataPresentation extends Composite implements HasText {
 	}
 
 	private void init() {
-		basket.setText("Save");
-		basket.setIconType(IconType.SAVE);
-		close.setText("Close");
-		close.setIconType(IconType.CLOSE);
+		//basket.setText("Save");
+		//basket.setIconType(IconType.SAVE);
+		//close.setText("Close");
+		//close.setIconType(IconType.CLOSE);
 		
 	}
-	
+	/*
 	@UiHandler("close")
 	void onClick(ClickEvent e) {
 		modal.closeModal();
 	}
+	*/
 	@UiHandler("basket")
 	void onSaveClick(ClickEvent e) {
 		modal.closeModal();

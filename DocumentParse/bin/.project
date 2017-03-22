@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ChemConnect</name>
+	<name>DocumentParse</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -44,8 +44,7 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>com.google.appengine.eclipse.core.gaeNature</nature>
-		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
-		<nature>org.datanucleus.ide.eclipse.projectnature</nature>
 		<nature>com.google.gwt.eclipse.core.gwtNature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
 </projectDescription>

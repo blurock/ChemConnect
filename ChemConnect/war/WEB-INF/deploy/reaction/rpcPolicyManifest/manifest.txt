@@ -1,3 +1,9 @@
 # Module reaction
 # RPC service class, partial path of RPC policy file
-info.esblurock.reaction.client.GreetingService, 8AD1126D1633C2A03F912B66F76D8DF1.gwt.rpc
+info.esblurock.reaction.client.async.LoginService, 7ACB1619C92EB1E28ECA9B55639F0510.gwt.rpc
+info.esblurock.reaction.client.async.ReactionProcessUploadedLines, 1742A0E6E4E6B064D748BB1C94DCBBD8.gwt.rpc
+info.esblurock.reaction.client.async.StoreDescriptionData, EC0615912CE80DAABE94005E4FB4137A.gwt.rpc
+info.esblurock.reaction.client.async.TransactionService, 169BEBD65C90D71F16B18BA679F5FAD7.gwt.rpc
+info.esblurock.reaction.client.async.TextToDatabase, 0FD3D37FA3C3E281FC9EC64D15851E02.gwt.rpc
+info.esblurock.reaction.query.client.GreetingService, 5EADF1078080866083B9D56D45FF9AFF.gwt.rpc
+info.esblurock.reaction.client.async.ReactionSearchService, C9D8065B68EAB4A40B152BC5BD005880.gwt.rpc

@@ -19,7 +19,10 @@
 	<inherits name="com.google.gwt.json.JSON" />
 	<inherits name="gwtupload.GWTUpload" />
 
-	<inherits name='info.esblurock.reaction.query.ChemConnectQuery' />
+	<inherits name='info.esblurock.reaction.datainput.ChemConnectChemFormatInputsModule' />
+	<inherits name='info.esblurock.reaction.ChemConnectClientCommonModule' />
+	<inherits name='info.esblurock.reaction.ChemConnectClientServerCommonModule' />
+	<inherits name='info.esblurock.reaction.query.ChemConnectQueryModule' />
 	<inherits name='info.esblurock.reaction.ChemConnectDatabaseObjects' />
 
   <!-- Inherit the default GWT style sheet.  You can change       -->
