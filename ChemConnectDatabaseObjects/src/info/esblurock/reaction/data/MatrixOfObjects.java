@@ -9,7 +9,7 @@ import com.google.appengine.datanucleus.annotations.Unindexed;
 
 @PersistenceCapable
 public class MatrixOfObjects extends DatabaseObject {
-
+	private static final long serialVersionUID = 1L;
 	@Persistent
 	@Unindexed
 	ArrayList<Object> objects;
@@ -30,6 +30,9 @@ public class MatrixOfObjects extends DatabaseObject {
     @Persistent
     String sourceCode;
 	
+    public MatrixOfObjects() {
+    }
+    
 	public MatrixOfObjects(String user, String sourceCode,
 			ArrayList<String> rowTitle, ArrayList<String> columnTitle) {
 		this.user = user;
@@ -39,7 +42,10 @@ public class MatrixOfObjects extends DatabaseObject {
 		this.numberOfColumns = columnTitle.size();
 		this.numberOfRows = rowTitle.size();
 		int matsize = numberOfColumns * numberOfRows;
-		objects = new ArrayList<Object>(matsize);
+		this.objects = new ArrayList<Object>(matsize);
+		for(int i=0; i<matsize;i++) {
+			objects.add(new Object());
+		}
 	}
 
 	public void insert(int row, int column, Object value) {
@@ -63,8 +69,36 @@ public class MatrixOfObjects extends DatabaseObject {
 			}
 			build.append("\n");
 		}
-
 		return build.toString();
 	}
-	
+
+	public ArrayList<Object> getObjects() {
+		return objects;
+	}
+
+	public ArrayList<String> getColumnTitle() {
+		return columnTitle;
+	}
+
+	public ArrayList<String> getRowTitle() {
+		return rowTitle;
+	}
+
+	public int getNumberOfRows() {
+		return numberOfRows;
+	}
+
+	public int getNumberOfColumns() {
+		return numberOfColumns;
+	}
+
+	public String getUser() {
+		return user;
+	}
+
+	public String getSourceCode() {
+		return sourceCode;
+	}
+
+
 }

@@ -2,7 +2,12 @@ package info.esblurock.reaction.client.panel.data.thermo;
 
 import java.util.ArrayList;
 
+import com.google.gwt.uibinder.client.UiField;
+
+import info.esblurock.reaction.client.panel.data.DrawMatrixOfDoubles;
 import info.esblurock.reaction.client.panel.data.reaction.MaterialAreaChart;
+import info.esblurock.reaction.data.MatrixOfDoubles;
+import info.esblurock.reaction.data.chemical.thermo.NASAPolynomialData;
 import info.esblurock.reaction.data.chemical.thermo.ThermodynamicValues;
 
 public class DrawThermodynamicsGraph  extends MaterialAreaChart {
@@ -37,4 +42,15 @@ public class DrawThermodynamicsGraph  extends MaterialAreaChart {
 		}
 		fillNumber(title,xaxisTitle,yaxisTitle, xaxis,sets,values);
 	}
+	
+	public void drawMatrix(String title, MatrixOfDoubles matrix) {
+		calculatetitle.setText(title);
+		DrawMatrixOfDoubles panel = new DrawMatrixOfDoubles(matrix);
+		panel.setText(matrix.getColumnTitle().toString());
+		answer.add(panel);
+	}
+	public NASAPolynomialData getNasa() {
+		return panel.getNasa();
+	}
+
 }

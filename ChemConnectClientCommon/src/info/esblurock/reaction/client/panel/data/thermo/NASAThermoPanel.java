@@ -288,5 +288,9 @@ public class NASAThermoPanel extends Composite implements HasText {
 		return null;
 	}
 
+	public NASAPolynomialData getNasa() {
+		return nasa;
+	}
+
 
 }

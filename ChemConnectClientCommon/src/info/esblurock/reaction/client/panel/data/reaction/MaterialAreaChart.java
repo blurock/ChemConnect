@@ -48,6 +48,7 @@ import com.googlecode.gwt.charts.client.options.TextPosition;
 import com.googlecode.gwt.charts.client.options.VAxis;
 import gwt.material.design.client.ui.MaterialCardContent;
 import gwt.material.design.client.ui.MaterialCardTitle;
+import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialTextArea;
 import gwt.material.design.client.ui.MaterialTextBox;
@@ -71,7 +72,9 @@ public class MaterialAreaChart extends Composite {
 	@UiField
 	MaterialTextBox calculateValues;
 	@UiField
-	MaterialTextArea answer;
+	protected MaterialCollapsible answer;
+	@UiField
+	protected MaterialCardTitle calculatetitle;
 	
 	//private AreaChart chart;
 	private LineChart chart;
@@ -236,7 +239,6 @@ public class MaterialAreaChart extends Composite {
 		} else {
 			valuesD = null;
 		}
-		Window.alert("Parsed: " + valuesS);
 	}
 	
 	@UiHandler("calculate")
