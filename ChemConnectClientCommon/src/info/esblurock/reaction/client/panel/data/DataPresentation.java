@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import com.google.gwt.i18n.client.NumberFormat;
+import com.google.gwt.user.client.Window;
 
 import gwt.material.design.client.ui.MaterialColumn;
 import gwt.material.design.client.ui.MaterialRow;
@@ -44,6 +45,7 @@ public enum DataPresentation {
 			String description = asOnLine(data);
 			String title = "MechanismMoleculeData";
 			BaseDataPresentation present = new BaseDataPresentation(title, description,molecule);
+			present.setPath(molecule.getMechanismKeyword(), "MechanismMoleculeData", molecule.getMoleculeName());
 			return present;
 		}
 
@@ -93,6 +95,7 @@ public enum DataPresentation {
 			String description = asOnLine(data);
 			String title = reaction.getReactionName();
 			BaseDataPresentation present = new BaseDataPresentation(title, description,reaction);
+			present.setPath(reaction.getMechanismKeyword(),"ChemkinReactionData",title);
 			ReactionDataPresentation reactionpanel = new ReactionDataPresentation(reaction);
 			present.getModalContent().add(reactionpanel);
 			return present;
@@ -153,6 +156,7 @@ public enum DataPresentation {
 			String title = "ChemkinCoefficientsData";
 			String description = "";
 			BaseDataPresentation present = new BaseDataPresentation(title, description,coeffs);
+			present.setPath(coeffs.getMechanismKeyword(),"ChemkinCoefficientsData",coeffs.getReactionKeyword());
 			present.getModalContent().add(formatter);
 			return null;
 		}
@@ -204,7 +208,8 @@ public enum DataPresentation {
 			FormatNASAPolynomialData formatter = new FormatNASAPolynomialData();
 			formatter.convertNASAPolynomial(nasa);
 			NASAThermoPanel panel = new NASAThermoPanel(nasa);
-			presentation.getModalContent().add(panel);
+			presentation.getPanel().add(panel);
+			presentation.setPath(nasa.getKeyword(),"NASAPolynomialData",nasa.getMoleculeName());
 			return presentation;
 		}
 
@@ -246,6 +251,7 @@ public enum DataPresentation {
 			String description = asOnLine(data);
 			String title = reference.getDatasetKeyword();
 			BaseDataPresentation present = new BaseDataPresentation(title,description,reference);
+			present.setPath(reference.getDatasetKeyword(),"DataSetReference", reference.getDOI());
 			addRow(present,reference.getReferenceTitle());
 			StringBuilder build = new StringBuilder();
 			boolean first = true;

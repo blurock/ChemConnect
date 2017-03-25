@@ -15,8 +15,6 @@
 			<m:MaterialModalFooter>
 				<m:MaterialButton ui:field="objectclose" waves="GREEN"
 					type="FLAT" text="Close" />
-				<m:MaterialButton ui:field="objectsave" waves="GREEN"
-					type="FLAT" text="Save" />
 			</m:MaterialModalFooter>
 		</m:MaterialModal>
 		<m:MaterialRow>

@@ -5,7 +5,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
@@ -16,7 +15,6 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialModal;
 import gwt.material.design.client.ui.MaterialModalContent;
-import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.client.async.ReactionSearchService;
 import info.esblurock.reaction.client.async.ReactionSearchServiceAsync;
 import info.esblurock.reaction.client.panel.data.BaseDataPresentation;
@@ -46,8 +44,6 @@ public class SearchPanel extends Composite implements HasText {
 	MaterialModal objectinfomodal;
 	@UiField
 	MaterialButton objectclose;
-	@UiField
-	MaterialButton objectsave;
 	
 	boolean subjectB;
 	boolean predicateB;
@@ -55,6 +51,7 @@ public class SearchPanel extends Composite implements HasText {
 	boolean objectobjectB;
 	boolean searchtextB;
 	DatabaseObject objectStructure;
+	
 	QueryPath linkpath;
 	HTMLPanel toppanel;
 	String originalText;
@@ -146,18 +143,15 @@ public class SearchPanel extends Composite implements HasText {
 			DataPresentation presentation = DataPresentation.valueOf(shortname);
 			BaseDataPresentation display = presentation.asDisplayObject(objectStructure);
 			infocontent.clear();
-			infocontent.add(display.getModalContent());
+			HTMLPanel panel = new HTMLPanel(shortname);
+			panel.add(display);
+			infocontent.add(panel);
 			objectinfomodal.openModal();
 		}		
 	}
 	@UiHandler("objectclose")
 	void closeObjectInfo(ClickEvent e) {
 		objectinfomodal.closeModal();
-	}
-	@UiHandler("objectsave")
-	void closeSaveInfo(ClickEvent e) {
-		objectinfomodal.closeModal();
-		MaterialToast.fireToast("Save the object: (coming soon)");
 	}
 	public void addResultPanel(Widget scroll) {
 		resultpanel.add(scroll);

@@ -16,6 +16,7 @@ import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialCollapsibleBody;
 import gwt.material.design.client.ui.MaterialIcon;
 import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialModal;
 import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.client.async.ReactionSearchService;
 import info.esblurock.reaction.client.async.ReactionSearchServiceAsync;
@@ -213,7 +214,6 @@ public class CollapsibleHeaderLink extends Composite implements HasText {
 	public String getText() {
 		return link.getText();
 	}
-
 	@Override
 	public void setText(String text) {
 		link.setText(text);
