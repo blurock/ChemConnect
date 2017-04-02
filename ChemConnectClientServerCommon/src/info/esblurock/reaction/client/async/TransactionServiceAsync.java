@@ -1,5 +1,8 @@
 package info.esblurock.reaction.client.async;
 
+import info.esblurock.reaction.data.DatabaseObject;
+import info.esblurock.reaction.data.store.UserObjectStorage;
+import info.esblurock.reaction.data.store.UserStorageObjectTreeNode;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.data.upload.FileUploadTextBlock;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
@@ -43,5 +46,9 @@ public interface TransactionServiceAsync {
 
 	void getFileUploadTextBlockFromTransaction(String datasetkeyword, String classname,
 			AsyncCallback<ArrayList<String>> callback);
+
+	void storeUserObjectStorage(UserObjectStorage object, AsyncCallback<String> callback);
+
+	void getStorageObjectsForCurrentUser(AsyncCallback<UserStorageObjectTreeNode> callback);
 
 }

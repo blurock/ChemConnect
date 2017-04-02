@@ -12,6 +12,7 @@ import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.chemical.reaction.ChemkinCoefficientsData;
 import info.esblurock.reaction.data.rdf.graph.RDFTreeNode;
 import info.esblurock.reaction.data.repository.ListOfRepositoryDataSources;
+import info.esblurock.reaction.data.store.UserObjectStorage;
 
 @RemoteServiceRelativePath("reactionqueryservice")
 public interface ReactionSearchService  extends RemoteService {
@@ -42,4 +43,6 @@ public interface ReactionSearchService  extends RemoteService {
 	   HashMap<String,ArrayList<String>> getSynonymsForStandardKeywords() throws IOException;
 	   ListOfRepositoryDataSources getRepositoryDataSources() throws IOException;
 	ArrayList<ChemkinCoefficientsData> coefficientsFromReactionName(String reactionname) throws IOException;
+
+	DatabaseObject getObjectFromUserObjectStorage(UserObjectStorage objectstorage) throws Exception;
 }

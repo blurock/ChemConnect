@@ -11,9 +11,8 @@
 		dismissable="false" inDuration="500" outDuration="800">
 		<m:MaterialModalContent ui:field="modalcontent">
 			<g:HTMLPanel ui:field="panel">
-				<m:MaterialModal ui:field="savemodal" type="FIXED_FOOTER"
-					dismissable="false" inDuration="500" outDuration="800">
-					<m:MaterialModalContent ui:field="savecontent">
+				<m:MaterialCard ui:field="savemodal">
+					<m:MaterialCardContent ui:field="savecontent">
 						<m:MaterialRow>
 							<m:MaterialLabel ui:field="pathtitle" />
 						</m:MaterialRow>
@@ -33,15 +32,15 @@
 							</m:MaterialColumn>
 						</m:MaterialRow>
 
-					</m:MaterialModalContent>
-					<m:MaterialModalFooter>
+					</m:MaterialCardContent>
+					<m:MaterialCardAction>
 						<m:MaterialLink ui:field="saveclose" fontSize="1em"
 							iconPosition="LEFT" iconType="CLOSE" />
 						<m:MaterialLink ui:field="saveok" fontSize="1em"
 							iconPosition="LEFT" iconType="SAVE" />
-					</m:MaterialModalFooter>
-				</m:MaterialModal>
+					</m:MaterialCardAction>
 
+				</m:MaterialCard>
 				<m:MaterialRow>
 					<m:MaterialTitle ui:field="title" />
 				</m:MaterialRow>

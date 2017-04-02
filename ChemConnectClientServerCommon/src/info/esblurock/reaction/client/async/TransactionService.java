@@ -6,6 +6,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import info.esblurock.reaction.data.DatabaseObject;
+import info.esblurock.reaction.data.store.UserObjectStorage;
+import info.esblurock.reaction.data.store.UserStorageObjectTreeNode;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
 
@@ -140,4 +143,6 @@ public interface TransactionService extends RemoteService {
 	
 	public TransactionInfo getTransactionInfo(String datasetkeyword, String classname) throws IOException;
 	public ArrayList<String> getFileUploadTextBlockFromTransaction(String datasetkeyword, String classname) throws IOException;
+	public String storeUserObjectStorage(UserObjectStorage object);
+	public UserStorageObjectTreeNode getStorageObjectsForCurrentUser() throws IOException;
 }

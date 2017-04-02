@@ -18,6 +18,7 @@ import info.esblurock.reaction.data.rdf.SetOfKeywordRDF;
 import info.esblurock.reaction.data.rdf.graph.RDFTreeNode;
 import info.esblurock.reaction.data.repository.DataPathName;
 import info.esblurock.reaction.data.repository.ListOfRepositoryDataSources;
+import info.esblurock.reaction.data.store.UserObjectStorage;
 import info.esblurock.reaction.server.ServerBase;
 import info.esblurock.reaction.server.authorization.TaskTypes;
 import info.esblurock.reaction.server.datastore.CreateSetOfKeywordQueryAnswers;
@@ -100,6 +101,7 @@ public class ReactionSearchServiceImpl  extends ServerBase implements ReactionSe
 	public RDFTreeNode searchedRegisteredQueries(String queryS, String path)  throws IOException {
 		ContextAndSessionUtilities util = getUtilities();
 		String registerS = queryS + ": " + path;
+		System.out.println("Session: " + registerS);
 		RegisterTransaction.register(util.getUserInfo(),TaskTypes.query, registerS, RegisterTransaction.checkLevel1);
 		QueryParameters query = new QueryParameters(queryS);
 		SetOfParseQueries queries = RegisteredQueries.getRegistered();
@@ -180,7 +182,14 @@ public class ReactionSearchServiceImpl  extends ServerBase implements ReactionSe
 		pm.close();
 		return result;
 	}
-
+	@Override
+	public DatabaseObject getObjectFromUserObjectStorage(UserObjectStorage objectstorage)  throws Exception {
+		String clsname = objectstorage.getStoredObjectType();
+		String key = objectstorage.getStoredObjectKey();
+		DatabaseObject object = getObjectFromKey(clsname,key);
+		return object;
+		
+	}
 	@Override
 	public String registerSynonyms(HashMap<String, ArrayList<String>> standardKeywordSynonyms) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();

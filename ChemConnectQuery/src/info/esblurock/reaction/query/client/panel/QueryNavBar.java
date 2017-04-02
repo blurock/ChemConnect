@@ -6,11 +6,14 @@ import info.esblurock.reaction.	query.client.panel.query.QueryPath;
 import info.esblurock.reaction.query.client.panel.query.QueryPathElement;
 import info.esblurock.reaction.client.async.ReactionSearchService;
 import info.esblurock.reaction.client.async.ReactionSearchServiceAsync;
+import info.esblurock.reaction.client.async.TransactionService;
+import info.esblurock.reaction.client.async.TransactionServiceAsync;
 import info.esblurock.reaction.query.client.panel.query.SearchPanel;
 import info.esblurock.reaction.query.client.panel.repository.actions.RetrieveDataSetPathCallback;
 import info.esblurock.reaction.query.client.ui.ReactionQueryImpl;
 import info.esblurock.reaction.client.ui.view.ReactionQueryView.Presenter;
 import info.esblurock.reaction.data.UserDTO;
+import info.esblurock.reaction.data.store.UserStorageObjectTreeNode;
 import gwt.material.design.client.constants.RadioButtonType;
 import gwt.material.design.client.constants.SideNavType;
 import gwt.material.design.client.events.SearchFinishEvent;
@@ -18,6 +21,7 @@ import gwt.material.design.client.ui.MaterialCheckBox;
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialNavBar;
+import gwt.material.design.client.ui.MaterialPanel;
 import gwt.material.design.client.ui.MaterialSearch;
 import gwt.material.design.client.ui.MaterialSideNav;
 import gwt.material.design.client.ui.MaterialToast;
@@ -32,9 +36,11 @@ import com.google.gwt.event.logical.shared.CloseHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
+import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 
@@ -60,18 +66,11 @@ public class QueryNavBar extends Composite implements HasText {
 	MaterialLink info;
 	@UiField
 	MaterialLink linkButton;
+	@UiField
+	MaterialLink storedobjects;
 
 	String repositoryLabel = "repository";
 	
-	//boolean asTree;
-	
-	/*
-	 * @UiField TextBox search;
-	 * 
-	 * @UiField MaterialButton submittopquery;
-	 * 
-	 * @UiField MaterialLink linkmenu;
-	 */
 	QueryAndResultPanel qrpanel;
 	MaterialCollapsible topsearch;
 	Presenter listener;
@@ -146,7 +145,7 @@ public class QueryNavBar extends Composite implements HasText {
 		} else {
 			ReactionSearchServiceAsync async = ReactionSearchService.Util.getInstance();
 			if(astree.getValue()) {
-				HTMLPanel toppanel = qrpanel.getTopPanel();
+				MaterialPanel toppanel = qrpanel.getTopPanel();
 				SearchPanel search = new SearchPanel(text,toppanel);
 				toppanel.add(search);
 				BasicObjectSearchAsTreeCallback callback = new BasicObjectSearchAsTreeCallback(path,search);
@@ -157,7 +156,17 @@ public class QueryNavBar extends Composite implements HasText {
 			}
 		}
 	}
-
+/*
+	private void addStoreObject(MaterialCollapsible collapsible, UserStorageObjectTreeNode node) {
+		if(node.isNameNode()) {
+			UserStorageObjectTreeNodeDisplay display = new UserStorageObjectTreeNodeDisplay(node.getNodeName());
+			collapsible.add(display);
+			for(UserStorageObjectTreeNode child : node.getChildren()) {
+				addStoreObject(display.getCollapsible(),child);
+			}
+		}
+	}
+	*/
 	@Override
 	public String getText() {
 		return name;
@@ -181,6 +190,7 @@ public class QueryNavBar extends Composite implements HasText {
 	void infoClicked(ClickEvent e) {
 		top.showSearchHelpInformation();
 	}
+	
 	@UiHandler("linkButton")
 	void onLinkClick(ClickEvent e) {
 		top.linkWindow();
@@ -192,12 +202,13 @@ public class QueryNavBar extends Composite implements HasText {
 		ashierarchy.setValue(true);
 		
 	}
+	
 	@UiHandler("astree")
 	public void setAsTree(ClickEvent e) {
 		astree.setValue(true);
 		ashierarchy.setValue(false);
-		
 	}
+		
 	public void setPresenter(Presenter listener) {
 		this.listener = listener;
 	}

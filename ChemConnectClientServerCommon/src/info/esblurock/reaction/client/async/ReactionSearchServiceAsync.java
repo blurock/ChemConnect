@@ -4,6 +4,7 @@ import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.chemical.reaction.ChemkinCoefficientsData;
 import info.esblurock.reaction.data.rdf.graph.RDFTreeNode;
 import info.esblurock.reaction.data.repository.ListOfRepositoryDataSources;
+import info.esblurock.reaction.data.store.UserObjectStorage;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,5 +33,7 @@ public interface ReactionSearchServiceAsync {
 	void getRepositoryDataSources(AsyncCallback<ListOfRepositoryDataSources> callback);
 
 	void coefficientsFromReactionName(String reactionname, AsyncCallback<ArrayList<ChemkinCoefficientsData>> callback);
+
+	void getObjectFromUserObjectStorage(UserObjectStorage objectstorage, AsyncCallback<DatabaseObject> callback);
 
 }

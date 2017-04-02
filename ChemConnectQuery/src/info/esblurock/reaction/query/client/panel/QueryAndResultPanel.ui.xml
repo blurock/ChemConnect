@@ -1,19 +1,40 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
-	xmlns:m="urn:import:gwt.material.design.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:save="urn:import:info.esblurock.reaction.query.client.panel">
 
 	<ui:style>
 	.important {
 		font-weight: bold;
 	}
+	
 	.panel {
 		background-color: white;
-
 	}
 	</ui:style>
-	<g:HTMLPanel ui:field="toppanel" styleName="{style.panel}">
-	<m:MaterialCollapsible ui:field="topoftree" type="POPOUT">
-	</m:MaterialCollapsible>
-	</g:HTMLPanel>
+	<m:MaterialPanel>
+		<m:MaterialTab indicatorColor="WHITE" width="50%">
+			<m:MaterialTabItem waves="LIGHT">
+				<m:MaterialLink text="Search" href="#search"
+					textColor="WHITE" />
+			</m:MaterialTabItem>
+			<m:MaterialTabItem waves="LIGHT">
+				<m:MaterialLink text="Saved" href="#saved" textColor="WHITE" />
+			</m:MaterialTabItem>
+			<m:MaterialTabItem waves="LIGHT">
+				<m:MaterialLink text="Visualize" href="#display"
+					textColor="WHITE" />
+			</m:MaterialTabItem>
+		</m:MaterialTab>
+		<m:MaterialPanel ui:field="toppanel" m:id="search"
+			styleName="{style.panel}">
+			<m:MaterialCollapsible ui:field="topoftree"
+				type="POPOUT">
+			</m:MaterialCollapsible>
+		</m:MaterialPanel>
+		<m:MaterialPanel ui:field="objectsave" m:id="saved"/>
+		<m:MaterialPanel m:id="display">
+			<save:VisualizationPanel ui:field="visualizepanel" />
+		</m:MaterialPanel>
+	</m:MaterialPanel>
 </ui:UiBinder>

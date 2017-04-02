@@ -92,7 +92,7 @@ public enum DataPresentation {
 		@Override
 		public BaseDataPresentation asDisplayObject(DatabaseObject data) {
 			ChemkinReactionData reaction = (ChemkinReactionData) data;
-			String description = asOnLine(data);
+			String description = this.asOnLine(data);
 			String title = reaction.getReactionName();
 			BaseDataPresentation present = new BaseDataPresentation(title, description,reaction);
 			present.setPath(reaction.getMechanismKeyword(),"ChemkinReactionData",title);
@@ -204,7 +204,8 @@ public enum DataPresentation {
 		public BaseDataPresentation asDisplayObject(DatabaseObject data) {
 			NASAPolynomialData nasa = (NASAPolynomialData) data;
 			String title = "NASA Polyomial";
-			BaseDataPresentation presentation = new BaseDataPresentation(title, nasa.getMoleculeName(),nasa);
+			String description = this.asOnLine(data);
+			BaseDataPresentation presentation = new BaseDataPresentation(title, description,nasa);
 			FormatNASAPolynomialData formatter = new FormatNASAPolynomialData();
 			formatter.convertNASAPolynomial(nasa);
 			NASAThermoPanel panel = new NASAThermoPanel(nasa);

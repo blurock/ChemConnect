@@ -7,16 +7,7 @@
 		font-weight: bold;
 	}
 	</ui:style>
-	<g:HTMLPanel>
-		<m:MaterialModal ui:field="objectinfomodal" type="FIXED_FOOTER"
-			dismissable="false" inDuration="500" outDuration="800">
-			<m:MaterialModalContent ui:field="infocontent">
-			</m:MaterialModalContent>
-			<m:MaterialModalFooter>
-				<m:MaterialButton ui:field="objectclose" waves="GREEN"
-					type="FLAT" text="Close" />
-			</m:MaterialModalFooter>
-		</m:MaterialModal>
+	<g:HTMLPanel ui:field="objectinfomodal">
 		<m:MaterialRow>
 			<m:MaterialColumn backgroundColor="blue lighten-3">
 				<m:MaterialLink ui:field="link" grid="s1" iconColor="black"/>

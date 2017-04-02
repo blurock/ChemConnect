@@ -1,15 +1,18 @@
 package info.esblurock.reaction.query.client.panel;
 
+import info.esblurock.reaction.client.async.ReactionSearchService;
+import info.esblurock.reaction.client.async.ReactionSearchServiceAsync;
 import info.esblurock.reaction.client.ui.login.UiImplementationBase;
 import info.esblurock.reaction.client.ui.view.ReactionQueryView.Presenter;
 import info.esblurock.reaction.data.UserDTO;
+import info.esblurock.reaction.data.store.UserObjectStorage;
 import gwt.material.design.client.ui.MaterialCollapsible;
-import gwt.material.design.client.ui.MaterialCollapsibleItem;
-import gwt.material.design.client.ui.MaterialLabel;
+import gwt.material.design.client.ui.MaterialPanel;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
@@ -23,14 +26,17 @@ public class QueryAndResultPanel extends UiImplementationBase implements HasText
 	interface QueryAndResultPanelUiBinder extends
 			UiBinder<Widget, QueryAndResultPanel> {
 	}
+	
 	@UiField
 	MaterialCollapsible topoftree;
-	
 	@UiField
-	HTMLPanel toppanel;
+	MaterialPanel toppanel;
+	@UiField
+	VisualizationPanel visualizepanel;
+	@UiField
+	MaterialPanel objectsave;
 	
 	String text;
-	//MaterialCollapsibleItem search0;
 	Presenter listener;
 	
 	public QueryAndResultPanel() {
@@ -42,25 +48,15 @@ public class QueryAndResultPanel extends UiImplementationBase implements HasText
 		init(firstName);
 	}
 	private void init(String text) {
-		/*
-		search0 = new MaterialCollapsibleItem();
-		search0.setText(text);
-		*/
+		UserStorageObjectWindow objwindow = new UserStorageObjectWindow(this);
+		objectsave.add(objwindow);
 	}
 	public MaterialCollapsible getQueryTop() {
 		return topoftree;
 	}
-	public HTMLPanel getTopPanel() {
+	public MaterialPanel getTopPanel() {
 		return toppanel;
 	}
-/*	
-	public MaterialCollapsibleItem getQueryTop(String text) {
-		search0 = new MaterialCollapsibleItem();
-		search0.setText(text);
-		topoftree.add(search0);
-		return search0;
-	}
-*/
 	
 	@Override
 	public void setText(String text) {
@@ -79,5 +75,15 @@ public class QueryAndResultPanel extends UiImplementationBase implements HasText
 	public void setUser(UserDTO user) {
 		super.setUser(user);
 	}
-
+	public void displayItem(UserObjectStorage store, String visualizationPanelS) {
+		ReactionSearchServiceAsync async = ReactionSearchService.Util.getInstance();
+		DisplayUserObjectCallback callback = new DisplayUserObjectCallback(this,visualizationPanelS);
+		async.getObjectFromUserObjectStorage(store, callback);
+	}
+	public void addVisualization(Widget widget, String visualizationPanelS) {
+		
+	}
+	public void addDisplayItem(String title, Widget widget) {
+		visualizepanel.addDisplayObject(title,widget);
+	}
 }

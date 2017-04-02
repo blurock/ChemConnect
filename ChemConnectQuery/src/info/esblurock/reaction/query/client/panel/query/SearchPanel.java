@@ -11,10 +11,8 @@ import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.constants.IconType;
-import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialLink;
-import gwt.material.design.client.ui.MaterialModal;
-import gwt.material.design.client.ui.MaterialModalContent;
+import gwt.material.design.client.ui.MaterialPanel;
 import info.esblurock.reaction.client.async.ReactionSearchService;
 import info.esblurock.reaction.client.async.ReactionSearchServiceAsync;
 import info.esblurock.reaction.client.panel.data.BaseDataPresentation;
@@ -39,11 +37,7 @@ public class SearchPanel extends Composite implements HasText {
 	@UiField
 	MaterialLink pathtext;
 	@UiField
-	MaterialModalContent infocontent;
-	@UiField
-	MaterialModal objectinfomodal;
-	@UiField
-	MaterialButton objectclose;
+	HTMLPanel objectinfomodal;
 	
 	boolean subjectB;
 	boolean predicateB;
@@ -53,15 +47,15 @@ public class SearchPanel extends Composite implements HasText {
 	DatabaseObject objectStructure;
 	
 	QueryPath linkpath;
-	HTMLPanel toppanel;
+	MaterialPanel toppanel;
 	String originalText;
 	
-	public SearchPanel(HTMLPanel toppanel) {
+	public SearchPanel(MaterialPanel toppanel) {
 		initWidget(uiBinder.createAndBindUi(this));
 		this.toppanel = toppanel;
 		init();
 	}
-	public SearchPanel(String firstName,HTMLPanel toppanel) {
+	public SearchPanel(String firstName,MaterialPanel toppanel) {
 		initWidget(uiBinder.createAndBindUi(this));
 		searchText.setText(firstName);
 		this.toppanel = toppanel;
@@ -142,16 +136,12 @@ public class SearchPanel extends Composite implements HasText {
 			String shortname = classname.substring(pos+1);
 			DataPresentation presentation = DataPresentation.valueOf(shortname);
 			BaseDataPresentation display = presentation.asDisplayObject(objectStructure);
-			infocontent.clear();
-			HTMLPanel panel = new HTMLPanel(shortname);
-			panel.add(display);
-			infocontent.add(panel);
-			objectinfomodal.openModal();
+			objectinfomodal.clear();
+			//HTMLPanel panel = new HTMLPanel(shortname);
+			//panel.add(display);
+			objectinfomodal.add(display);
+			display.openModal();
 		}		
-	}
-	@UiHandler("objectclose")
-	void closeObjectInfo(ClickEvent e) {
-		objectinfomodal.closeModal();
 	}
 	public void addResultPanel(Widget scroll) {
 		resultpanel.add(scroll);

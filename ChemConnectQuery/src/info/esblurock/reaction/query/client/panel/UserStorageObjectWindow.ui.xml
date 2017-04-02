@@ -1,0 +1,34 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:ma="urn:import:gwt.material.design.addins.client">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+	<g:HTMLPanel ui:field="windowTab" title="User Object Storage">
+		<m:MaterialRow marginBottom="0" margin="0" padding="20"
+			layoutPosition="RELATIVE" depth="1">
+			<m:MaterialLabel text="User Object Storage"
+				textColor="WHITE" fontSize="1.5em" fontWeight="BOLD" grid="l6 m6 s3" />
+			<m:MaterialColumn grid="l6 m6 s9">
+				<m:MaterialLink ui:field="closewindow" iconType="CLOSE"
+					iconColor="WHITE" float="RIGHT" />
+				<m:MaterialLink ui:field="refresh" iconType="AUTORENEW"
+					iconColor="WHITE" float="RIGHT" />
+				<!-- m:MaterialIcon iconType="SETTINGS" iconColor="WHITE" float="RIGHT" 
+					/> <m:MaterialIcon iconType="MORE_VERT" iconColor="WHITE" float="RIGHT" / -->
+			</m:MaterialColumn>
+		</m:MaterialRow>
+		<m:MaterialRow shadow="1">
+			<m:MaterialColumn grid="s12">
+				<m:MaterialPanel m:id="storage" padding="32" height="300px"
+					textAlign="CENTER" overflow="AUTO">
+					<g:ScrollPanel ui:field="storagetree" />
+				</m:MaterialPanel>
+			</m:MaterialColumn>
+		</m:MaterialRow>
+	</g:HTMLPanel>
+</ui:UiBinder>
+	

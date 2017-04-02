@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
+import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,6 +18,9 @@ import info.esblurock.reaction.client.async.TransactionService;
 import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.PMF;
 import info.esblurock.reaction.data.rdf.KeywordRDF;
+import info.esblurock.reaction.data.store.StoreObject;
+import info.esblurock.reaction.data.store.UserObjectStorage;
+import info.esblurock.reaction.data.store.UserStorageObjectTreeNode;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.data.upload.FileUploadTextBlock;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
@@ -291,5 +295,63 @@ public class TransactionServiceImpl extends ServerBase implements TransactionSer
 		}
 		return answer;
 	}
+	public String storeUserObjectStorage(UserObjectStorage object) {
+		ContextAndSessionUtilities util = getUtilities();
+		String user = util.getUserName();
+		object.setUser(user);
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		pm.makePersistent(object);
+		return object.getKey();
+	}
+	
+	public UserStorageObjectTreeNode getStorageObjectsForCurrentUser() throws IOException {
+		ContextAndSessionUtilities util = getUtilities();
+		String user = util.getUserName();
+		System.out.println("User: " + user);
+		List<DatabaseObject> objects = QueryBase.getDatabaseObjectsFromSingleProperty(
+				UserObjectStorage.class.getName(),
+				"user",user);
+		UserStorageObjectTreeNode topnode = new UserStorageObjectTreeNode("TopNode");
+		System.out.println("" + objects.size());
+		for(DatabaseObject object : objects) {
+			UserObjectStorage store = (UserObjectStorage) object;
+			System.out.println("Store: " + store.getType());
+			setInUserObjectInTree(topnode,store);
+		}
+		return topnode;
+	}
 
+	private void setInUserObjectInTree(UserStorageObjectTreeNode node, UserObjectStorage store) {
+		ArrayList<String> path = buildPathArray(store);
+		System.out.println("Path Size: " + path.size());
+		for(String nodename : path) {
+			UserStorageObjectTreeNode child = node.findChild(nodename);
+			if(child == null) {
+				System.out.println("subnode: " + nodename);
+				child = new UserStorageObjectTreeNode(nodename);
+				node.addChild(child);
+				System.out.println("subnode count: " + node.getChildren().size());
+			}
+			node = child;
+		}
+		UserStorageObjectTreeNode obj = new UserStorageObjectTreeNode(store);
+		node.addChild(obj);
+	}
+
+	private ArrayList<String> buildPathArray(UserObjectStorage store) {
+		ArrayList<String> path = new ArrayList<String>();
+		StringTokenizer tok1 = new StringTokenizer(store.getPrefixPath(),",");
+		while(tok1.hasMoreTokens()) {
+			String name = tok1.nextToken();
+			path.add(name);
+		}
+		path.add(store.getType());
+		StringTokenizer tok2 = new StringTokenizer(store.getPostfixPath(),",");
+		while(tok2.hasMoreTokens()) {
+			String name = tok2.nextToken();
+			path.add(name);
+		}
+		return path;
+	}
+	
 }
