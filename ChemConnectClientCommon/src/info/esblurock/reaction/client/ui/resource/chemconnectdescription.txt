@@ -1,13 +1,13 @@
 <center>
 <p style="font-size:25px">
-<b>ChemConnect2016</b>
+<b>ChemConnect</b>
 <br>a combustion database, derived from mechanistic, kinetic and thermodynamic data, 
 organized into a network of <i>interconnecting</i> concepts. 
 </p>
 </center>
 <br> 
 <p style="font-size:15px">
-<b>ChemConnect2016</b> differs from traditional databases in that the published data, for example from detailed mechanisms,  
+ChemConnect differs from traditional databases in that the published data, for example from detailed mechanisms,  
 is broken down into fine-grained data, meaning individual kinetic, thermodynamic  and structural constants, 
 and this constants are interconnected through relationships.
 <br>
@@ -27,7 +27,7 @@ Searching within the database is keyword based and entails traversing the networ
 Using this representational paradigm, two networks created independently from different data sources become naturally 
 intertwined through their common keywords and concepts. 
 <br>
-ChemConnect2016 is part of the larger Very Open Data Project whose goal 
+ChemConnect is part of the larger Very Open Data Project whose goal 
 is to create flexible and dynamic platform for the management of scientific 
 information (current focus, the combustion community).
 </p>

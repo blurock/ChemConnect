@@ -20,7 +20,7 @@ The focus of this initial phase is to extract fine-grained information from publ
  (combustion) data sets. These relationships form an expansive network of inter-connected keywords and 
  concepts. Searching within the database is keyword based and entails traversing the network of these 
  relationships. Using this representational paradigm, two networks created independently from different
-  data sources become naturally intertwined through their common keywords and concepts. ChemConnect2016 
+  data sources become naturally intertwined through their common keywords and concepts. ChemConnect
   is part of the larger Very Open Data Project whose goal is to create flexible and dynamic platform for 
   the management of scientific information (current focus, the combustion community).
 <br>
