@@ -23,7 +23,7 @@
 		</m:MaterialRow>
 		<m:MaterialRow shadow="1">
 			<m:MaterialColumn grid="s12">
-				<m:MaterialPanel m:id="storage" padding="32" height="300px"
+				<m:MaterialPanel m:id="storage" padding="32" height="600px"
 					textAlign="CENTER" overflow="AUTO">
 					<g:ScrollPanel ui:field="storagetree" />
 				</m:MaterialPanel>
