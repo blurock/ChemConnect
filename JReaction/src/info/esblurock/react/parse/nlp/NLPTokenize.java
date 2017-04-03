@@ -16,8 +16,6 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.google.appengine.repackaged.com.fasterxml.jackson.core.json.ReaderBasedJsonParser;
-
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 import opennlp.tools.util.Span;
@@ -60,8 +58,7 @@ public class NLPTokenize {
 
     protected void process() throws FileNotFoundException, IOException {
     	ClassLoader classLoader = getClass().getClassLoader();
-    	File file = new File(classLoader.getResource(tokenResource).getFile());
-        InputStream modelIn = new FileInputStream(file);
+    	InputStream modelIn = classLoader.getResourceAsStream(tokenResource);
         TokenizerModel model = new TokenizerModel(modelIn);
         TokenizerME tokenizer = new TokenizerME(model);
         System.out.println(text);

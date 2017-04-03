@@ -37,8 +37,7 @@ public class NLPChunker extends SetOfTokens {
 
         try {
         	ClassLoader classLoader = getClass().getClassLoader();
-        	File file = new File(classLoader.getResource(chunkerResource).getFile());
-            modelIn = new FileInputStream(file);
+        	modelIn = classLoader.getResourceAsStream(chunkerResource);
             model = new ChunkerModel(modelIn);
 
             ChunkerME chunker = new ChunkerME(model);

@@ -43,8 +43,9 @@ public class CatagorizeWords extends SetOfTokens{
 
         try {
         	ClassLoader classLoader = getClass().getClassLoader();
-        	File file = new File(classLoader.getResource(categorizeResource).getFile());
-            modelIn = new FileInputStream(file);
+        	modelIn = classLoader.getResourceAsStream(categorizeResource);
+        	//File file = new File(classLoader.getResource(categorizeResource).getFile());
+            //modelIn = new FileInputStream(file);
             POSModel model = new POSModel(modelIn);
             POSTaggerME tagger = new POSTaggerME(model);
             String tags[] = tagger.tag(tokens);

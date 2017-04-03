@@ -23,7 +23,7 @@
 			<m:MaterialSideNav width="250" m:id="mysidebar" 
 			alwaysShowActivator="true"
 			allowBodyScroll="true"
-				type="FIXED" closeOnClick="true">
+				type="FIXED" closeOnClick="false">
 				<ma:sideprofile.MaterialSideProfile
 					resource="{res.blackboardbackground}">
 					<m:MaterialLink text="Navigate" activates="dropProfile"
