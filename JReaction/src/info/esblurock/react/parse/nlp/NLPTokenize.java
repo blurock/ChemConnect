@@ -58,7 +58,10 @@ public class NLPTokenize {
 
     protected void process() throws FileNotFoundException, IOException {
     	ClassLoader classLoader = getClass().getClassLoader();
+    	System.out.println("NLPTokenize: tokenResource: " + tokenResource);
     	InputStream modelIn = classLoader.getResourceAsStream(tokenResource);
+    	System.out.println("NLPTokenize: stream" + modelIn);
+   	
         TokenizerModel model = new TokenizerModel(modelIn);
         TokenizerME tokenizer = new TokenizerME(model);
         System.out.println(text);

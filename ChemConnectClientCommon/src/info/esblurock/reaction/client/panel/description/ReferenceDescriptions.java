@@ -129,6 +129,7 @@ public class ReferenceDescriptions extends Composite implements HasText {
 
 			@Override
 			public void onResponseReceived(com.google.gwt.http.client.Request request, Response response) {
+				MaterialToast.fireToast("DOI response: '" + response.getStatusText() + "'");
 				if (response.getStatusText().matches("OK")) {
 					JSONObject obj = JSONParser.parseStrict(response.getText()).isObject();
 					JSONValue messageV = obj.get("message");
@@ -170,6 +171,9 @@ public class ReferenceDescriptions extends Composite implements HasText {
 					} else {
 						MaterialToast.fireToast("No Message found in JSON object");
 					}
+				} else {
+					MaterialToast.fireToast("DOI lookup unsuccessful: '" + response.getStatusText() + "'");
+					MaterialToast.fireToast("DOI lookup unsuccessful: '" + response.getText() + "'");
 				}
 			}
 

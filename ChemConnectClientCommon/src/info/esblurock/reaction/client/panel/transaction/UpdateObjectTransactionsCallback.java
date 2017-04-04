@@ -10,30 +10,23 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public class UpdateObjectTransactionsCallback implements
 		AsyncCallback<List<TransactionInfo>> {
 
-	private ObjectTransaction gui;
+	ObjectTransactionDisplayTree node;
 
-	public UpdateObjectTransactionsCallback(ObjectTransaction gui) {
-		this.gui = gui;
+	public UpdateObjectTransactionsCallback(ObjectTransactionDisplayTree objectTransactionDisplayTree) {
+		this.node = objectTransactionDisplayTree;
 	}
 
 	@Override
 	public void onFailure(Throwable caught) {
 		Window.alert(caught.toString());
-		/*
-		MaterialToast.fireToast("ERROR");
-		TextMessagePopup popup = new TextMessagePopup("ERROR",
-				caught.toString());
-		popup.openModal(ModalType.FIXED_FOOTER);
-		*/
 	}
 
 	@Override
 	public void onSuccess(List<TransactionInfo> result) {
 		try {
 			for (TransactionInfo info : result) {
-				gui.addTransactionInfo(info);
+				node.addTransactionInfo(info);
 			}
-			gui.refresh();
 		} catch (Exception ex) {
 			Window.alert(ex.toString());
 		}

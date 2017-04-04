@@ -18,6 +18,7 @@ import javax.jdo.annotations.Persistent;
  * so that they all are stored with the {@link TransactionInfo} is made persistent 
  * (in the finish function of the {@link StoreObject} finish function
  */
+@SuppressWarnings("serial")
 @PersistenceCapable
 public class TransactionInfo extends DatabaseObject {
 

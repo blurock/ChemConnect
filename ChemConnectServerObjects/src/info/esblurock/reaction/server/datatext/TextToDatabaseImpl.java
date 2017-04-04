@@ -250,9 +250,9 @@ public class TextToDatabaseImpl extends ServerBase implements TextToDatabase {
 	}
 
 	public HashSet<String> keywordsFromText(String text) {
-		String categorizeResource = "en-pos-maxent.bin";
-		String tokenResource = "en-token.bin";
-		String chunkerResource = "en-chunker.bin";
+		String categorizeResource = "resources/en-pos-maxent.bin";
+		String tokenResource = "resources/en-token.bin";
+		String chunkerResource = "resources/en-chunker.bin";
 		KeywordsFromText keys = new KeywordsFromText(categorizeResource, tokenResource, chunkerResource);
 		keys.calculateKeyWords(text);
 

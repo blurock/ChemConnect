@@ -4,8 +4,7 @@ import gwt.material.design.client.base.MaterialButtonCell;
 import gwt.material.design.client.constants.ModalType;
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialButton;
-import info.esblurock.reaction.client.async.TransactionService;
-import info.esblurock.reaction.client.async.TransactionServiceAsync;
+import gwt.material.design.client.ui.MaterialLink;
 import info.esblurock.reaction.client.resources.InterfaceConstants;
 import info.esblurock.reaction.client.utilities.FindShortNameFromString;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
@@ -40,9 +39,6 @@ public class ObjectTransaction extends Composite implements HasText {
 
 	interface ObjectTransactionUiBinder extends UiBinder<Widget, ObjectTransaction> {
 	}
-
-	TransactionServiceAsync async = TransactionService.Util.getInstance();
-
 	InterfaceConstants interfaceConstants = GWT.create(InterfaceConstants.class);
 	private List<TransactionInfo> orders = new ArrayList<TransactionInfo>();
 
@@ -66,13 +62,20 @@ public class ObjectTransaction extends Composite implements HasText {
 	SimplePanel gridPanel, pagerPanel;
 	@UiField
 	HTMLPanel mainpanel;
+	@UiField
+	MaterialLink title;
 
 	public ObjectTransaction() {
+		
+	}
+	
+	public ObjectTransaction(String title) {
 		initWidget(uiBinder.createAndBindUi(this));
 		sortDataHandler = new ListHandler<TransactionInfo>(orders);
 		setGrid(new ArrayList<TransactionInfo>());
 		getAllTransactionInfo();
 		dataGrid.setStyleName("striped responsive-table");
+		this.title.setText(title);
 	}
 
 	public void setGrid(List<TransactionInfo> orders) {
@@ -123,10 +126,8 @@ public class ObjectTransaction extends Composite implements HasText {
 		};
 		colObjectType.setSortable(true);
 		sortDataHandler.setComparator(colObjectType, new Comparator<TransactionInfo>() {
-
 			@Override
 			public int compare(TransactionInfo o1, TransactionInfo o2) {
-
 				return o1.getTransactionObjectType().compareTo(o2.getTransactionObjectType());
 			}
 		});
@@ -193,7 +194,7 @@ public class ObjectTransaction extends Composite implements HasText {
 		});
 
 		final DataGrid<TransactionInfo> dataGrid = new DataGrid<TransactionInfo>(100, KEY_PROVIDER);
-		dataGrid.setSize("100%", "40vh");
+		dataGrid.setSize("100%", "70vh");
 
 		dataGrid.addColumn(processbutton, interfaceConstants.action());
 		dataGrid.addColumn(colObjectType, interfaceConstants.sourcekey());
@@ -217,10 +218,7 @@ public class ObjectTransaction extends Composite implements HasText {
 	private void getAllTransactionInfo() {
 		TransactionInfoProvider.setList(orders);
 		sortDataHandler.setList(TransactionInfoProvider.getList());
-
-		UpdateObjectTransactionsCallback callback = new UpdateObjectTransactionsCallback(this);
-		async.getAllTransactions(callback);
-
+		
 	}
 
 	public TransactionInfo getTransactionInfo() {
@@ -246,13 +244,11 @@ public class ObjectTransaction extends Composite implements HasText {
 
 	@Override
 	public String getText() {
-		// TODO Auto-generated method stub
-		return null;
+		return title.getText();
 	}
 
 	@Override
 	public void setText(String text) {
-		// TODO Auto-generated method stub
-
+		title.setText(text);
 	}
 }

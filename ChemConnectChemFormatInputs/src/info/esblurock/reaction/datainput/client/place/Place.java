@@ -8,6 +8,7 @@ import info.esblurock.reaction.client.panel.contact.UserContactInput;
 import info.esblurock.reaction.client.panel.inputs.SetOfInputs;
 import info.esblurock.reaction.client.panel.inputs.types.InputSet;
 import info.esblurock.reaction.client.panel.transaction.ObjectTransaction;
+import info.esblurock.reaction.client.panel.transaction.ObjectTransactionDisplayTree;
 import info.esblurock.reaction.client.panel.transaction.UploadFileSetsTransactions;
 import info.esblurock.reaction.client.synonyms.SetOfSynonymsPanel;
 
@@ -196,7 +197,7 @@ public enum Place {
 
 		@Override
 		public Widget getContent() {
-			return new ObjectTransaction();
+			return new ObjectTransactionDisplayTree("Transactions");
 		}
 
 },
