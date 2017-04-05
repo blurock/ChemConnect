@@ -36,5 +36,6 @@
 		</m:MaterialRow>
 		<m:MaterialCollapsible ui:field="collapsable">
 		</m:MaterialCollapsible>
+		<g:HTMLPanel ui:field="validprocesses"/>
 	</g:HTMLPanel>
 </ui:UiBinder> 

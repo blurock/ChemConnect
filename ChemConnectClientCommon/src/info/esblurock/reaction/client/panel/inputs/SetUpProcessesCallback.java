@@ -9,11 +9,11 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public class SetUpProcessesCallback  implements AsyncCallback<List<String>> {
 
 	String keyword;
-	SetOfInputs inputs;
+	ValidProcesses modal;
 	
-	public SetUpProcessesCallback(String keyword, SetOfInputs inputs) {
+	public SetUpProcessesCallback(String keyword, ValidProcesses modal) {
 		this.keyword = keyword;
-		this.inputs = inputs;
+		this.modal = modal;
 	}
 	@Override
 	public void onFailure(Throwable caught) {
@@ -22,6 +22,6 @@ public class SetUpProcessesCallback  implements AsyncCallback<List<String>> {
 
 	@Override
 	public void onSuccess(List<String> result) {
-		inputs.showValidProcesses(keyword, result);
+		modal.showValidProcesses(keyword, result);
 	}
 }

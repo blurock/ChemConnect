@@ -6,8 +6,10 @@ import java.util.List;
 
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.SimplePager;
@@ -31,6 +33,7 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialModal;
 import info.esblurock.reaction.client.async.TransactionService;
 import info.esblurock.reaction.client.async.TransactionServiceAsync;
+import info.esblurock.reaction.client.resources.InputConstants;
 import info.esblurock.reaction.client.resources.InterfaceConstants;
 import info.esblurock.reaction.client.resources.ProcessDescriptions;
 import info.esblurock.reaction.client.utilities.FindShortNameFromString;
@@ -41,19 +44,8 @@ public class ValidProcesses extends Composite implements HasText {
 
 	interface ValidProcessesUiBinder extends UiBinder<Widget, ValidProcesses> {
 	}
+	InputConstants inputConstants = GWT.create(InputConstants.class);
 
-	String keyword;
-	MaterialModal modal;
-	
-	public ValidProcesses(String keyword, MaterialModal modal) {
-		initWidget(uiBinder.createAndBindUi(this));
-		sortDataHandler = new ListHandler<String>(orders);
-		setGrid(new ArrayList<String>());
-		getAllString();
-		dataGrid.setStyleName("striped responsive-table");
-		this.keyword = keyword;
-		this.modal = modal;
-	}
 	
 	InterfaceConstants interfaceConstants = GWT.create(InterfaceConstants.class);
 	ProcessDescriptions processDescriptions = GWT.create(ProcessDescriptions.class);
@@ -72,11 +64,43 @@ public class ValidProcesses extends Composite implements HasText {
 		= new MultiSelectionModel<String>(KEY_PROVIDER);
 
 	private String processName;
+	String keyword;
+	
 
 	@UiField
 	SimplePanel gridPanel;
+	@UiField
 	SimplePanel pagerPanel;
+	@UiField
+	MaterialModal modal;
+	@UiField
+	MaterialButton closedescr;
+	
+	public ValidProcesses(String keyword) {
+		initWidget(uiBinder.createAndBindUi(this));
+		closedescr.setText(inputConstants.ok());
+		sortDataHandler = new ListHandler<String>(orders);
+		setGrid(new ArrayList<String>());
+		getAllString();
+		dataGrid.setStyleName("striped responsive-table");
+		this.keyword = keyword;
+		findValidProcesses();
+	}
 
+	public void findValidProcesses() {
+		//String keyword = GenerateKeywordFromDescription.createKeyword(descrdata);
+		TransactionServiceAsync findprocess = TransactionService.Util.getInstance();
+		SetUpProcessesCallback callback = new SetUpProcessesCallback(keyword,this);
+		findprocess.findValidProcessing(keyword, callback);		
+	}
+
+	public void showValidProcesses(String keyword, List<String> result) {
+		ArrayList<String> lst = new ArrayList<String>();
+		for(String name : result) {
+			lst.add(name);
+		}
+		setGrid(lst);
+	}
 	public void setGrid(List<String> orders) {
 		if(orders != null)
 			this.orders = orders;
@@ -166,11 +190,11 @@ public class ValidProcesses extends Composite implements HasText {
 
 	private void getAllString() {
 		StringProvider.setList(orders);
-		sortDataHandler.setList(StringProvider.getList());
-		
-		//StringCallback callback = new StringCallback(this);
-		//async.getAllUploadTransactions(callback);
-		
+		sortDataHandler.setList(StringProvider.getList());		
+	}
+	@UiHandler("closedescr")
+	void onCloseModal(ClickEvent e) {
+		modal.closeModal();
 	}
 
 	public void openModal(ModalType type) {

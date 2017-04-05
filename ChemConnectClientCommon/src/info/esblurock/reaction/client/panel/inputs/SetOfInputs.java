@@ -34,6 +34,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 public class SetOfInputs extends Composite {
@@ -52,12 +53,6 @@ public class SetOfInputs extends Composite {
 	@UiField
 	MaterialCollapsible collapsable;
 	@UiField
-	MaterialModal modal;
-	@UiField
-	MaterialModalContent modalcontent;
-	@UiField
-	MaterialButton closedescr;
-	@UiField
 	MaterialButton registerok;
 
 	@UiField
@@ -66,7 +61,15 @@ public class SetOfInputs extends Composite {
 	MaterialButton registerclose;
 	@UiField
 	MaterialModal registermodal;
-	
+	@UiField
+	HTMLPanel validprocesses;
+	@UiField
+	MaterialModal modal;
+	@UiField
+	MaterialButton closedescr;
+	@UiField
+	MaterialModalContent modalcontent;
+
 	DescriptionConstants descriptionConstants = GWT
 			.create(DescriptionConstants.class);
 
@@ -81,7 +84,6 @@ public class SetOfInputs extends Composite {
 	private void init() {
 		registerclose.setText(inputConstants.edit());
 		registerok.setText(inputConstants.register());
-		closedescr.setText(inputConstants.ok());
 	}
 	public SetOfInputs(InputSet set) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -120,10 +122,6 @@ public class SetOfInputs extends Composite {
 			input.setVisibility(visible);
 		}		
 	}
-	@UiHandler("closedescr")
-	void onCloseModal(ClickEvent e) {
-		modal.closeModal();
-	}
 	@UiHandler("submitdata")
 	void onSubmitData(ClickEvent e) {		
 		if(description.keywordEntered()) {
@@ -155,20 +153,10 @@ public class SetOfInputs extends Composite {
 	}
 	public void findValidProcesses() {
 		String keyword = GenerateKeywordFromDescription.createKeyword(descrdata);
-		TransactionServiceAsync findprocess = TransactionService.Util.getInstance();
-		SetUpProcessesCallback callback = new SetUpProcessesCallback(keyword,this);
-		findprocess.findValidProcessing(keyword, callback);		
-	}
-	public void showValidProcesses(String keyword, List<String> result) {
-		ArrayList<String> lst = new ArrayList<String>();
-		for(String name : result) {
-			lst.add(name);
-		}
-		ValidProcesses valid = new ValidProcesses(keyword,modal);
-		modalcontent.clear();
-		modalcontent.add(valid);
-		valid.setGrid(lst);
-		modal.openModal();	
+		ValidProcesses valid = new ValidProcesses(keyword);
+		validprocesses.clear();
+		validprocesses.add(valid);
+		valid.openModal();
 	}
 	
 	public void askRegisterModal(String result) {
@@ -195,10 +183,6 @@ public class SetOfInputs extends Composite {
 	@UiHandler("registerclose")
 	void okregisterClose(ClickEvent e) {
 		registermodal.closeModal();
-	}
-	@UiHandler("closedescr")
-	void continueModal(ClickEvent e) {
-		modal.closeModal();		
 	}
 
 }

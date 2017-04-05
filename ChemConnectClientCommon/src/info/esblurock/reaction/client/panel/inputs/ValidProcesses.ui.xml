@@ -11,8 +11,14 @@
 		font-weight: bold;
 	}
 	</ui:style>
-			<g:HTMLPanel>
+			<m:MaterialModal ui:field="modal" type="DEFAULT"
+			dismissable="true" inDuration="500" outDuration="800">
+			<m:MaterialModalContent ui:field="modalcontent">
 				<g:SimplePanel ui:field="gridPanel" />
 				<g:SimplePanel ui:field="pagerPanel" addStyleNames="{style.panelPager} right" />
-			</g:HTMLPanel>
+			</m:MaterialModalContent>
+			<m:MaterialModalFooter>
+				<m:MaterialButton ui:field="closedescr" type="FLAT" />
+			</m:MaterialModalFooter>
+		</m:MaterialModal>
 </ui:UiBinder> 

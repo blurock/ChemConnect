@@ -5,8 +5,10 @@ import gwt.material.design.client.constants.ModalType;
 import gwt.material.design.client.constants.WavesType;
 import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialLink;
+import info.esblurock.reaction.client.panel.inputs.ValidProcesses;
 import info.esblurock.reaction.client.resources.InterfaceConstants;
 import info.esblurock.reaction.client.utilities.FindShortNameFromString;
+import info.esblurock.reaction.data.GenerateKeywordFromDescription;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 
 import java.util.ArrayList;
@@ -15,14 +17,17 @@ import java.util.List;
 
 import com.google.gwt.cell.client.FieldUpdater;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.DataGrid;
 import com.google.gwt.user.cellview.client.SimplePager;
 import com.google.gwt.user.cellview.client.TextColumn;
 import com.google.gwt.user.cellview.client.ColumnSortEvent.ListHandler;
 import com.google.gwt.user.cellview.client.SimplePager.TextLocation;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
@@ -64,6 +69,10 @@ public class ObjectTransaction extends Composite implements HasText {
 	HTMLPanel mainpanel;
 	@UiField
 	MaterialLink title;
+	@UiField
+	HTMLPanel validprocesses;
+	@UiField
+	MaterialLink getprocesses;
 
 	public ObjectTransaction() {
 		
@@ -73,9 +82,9 @@ public class ObjectTransaction extends Composite implements HasText {
 		initWidget(uiBinder.createAndBindUi(this));
 		sortDataHandler = new ListHandler<TransactionInfo>(orders);
 		setGrid(new ArrayList<TransactionInfo>());
-		getAllTransactionInfo();
 		dataGrid.setStyleName("striped responsive-table");
 		this.title.setText(title);
+		getprocesses.setTooltip("Set of open processes");
 	}
 
 	public void setGrid(List<TransactionInfo> orders) {
@@ -214,11 +223,12 @@ public class ObjectTransaction extends Composite implements HasText {
 
 		return dataGrid;
 	}
-
-	private void getAllTransactionInfo() {
-		TransactionInfoProvider.setList(orders);
-		sortDataHandler.setList(TransactionInfoProvider.getList());
-		
+	
+	public void findValidProcesses(String keyword) {
+		ValidProcesses valid = new ValidProcesses(keyword);
+		validprocesses.clear();
+		validprocesses.add(valid);
+		valid.openModal();
 	}
 
 	public TransactionInfo getTransactionInfo() {
@@ -242,6 +252,11 @@ public class ObjectTransaction extends Composite implements HasText {
 		sortDataHandler.setList(TransactionInfoProvider.getList());
 	}
 
+	@UiHandler("getprocesses")
+	public void onValidProcessClick(ClickEvent event) {
+		Window.alert("Processes for: " + getText());
+		findValidProcesses(getText());
+	}
 	@Override
 	public String getText() {
 		return title.getText();
