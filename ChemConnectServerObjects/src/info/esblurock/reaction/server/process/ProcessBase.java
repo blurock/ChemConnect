@@ -6,8 +6,12 @@ import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.jdo.PersistenceManager;
+
 import info.esblurock.reaction.data.DatabaseObject;
+import info.esblurock.reaction.data.PMF;
 import info.esblurock.reaction.data.description.DescriptionDataData;
+import info.esblurock.reaction.data.transaction.ProcessInProgress;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.server.datastore.StorageAndRetrievalUtilities;
 import info.esblurock.reaction.server.queries.TransactionInfoQueries;
@@ -81,6 +85,9 @@ public abstract class ProcessBase {
 	protected String keyword;
 	protected String inputSourceCode;
 	protected String outputSourceCode;
+	
+	private String inProgressKey;
+	private ProcessInProgress inprogress;
 
 	/**
 	 * empty constructor The empty constructor is used for registration and to
@@ -159,6 +166,7 @@ public abstract class ProcessBase {
 	 *             is an error occurs
 	 */
 	public String process() throws IOException {
+		//setInProgressFlag();
 		setUpInputDataObjects();
 		initializeOutputObjects();
 		initializeOutputTranactions();
@@ -171,8 +179,10 @@ public abstract class ProcessBase {
 			addObjectTransactionInfo();
 			System.out.println("process(): storeNewTransactions()");
 			storeNewTransactions();
+			//resetInProgressFlag();
 			System.out.println("process(): DONE");
 		} catch (Exception ex) {
+			resetInProgressFlag();
 			ex.printStackTrace();
 			if(IOException.class.isAssignableFrom(ex.getClass())) {
 				throw ex;
@@ -182,6 +192,19 @@ public abstract class ProcessBase {
  		}
 		String answer = getProcessName() + " [" + user + ": " + keyword + " (" + outputSourceCode + ") ]";
 		return answer;
+	}
+
+	private void setInProgressFlag() {
+		inprogress = new ProcessInProgress(keyword, user, getProcessName());
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		pm.makePersistent(inprogress);
+		inProgressKey = inprogress.getKey();
+		System.out.println("Progress key: " + inProgressKey);
+	}
+	
+	private void resetInProgressFlag() {
+		PersistenceManager pm = PMF.get().getPersistenceManager();
+		pm.deletePersistent(inprogress);
 	}
 
 	/**

@@ -13,6 +13,10 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
+			<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
+				paddingLeft="20">
+				<m:MaterialNavBrand ui:field="toptext" text="RESPECTH Data Entry" />
+			</m:MaterialNavBar>
 		<m:MaterialCollapsible>
 			<m:MaterialCollapsibleItem>
 				<m:MaterialCollapsibleHeader

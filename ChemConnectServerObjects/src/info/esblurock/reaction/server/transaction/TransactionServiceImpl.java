@@ -21,6 +21,7 @@ import info.esblurock.reaction.data.rdf.KeywordRDF;
 import info.esblurock.reaction.data.store.StoreObject;
 import info.esblurock.reaction.data.store.UserObjectStorage;
 import info.esblurock.reaction.data.store.UserStorageObjectTreeNode;
+import info.esblurock.reaction.data.transaction.ProcessInProgress;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.data.upload.FileUploadTextBlock;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
@@ -295,6 +296,8 @@ public class TransactionServiceImpl extends ServerBase implements TransactionSer
 		}
 		return answer;
 	}
+	
+	
 	public String storeUserObjectStorage(UserObjectStorage object) {
 		ContextAndSessionUtilities util = getUtilities();
 		String user = util.getUserName();

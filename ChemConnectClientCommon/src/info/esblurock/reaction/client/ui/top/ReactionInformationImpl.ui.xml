@@ -1,9 +1,7 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
-	xmlns:m="urn:import:gwt.material.design.client.ui"
-	xmlns:user="urn:import:info.esblurock.reaction.client.panel" 
-	xmlns:ma="urn:import:gwt.material.design.addins.client">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:user="urn:import:info.esblurock.reaction.client.panel" xmlns:ma="urn:import:gwt.material.design.addins.client">
 
 	<ui:style>
 	.important {
@@ -11,25 +9,102 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-		<m:MaterialRow>
-			<m:MaterialColumn grid="s4">
-				<m:MaterialCard backgroundColor="white">
-					<m:MaterialVideo url="https://youtu.be/nqu_vb39iyI" />
+		<ma:masonry.MaterialMasonry>
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/IthgIvP7pjM"
+						width="490px" />
 					<m:MaterialCardContent textColor="black">
 						<m:MaterialLabel
-							text="This set of slides gives an outline of cloud computing with 
- 									examples of using the Google Cloud Platform in the implementation 
- 									of ChemConnect. In addition, the ChemConnect database is introduced. 
- 									Presented at the COST Action 1404 SMARTCATS workshop." />
+							text="This is a short demonstration of the menus and uploading of a CHEMKIN mechanism to ChemConnect" />
 					</m:MaterialCardContent>
 				</m:MaterialCard>
 			</m:MaterialColumn>
-		</m:MaterialRow>
-		<m:MaterialRow>
-			<m:MaterialColumn grid="l6 s7 m7">
-				<m:MaterialCard backgroundColor="white" width="615px">
-					<m:MaterialVideo url="http://www.slideshare.net/blurock/slideshelf"
-						width="490px" height="470px" />
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/0Xwl3ODGL2g"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="By putting in a specific reaction, 
+					like ch3+h=ch4 (where the order of the reactants 
+					and products are arbitrary), 
+					the specific reactions within data sets can be found" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/pFMLFv3gM5k"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel text="Using query to look at a species" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/Qs3NLZVlymY"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel text="Using the query menu and simple searches" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/R46JZfJRS-I"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="searching for a reaction and then saving the information to your personalized list. 
+					Visualization of reaction constants in a graph" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/MaDAx0YF01M"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="This is using ChemConnect to look of the set of 
+					CHEMKIN mechanisms that have been uploaded to the database" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo url="https://www.youtube.com/embed/-d5UPKqPzho"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="The video demonstration on the next slide shows 
+							how to search for species data within ChemConnect.
+							In this demonstration, we search the isomer C4H9O
+							We then look at a specific instance of it
+							in the Galway natural gas mechanism (High temperature)
+							Exploring further, we can see what reactions this species was 
+							used in within the mechanism and also its thermodynamic information
+							Exploring further, we look at the corresponding NASA polynomial 
+							information (with graphs)
+							and then store this information in our ‘shopping cart’ of information" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo
+						url="https://www.slideshare.net/slideshow/embed_code/key/3a6WRwkmuSlGY2"
+						width="490px" />
 					<m:MaterialCardContent textColor="black">
 						<m:MaterialLabel
 							text="SlideShare: This set of slides gives an outline of cloud computing with 
@@ -38,7 +113,73 @@
 					</m:MaterialCardContent>
 				</m:MaterialCard>
 			</m:MaterialColumn>
-		</m:MaterialRow>
 
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo
+						url="https://www.slideshare.net/slideshow/embed_code/key/cEOpB1HlCXuKKT"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="SlideShare: This talk discusses the topic of data exchange 
+							within the combustion community. This is a summary of a task force 
+							on data exchange within the WG4 working group, Standard definition 
+							for data collection and mining toward a virtual chemistry of Smart 
+							Energy Carriers, within the SMARTCATS EU COST Action CM1404" />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo
+						url="https://www.slideshare.net/slideshow/embed_code/key/DEoEdYqDRBVETb"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="SlideShare: TThe goal of the Very Open Data Project is to 
+							provide a software-technical foundation for this exchange of data, 
+							more specifically to provide an open database platform for data 
+							from the raw data coming from experimental measurements or 
+							models through intermediate manipulations to finally published 
+							results. The sheer expanse of the amount data involved creates 
+							some unique software-technical challenges. One of these challenges 
+							is addressed in the part of the study presented here, namely to 
+							characterize scientific data (with the initial focus being 
+							detailed chemistry data from the combustion kinetic community), 
+							so that efficient searches can be made. A formalization of 
+							this characterization comes in the form of schemas of descriptions 
+							of tags and keywords describing data and ontologies describing 
+							the relationship between data types and the relationship 
+							between the characterizations themselves. These will be translated 
+							to meta-data tags connected to the data points within a non-relational 
+							data of data for the community. " />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+
+
+			<m:MaterialColumn grid="l6 s12 m6" padding="4">
+				<m:MaterialCard backgroundColor="white" width="500px">
+					<m:MaterialVideo
+						url="https://www.slideshare.net/slideshow/embed_code/key/oiwHCJvP8Cczv"
+						width="490px" />
+					<m:MaterialCardContent textColor="black">
+						<m:MaterialLabel
+							text="SlideShare: This is a poster presented at the European Combustion Meeting, 
+							April 2017. It explains the Reference Description Language (RDF) setup of the 
+							database and the direction and development of the ChemConnect database project 
+							as an efficient means of data retrieval 
+							and data exhange and how the project is moving towards being an 
+							Electronic Laboratory Notebook (ELN)." />
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+			</m:MaterialColumn>
+
+
+
+		</ma:masonry.MaterialMasonry>
 	</g:HTMLPanel>
+
 </ui:UiBinder> 

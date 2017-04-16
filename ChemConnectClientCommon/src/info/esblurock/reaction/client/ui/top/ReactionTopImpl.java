@@ -338,7 +338,13 @@ public class ReactionTopImpl extends UiImplementationBase implements ReactionTop
 		topinfomodal.openModal();
 	}
 	public void openDemoInformationPage() {
-		listener.goTo(new ReactionInformationPlace(user.getName()));
+		String username = "guest";
+		if(user != null) {
+			if(user.getName() != null) {
+				username = user.getName();
+			}
+		}
+		listener.goTo(new ReactionInformationPlace(username));
 	}
 	
 }

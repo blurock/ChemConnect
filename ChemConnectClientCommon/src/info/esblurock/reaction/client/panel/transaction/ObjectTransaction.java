@@ -84,7 +84,7 @@ public class ObjectTransaction extends Composite implements HasText {
 		setGrid(new ArrayList<TransactionInfo>());
 		dataGrid.setStyleName("striped responsive-table");
 		this.title.setText(title);
-		getprocesses.setTooltip("Set of open processes");
+		//getprocesses.setTooltip("Set of open processes");
 	}
 
 	public void setGrid(List<TransactionInfo> orders) {
@@ -254,7 +254,6 @@ public class ObjectTransaction extends Composite implements HasText {
 
 	@UiHandler("getprocesses")
 	public void onValidProcessClick(ClickEvent event) {
-		Window.alert("Processes for: " + getText());
 		findValidProcesses(getText());
 	}
 	@Override
