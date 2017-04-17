@@ -166,7 +166,7 @@ public abstract class ProcessBase {
 	 *             is an error occurs
 	 */
 	public String process() throws IOException {
-		//setInProgressFlag();
+		setInProgressFlag();
 		setUpInputDataObjects();
 		initializeOutputObjects();
 		initializeOutputTranactions();
@@ -179,7 +179,7 @@ public abstract class ProcessBase {
 			addObjectTransactionInfo();
 			System.out.println("process(): storeNewTransactions()");
 			storeNewTransactions();
-			//resetInProgressFlag();
+			resetInProgressFlag();
 			System.out.println("process(): DONE");
 		} catch (Exception ex) {
 			resetInProgressFlag();
@@ -199,12 +199,14 @@ public abstract class ProcessBase {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		pm.makePersistent(inprogress);
 		inProgressKey = inprogress.getKey();
-		System.out.println("Progress key: " + inProgressKey);
+		pm.close();
 	}
 	
 	private void resetInProgressFlag() {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
-		pm.deletePersistent(inprogress);
+		ProcessInProgress inprog = (ProcessInProgress) pm.getObjectById(ProcessInProgress.class,inprogress.getKey());
+		pm.deletePersistent(inprog);
+		pm.close();
 	}
 
 	/**

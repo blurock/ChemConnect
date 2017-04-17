@@ -20,6 +20,8 @@ public class ProcessInProgress  extends DatabaseObject {
     @Persistent
     String processName;
 
+	public ProcessInProgress() {
+	}
 	public ProcessInProgress(String keyword, String user, String processName) {
 		super();
 		this.keyword = keyword;

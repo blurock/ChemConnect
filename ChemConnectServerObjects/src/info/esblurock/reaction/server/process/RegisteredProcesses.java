@@ -53,14 +53,15 @@ public class RegisteredProcesses {
 	 * @throws IOException
 	 */
 	static private ArrayList<String> toBeProcessed(String user, ArrayList<String> completed) throws IOException {
-/*
 		String progressclassname = ProcessInProgress.class.getCanonicalName();
-		List<DatabaseObject> dataset = QueryBase.getUserDatabaseObjectsFromSingleProperty(
+		List<DatabaseObject> inprogressset = QueryBase.getUserDatabaseObjectsFromSingleProperty(
 				progressclassname, user, "user", user);
-		for (DatabaseObject object : dataset) {
-
+		ArrayList<String> dataset = new ArrayList<String>();
+		for (DatabaseObject object : inprogressset) {
+			ProcessInProgress inprogress = (ProcessInProgress) object;
+			String process = inprogress.getProcessName();
+			dataset.add(process);
 		}
-*/
 		ArrayList<String> valid = new ArrayList<String>();
 		DataProcesses[] processes = DataProcesses.values();
 		for (int i = 0; i < processes.length; i++) {
@@ -76,22 +77,23 @@ public class RegisteredProcesses {
 				}
 			}
 		}
-		//valid = removeInProgress(dataset, valid);
+		valid = removeInProgress(dataset, valid);
 		return valid;
 	}
 
-	private static ArrayList<String> removeInProgress(List<DatabaseObject> dataset, ArrayList<String> valid) {
-		if (dataset.size() > 0) {
-			ArrayList<String> inprogressS = new ArrayList<String>();
-			for (DatabaseObject object : dataset) {
-				ProcessInProgress inprogress = (ProcessInProgress) object;
-				String process = inprogress.getProcessName();
-				inprogressS.add(process);
+	public static ArrayList<String> removeInProgress(List<String> inprogressS, ArrayList<String> valid) {
+		if (inprogressS.size() > 0) {
+			ArrayList<String> truevalid = new ArrayList<String>();
+			for(String name : valid) {
+				int i = name.lastIndexOf(".");
+				String shortname = name.substring(i+1);
+				if(inprogressS.indexOf(shortname) < 0) {
+					truevalid.add(name);
+				}
 			}
-			System.out.println("removeInProgress: \n" + inprogressS + "\n" + valid);
-			valid.removeAll(inprogressS);
+			valid = truevalid;
 		}
-		return null;
+		return valid;
 	}
 
 	/**
