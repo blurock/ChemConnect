@@ -26,7 +26,6 @@ import com.google.appengine.api.datastore.QueryResultList;
 
 import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.PMF;
-import info.esblurock.reaction.data.transaction.TransactionInfo;
 
 /**
  * A set of routines performing general queries (the object is to isolate the
