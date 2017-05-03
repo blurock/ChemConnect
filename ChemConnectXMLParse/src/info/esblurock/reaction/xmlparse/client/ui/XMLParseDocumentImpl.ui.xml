@@ -13,10 +13,10 @@
 	}
 	</ui:style>
 	<g:HTMLPanel>
-			<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
-				paddingLeft="20">
-				<m:MaterialNavBrand ui:field="toptext" text="RESPECTH Data Entry" />
-			</m:MaterialNavBar>
+		<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
+			paddingLeft="20">
+			<m:MaterialNavBrand ui:field="toptext" text="RESPECTH Data Entry" />
+		</m:MaterialNavBar>
 		<m:MaterialCollapsible>
 			<m:MaterialCollapsibleItem>
 				<m:MaterialCollapsibleHeader
@@ -96,7 +96,8 @@
 						<m:MaterialCollapsibleItem>
 							<m:MaterialCollapsibleHeader
 								backgroundColor="grey">
-								<m:MaterialLink ui:field="unclassifiedlabel" textColor="black" />
+								<m:MaterialLink ui:field="unclassifiedlabel"
+									textColor="black" />
 							</m:MaterialCollapsibleHeader>
 							<m:MaterialCollapsibleBody>
 								<m:MaterialCollapsible ui:field="unclassified" />

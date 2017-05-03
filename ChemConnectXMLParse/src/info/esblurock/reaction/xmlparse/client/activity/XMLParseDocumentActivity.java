@@ -27,7 +27,6 @@ public class XMLParseDocumentActivity extends AbstractActivity implements XMLPar
 	}
 	   @Override
 	    public String mayStop() {
-			//return "XMLParseDocumentActivity: Please hold on. This activity is stopping.";
 			return null;
 	    }
 

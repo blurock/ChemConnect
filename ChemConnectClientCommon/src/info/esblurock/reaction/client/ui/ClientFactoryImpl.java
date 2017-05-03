@@ -3,6 +3,7 @@ package info.esblurock.reaction.client.ui;
 import info.esblurock.reaction.client.activity.ClientFactory;
 import info.esblurock.reaction.client.ui.top.ReactionInformationImpl;
 import info.esblurock.reaction.client.ui.top.ReactionTopImpl;
+import info.esblurock.reaction.client.ui.view.ExperimentalDataView;
 import info.esblurock.reaction.client.ui.view.ReactionFirstView;
 import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
@@ -56,6 +57,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 	@Override
 	public XMLParseDocumentView getXMLParseDocumentView() {
+		return null;
+	}
+	@Override
+	public ExperimentalDataView getExperimentalDataView() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

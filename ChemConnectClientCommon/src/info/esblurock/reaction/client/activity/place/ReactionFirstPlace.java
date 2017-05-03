@@ -2,7 +2,6 @@ package info.esblurock.reaction.client.activity.place;
 
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
-import com.google.gwt.user.client.Window;
 
 public class ReactionFirstPlace extends Place {
 	private String helloName;

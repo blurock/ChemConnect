@@ -40,6 +40,12 @@ public class StoreObject {
 	 */
 	public static String typeDelimiter = "#";
 
+	/**
+	 * The type delimiter. Used to separate the 'dataset' name from 'further'
+	 * information needed to identify the set.
+	 */
+	public static String setDelimitor = "!";
+	
 	/** RDF predicate: The creation date. */
 	public static String creationDate = "InputDate";
 
@@ -54,6 +60,9 @@ public class StoreObject {
 
 	/** The string type. String information is stored in the object */
 	public static String stringType = "String";
+
+	/** The string type. String information is stored in the object */
+	public static String setType = "Set";
 
 	/** The keyword. */
 	protected String keyword;
@@ -231,6 +240,28 @@ public class StoreObject {
 	 */
 	public void storeStringRDF(String predicate, String description) {
 		String typepredicate = predicate + typeDelimiter + stringType;
+		KeywordRDF objectrdf = new KeywordRDF(keyword, typepredicate, description, user,sourceCode);
+		store(objectrdf);
+	}
+	/**
+	 * Store as RDF
+	 * 
+	 * The String refers to that the object is a set of values
+	 * 
+	 * The 'global' keyword of the class is the subject The predicate and the
+	 * object (description) is supplied.
+	 *
+	 * @param predicate
+	 *            the predicate relation between subject and object
+	 * @param description
+	 *            the object description of the subject
+	 */
+	public void storeSetRDF(String predicate, String dataset, String further) {
+		String description = dataset;
+		if(further != null) {
+			description += setDelimitor + further;
+		}
+		String typepredicate = predicate + typeDelimiter + setType;
 		KeywordRDF objectrdf = new KeywordRDF(keyword, typepredicate, description, user,sourceCode);
 		store(objectrdf);
 	}

@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.LoginService
+path: 3920B93FDE9F1DF609595A36E69D2049.gwt.rpc

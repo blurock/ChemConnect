@@ -9,6 +9,9 @@ public class ListOfRepositoryDataSources extends ArrayList<DataPathName> impleme
 	public static String sourceKey = "sourcekey";	
 	public static String keyword = "keyword";
 	public static String path = "dataSetPath";
+	public static String dataType = "dataType";
+	public static String userS = "User";
+	
 	
 	public String toString() {
 		StringBuilder build = new StringBuilder();

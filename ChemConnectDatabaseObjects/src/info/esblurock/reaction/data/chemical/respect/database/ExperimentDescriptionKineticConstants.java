@@ -36,4 +36,12 @@ public class ExperimentDescriptionKineticConstants extends ExperimentDescription
 		return information;
 	}
 
+	public String getBulkgas() {
+		return bulkgas;
+	}
+
+	public String getOrder() {
+		return order;
+	}
+
 }

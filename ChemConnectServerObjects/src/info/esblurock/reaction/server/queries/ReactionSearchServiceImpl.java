@@ -149,13 +149,17 @@ public class ReactionSearchServiceImpl  extends ServerBase implements ReactionSe
 		propertynames.add(ListOfRepositoryDataSources.sourceKey);
 		propertynames.add(ListOfRepositoryDataSources.keyword);
 		propertynames.add(ListOfRepositoryDataSources.path);
+		propertynames.add(ListOfRepositoryDataSources.dataType);
 		ArrayList<ArrayList<Object>> results = QueryBase.getDatabaseEntitiesFromFilter(clsname, filter, propertynames);
 		for(ArrayList<Object> objects : results) {
-			String sourcekey = (String) objects.get(0);
-			String keyword = (String) objects.get(1);
-			ArrayList<String> path = (ArrayList<String>) objects.get(2);
-			DataPathName dataname = new DataPathName(sourcekey,keyword,path);
-			lst.add(dataname);
+			String datatype = (String) objects.get(3);
+			if(datatype.compareTo(ListOfRepositoryDataSources.userS) != 0) {
+				String sourcekey = (String) objects.get(0);
+				String keyword = (String) objects.get(1);
+				ArrayList<String> path = (ArrayList<String>) objects.get(2);
+				DataPathName dataname = new DataPathName(sourcekey,keyword,path);
+				lst.add(dataname);
+			}
 		}
 		return lst;
 	}

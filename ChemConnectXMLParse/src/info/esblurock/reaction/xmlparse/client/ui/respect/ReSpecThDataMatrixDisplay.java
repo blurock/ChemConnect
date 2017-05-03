@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
@@ -53,12 +54,14 @@ public class ReSpecThDataMatrixDisplay extends Composite implements HasText {
 	public void draw() {
 		Table table = new Table();
 		DataTable dataTable = DataTable.create();
+		Window.alert("ReSpecThDataMatrixDisplay: " + respect.getDataGroupProperties().size());
 		for(ReSpecThProperty point : respect.getDataGroupProperties()) {
 			dataTable.addColumn(ColumnType.STRING, point.getLabel());
 		}
 		ArrayList<ReSpecThDataPoint> points = respect.getDataPoints();
 		dataTable.addRows(points.size());
 		int row = 0;
+		Window.alert("ReSpecThDataMatrixDisplay: " + points.size());
 		for(ReSpecThDataPoint point : points) {
 			int column = 0;
 			for(String value: point.getValues() ) {
@@ -72,6 +75,7 @@ public class ReSpecThDataMatrixDisplay extends Composite implements HasText {
 		options.setShowRowNumber(true);
 		table.draw(dataTable, options);
 		datapanel.add(table);
+		Window.alert("ReSpecThDataMatrixDisplay: end");
 	}
 	public void setText(String text) {
 		datapointtablelabel.setText(text);

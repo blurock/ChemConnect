@@ -594,7 +594,33 @@ public enum DataProcesses {
 			return false;
 		}
 		
-	};
+	}
+	/*, ReSpecThDataSetProcessRDF {
+
+		@Override
+		public ProcessBase getProcess(ProcessInputSpecificationsBase specs) {
+			ReSpecThDataSetProcessRDF process = new ReSpecThDataSetProcessRDF(specs);
+			return process;
+		}
+
+		@Override
+		public ProcessBase getEmptyProcess() {
+			return new ReSpecThDataSetProcessRDF();
+		}
+
+		@Override
+		public String getTaskType() {
+			return TaskTypes.dataInput;
+		}
+
+		@Override
+		public boolean asBackgroundJob() {
+			return false;
+		}
+		
+	}
+	*/
+	;
 	public abstract ProcessBase getProcess(ProcessInputSpecificationsBase specs);
 	public abstract ProcessBase getEmptyProcess();
 	public abstract String getTaskType();

@@ -16,14 +16,14 @@
 		<m:MaterialTab indicatorColor="WHITE" width="50%">
 			<m:MaterialTabItem waves="LIGHT">
 				<m:MaterialLink text="Search" href="#search"
-					textColor="WHITE" />
+					textColor="BLACK" />
 			</m:MaterialTabItem>
 			<m:MaterialTabItem waves="LIGHT">
-				<m:MaterialLink text="Saved" href="#saved" textColor="WHITE" />
+				<m:MaterialLink text="Saved" href="#saved" textColor="BLACK" />
 			</m:MaterialTabItem>
 			<m:MaterialTabItem waves="LIGHT">
 				<m:MaterialLink text="Visualize" href="#display"
-					textColor="WHITE" />
+					textColor="BLACK" />
 			</m:MaterialTabItem>
 		</m:MaterialTab>
 		<m:MaterialPanel ui:field="toppanel" m:id="search"

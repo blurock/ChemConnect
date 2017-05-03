@@ -1,6 +1,7 @@
 package info.esblurock.reaction.client.activity;
 
 
+import info.esblurock.reaction.client.ui.view.ExperimentalDataView;
 import info.esblurock.reaction.client.ui.view.ReactionFirstView;
 import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
@@ -20,4 +21,5 @@ public interface ClientFactory {
 	ReactionLoginValidationView getReactionLoginValidationView();
 	ReactionInformationView getReactionInformationView();
 	XMLParseDocumentView getXMLParseDocumentView();
+	ExperimentalDataView getExperimentalDataView();
 }
