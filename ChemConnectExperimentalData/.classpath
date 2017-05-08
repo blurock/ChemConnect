@@ -8,12 +8,12 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientCommon"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwt-charts-0.9.10.jar"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwt-material-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwt-material-addins-1.6.2.jar"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwt-material-themes-1.6.0.jar"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwt-servlet.jar"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwtupload-1.0.3.jar"/>
-	<classpathentry kind="lib" path="/Users/edwardblurock/workspace/ChemConnectExperimentalData/war/WEB-INF/lib/gwtupload-gae-1.0.3.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-charts-0.9.10.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-1.6.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-addins-1.6.2.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-material-themes-1.6.0.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-servlet.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtupload-1.0.3.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtupload-gae-1.0.3.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

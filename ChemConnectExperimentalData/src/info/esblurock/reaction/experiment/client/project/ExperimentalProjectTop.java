@@ -47,8 +47,6 @@ public class ExperimentalProjectTop extends Composite implements HasText {
 	@UiField
 	MaterialLink experimentTop;
 	@UiField
-	MaterialIcon experimentInfo;
-	@UiField
 	MaterialCollapsible addedItems;
 	
 	ExperimentalDataImpl experimentalData;
