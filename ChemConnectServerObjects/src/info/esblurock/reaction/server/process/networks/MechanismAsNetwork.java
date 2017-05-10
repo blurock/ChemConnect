@@ -10,8 +10,11 @@ import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.chemical.molecule.MechanismMoleculeData;
 import info.esblurock.reaction.data.chemical.reaction.ChemkinReactionData;
 import info.esblurock.reaction.data.network.BaseGraphWithNodesAndLinks;
+import info.esblurock.reaction.data.network.GraphLinkBaseData;
+import info.esblurock.reaction.data.network.GraphNodeBaseData;
 import info.esblurock.reaction.data.store.StoreObject;
 import info.esblurock.reaction.data.transaction.chemkin.MechanismReactionsToDatabaseTransaction;
+import info.esblurock.reaction.data.transaction.network.JSONNetworkObject;
 import info.esblurock.reaction.data.transaction.network.MechanismToNetworkTransaction;
 import info.esblurock.reaction.server.process.ProcessBase;
 import info.esblurock.reaction.server.process.ProcessInputSpecificationsBase;
@@ -23,6 +26,7 @@ public class MechanismAsNetwork  extends ProcessBase {
 	public static String reactantS = "isReactant";
 	public static String productS = "isProduct";
 	public static String linkDelimitorS = "#";
+	public static String networkAsJSONS = "NetworkAsJSONString";
 	
 	String molDatabaseS;
 	String rxnDatabaseS;
@@ -77,7 +81,6 @@ public class MechanismAsNetwork  extends ProcessBase {
 	@Override
 	protected void createObjects() throws IOException {
 		store = new StoreObject(user,keyword, outputSourceCode);
-		
 		List<DatabaseObject> moleculelist = ChemicalMechanismDataQuery.moleculesFromMechanismName(keyword);
 		List<DatabaseObject> reactionlist = ChemicalMechanismDataQuery.reactionsFromMechanismName(keyword);
 		List<DatabaseObject> photolist = ChemicalMechanismDataQuery.photoReactionsFromMechanismName(keyword);
@@ -91,7 +94,8 @@ public class MechanismAsNetwork  extends ProcessBase {
 			MechanismMoleculeData molecule = (MechanismMoleculeData) object;
 			String fullname = GenerateMoleculeKeywords.getDataKeyword(molecule);
 			String name = molecule.getMoleculeName();
-			basegraph.addBaseNode(name);
+			GraphNodeBaseData graphnode = basegraph.addBaseNode(name);
+			store.storeObjectRDF(graphnode);
 		}		
 		
 		for(DatabaseObject object : reactionlist) {
@@ -102,14 +106,18 @@ public class MechanismAsNetwork  extends ProcessBase {
 			for(String reactant : data.getReactantKeys()) {
 				String molS = generateReactions.parseOutSimpleMoleculeName(reactant);
 				String name = molS + linkDelimitorS + rxnS;
-				basegraph.addSimpleLink(name,molS,rxnS,reactantS);
+				GraphLinkBaseData graphlink = basegraph.addSimpleLink(name,molS,rxnS,reactantS);
+				store.storeObjectRDF(graphlink);
 			}
 			for(String product : data.getProductKeys()) {
 				String molS = generateReactions.parseOutSimpleMoleculeName(product);
 				String name = rxnS + linkDelimitorS + molS;
-				basegraph.addSimpleLink(name,rxnS,molS,productS);
+				GraphLinkBaseData graphlink = basegraph.addSimpleLink(name,rxnS,molS,productS);
+				store.storeObjectRDF(graphlink);
 			}
-		}	
+		}
+		JSONNetworkObject networkobject = new JSONNetworkObject(basegraph);
+		store.storeStringRDF(networkAsJSONS, networkobject.toString());
 	}
 
 }
