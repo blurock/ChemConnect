@@ -65,8 +65,19 @@ public class GenerateReactionKeywords {
 		}
 		return ans;
 	}
+	public String parseOutSimpleReactionName(String name) {
+		String delim = GenerateKeywords.delimitor;
+		String simplename = name;
+		int pos = 0;
+		while (pos >= 0) {
+			String sub = simplename.substring(pos + 1);
+			simplename = sub;
+			pos = simplename.indexOf(delim);
+		}
+		return simplename;
+	}
 
-	private String parseOutSimpleMoleculeName(String name) {
+	public String parseOutSimpleMoleculeName(String name) {
 		String delim = GenerateKeywords.delimitor;
 		String simplename = name;
 		int pos = 0;
