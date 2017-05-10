@@ -28,6 +28,7 @@ import info.esblurock.reaction.server.process.upload.ValidateReactMolCorresponde
 import info.esblurock.reaction.server.process.react.ReactSDFMoleculesToDatabase;
 import info.esblurock.reaction.server.process.respect.ReSpecThDataSetToDatabase;
 import info.esblurock.reaction.server.process.react.ReactSDFMoleculesProcessRDF;
+import info.esblurock.reaction.server.process.networks.MechanismAsNetwork;
 
 public enum DataProcesses {
 	
@@ -582,6 +583,28 @@ public enum DataProcesses {
 		@Override
 		public ProcessBase getEmptyProcess() {
 			return new ReSpecThDataSetToDatabase();
+		}
+
+		@Override
+		public String getTaskType() {
+			return TaskTypes.dataInput;
+		}
+
+		@Override
+		public boolean asBackgroundJob() {
+			return false;
+		}
+		
+	}, MechanismAsNetwork {
+
+		@Override
+		public ProcessBase getProcess(ProcessInputSpecificationsBase specs) {
+			return new MechanismAsNetwork(specs);
+		}
+
+		@Override
+		public ProcessBase getEmptyProcess() {
+			return new MechanismAsNetwork();
 		}
 
 		@Override
