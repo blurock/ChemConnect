@@ -8,6 +8,11 @@
 <module rename-to='chemconnectnetworks'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
+	<inherits name='info.esblurock.reaction.ChemConnectClientServerCommon' />
+	<inherits name='info.esblurock.reaction.ChemConnectDatabaseObjects' />
+	<inherits name="gwt.material.design.GwtMaterialBasicWithJQuery" />
+	<inherits name="gwt.material.design.themes.GwtMaterialThemeGrey" />
+	<inherits name="gwt.material.design.addins.GwtMaterialAddins" />
 
   <!-- Inherit the default GWT style sheet.  You can change       -->
   <!-- the theme of your GWT application by uncommenting          -->

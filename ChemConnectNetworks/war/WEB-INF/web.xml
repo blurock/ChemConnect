@@ -6,23 +6,13 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>info.esblurock.reaction.networks.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-    <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/chemconnectnetworks/greet</url-pattern>
-  </servlet-mapping>
-
  	<servlet>
 		<servlet-name>loginservice</servlet-name>
 		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>loginservice</servlet-name>
-		<url-pattern>/chemconnectexperimentaldata/loginservice</url-pattern>
+		<url-pattern>/chemconnectnetworks/loginservice</url-pattern>
 		<url-pattern>/loginservice</url-pattern>
 	</servlet-mapping>
   
