@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.appengine.api.datastore.Text;
+
 import info.esblurock.reaction.client.utilities.GenerateKeywords;
 import info.esblurock.reaction.client.utilities.GenerateMoleculeKeywords;
 import info.esblurock.reaction.data.DatabaseObject;
@@ -12,6 +14,7 @@ import info.esblurock.reaction.data.chemical.reaction.ChemkinReactionData;
 import info.esblurock.reaction.data.network.BaseGraphWithNodesAndLinks;
 import info.esblurock.reaction.data.network.GraphLinkBaseData;
 import info.esblurock.reaction.data.network.GraphNodeBaseData;
+import info.esblurock.reaction.data.network.MechanismAsJSONGraph;
 import info.esblurock.reaction.data.store.StoreObject;
 import info.esblurock.reaction.data.transaction.chemkin.MechanismReactionsToDatabaseTransaction;
 import info.esblurock.reaction.data.transaction.network.JSONNetworkObject;
@@ -95,7 +98,7 @@ public class MechanismAsNetwork  extends ProcessBase {
 			String fullname = GenerateMoleculeKeywords.getDataKeyword(molecule);
 			String name = molecule.getMoleculeName();
 			GraphNodeBaseData graphnode = basegraph.addBaseNode(name);
-			store.storeObjectRDF(graphnode);
+			store.store(graphnode);
 		}		
 		
 		for(DatabaseObject object : reactionlist) {
@@ -107,17 +110,20 @@ public class MechanismAsNetwork  extends ProcessBase {
 				String molS = generateReactions.parseOutSimpleMoleculeName(reactant);
 				String name = molS + linkDelimitorS + rxnS;
 				GraphLinkBaseData graphlink = basegraph.addSimpleLink(name,molS,rxnS,reactantS);
-				store.storeObjectRDF(graphlink);
+				store.store(graphlink);
 			}
 			for(String product : data.getProductKeys()) {
 				String molS = generateReactions.parseOutSimpleMoleculeName(product);
 				String name = rxnS + linkDelimitorS + molS;
 				GraphLinkBaseData graphlink = basegraph.addSimpleLink(name,rxnS,molS,productS);
-				store.storeObjectRDF(graphlink);
+				store.store(graphlink);
 			}
 		}
 		JSONNetworkObject networkobject = new JSONNetworkObject(basegraph);
-		store.storeStringRDF(networkAsJSONS, networkobject.toString());
+		Text jsongraphT = new Text(networkobject.toString());
+		MechanismAsJSONGraph jsongraph = new MechanismAsJSONGraph(keyword, outputSourceCode,jsongraphT);
+		store.store(jsongraph);
+		store.finish();
 	}
 
 }

@@ -68,7 +68,7 @@ public class ReSpecThDataSetProcessRDF  extends ProcessBase {
 		String datakey = GenerateKeywords.keywordFromDataKeyword(keyword);
 		String sourcekey = GenerateKeywords.sourceFromDataKeyword(keyword);
 
-		rdfExperimentDescriptionKineticConstants(keyword,store);
+		//rdfExperimentDescriptionKineticConstants(keyword,store);
 		
 		store.finish();		
 	}

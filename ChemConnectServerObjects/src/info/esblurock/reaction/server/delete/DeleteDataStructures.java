@@ -15,6 +15,8 @@ import info.esblurock.reaction.data.chemical.thermo.NASAPolynomialData;
 import info.esblurock.reaction.data.chemical.thermo.ThergasMoleculeData;
 import info.esblurock.reaction.data.chemical.transport.SpeciesTransportProperty;
 import info.esblurock.reaction.data.description.DescriptionDataData;
+import info.esblurock.reaction.data.network.GraphLinkBaseData;
+import info.esblurock.reaction.data.network.GraphNodeBaseData;
 import info.esblurock.reaction.data.description.DataSetReferencesTransaction;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.rdf.KeywordRDF;
@@ -50,6 +52,7 @@ import info.esblurock.reaction.data.transaction.thergas.ThergasMoleculesToDataba
 import info.esblurock.reaction.data.transaction.thergas.ThergasMoleculesRDFTransaction;
 import info.esblurock.reaction.data.transaction.reaction.ReactSDFMoleculesToDatabaseTransaction;
 import info.esblurock.reaction.data.transaction.reaction.ReactMolCorrespondencesToDatabaseTransaction;
+import info.esblurock.reaction.data.transaction.network.MechanismToNetworkTransaction;
 
 public enum DeleteDataStructures {
 
@@ -446,6 +449,21 @@ import info.esblurock.reaction.data.upload.types.ValidatedReactMolCorrespondence
 			return key;
 		}
 
+	}, MechanismToNetworkTransaction {
+
+		@Override
+		public String deleteStructure(String key) throws IOException {
+			MechanismToNetworkTransaction transaction = (MechanismToNetworkTransaction) QueryBase
+					.getObjectById(MechanismToNetworkTransaction.class, key);
+			String fileCode = transaction.getFileCode();
+			QueryBase.deleteWithStringKey(MechanismToNetworkTransaction.class, key);
+			QueryBase.deleteFromIdentificationCode(GraphNodeBaseData.class, "fileCode",
+					fileCode);
+			QueryBase.deleteFromIdentificationCode(GraphLinkBaseData.class, "fileCode",
+					fileCode);
+			return "delete MechanismToNetworkTransaction with fileCode: " + fileCode;
+		}
+		
 	};
 
 	public abstract String deleteStructure(String key) throws IOException;

@@ -61,7 +61,7 @@ public class BaseGraphWithNodesAndLinks implements Serializable {
 		return addSimpleLink(linkname, node1, node2, simpleLinkType);
 	}
 	public GraphLinkBaseData addSimpleLink(String linkname, String node1, String node2, String linktype) {
-		GraphLinkBaseData link = new GraphLinkBaseData(linkname, node1, node2, linktype, dataSet, fileCode);
+		GraphLinkBaseData link = new GraphLinkBaseData(linkname, dataSet, fileCode, node1, node2, linktype);
 		addLink(link);
 		return link;
 	}
