@@ -1,4 +1,7 @@
 /test-classes/
-/gwt-unitCache/*
+/gwt-unitCache/**
 **/*.gwt.rpc
 **/gwt-unitCache*
+/war/WEB-INF/deploy/**
+**/*cache.js
+/war/chemconnectnetworks/**
