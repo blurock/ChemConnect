@@ -9,7 +9,7 @@
 	</ui:style>
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader>
-			<m:MaterialLink ui:field="title" text="First" />
+			<m:MaterialLink ui:field="title" text="First" textColor="black"/>
 			<m:MaterialLink ui:field="deletesub" iconType="CLOSE"
 				iconPosition="RIGHT" iconColor="grey lighten-1" />
 			<m:MaterialLink ui:field="savenode" iconType="INFO"

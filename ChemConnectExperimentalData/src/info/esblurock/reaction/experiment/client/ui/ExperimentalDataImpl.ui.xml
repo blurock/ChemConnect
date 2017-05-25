@@ -7,9 +7,13 @@
 	.important {
 		font-weight: bold;
 	}
+	header, main, footer {
+		padding-left: 10px;
+	}
 	</ui:style>
 	<g:HTMLPanel>
-			<g:HTMLPanel ui:field="modalpanel" />
+			<header>
+	
 		<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
 			paddingLeft="20">
 			<m:MaterialNavBrand ui:field="toptext"
@@ -21,14 +25,18 @@
 			<m:MaterialLink ui:field="searchProject" iconType="SEARCH"
 				iconColor="white" float="RIGHT" />
 		</m:MaterialNavBar>
-		<m:MaterialSideNav width="200" m:id="mysidebar"
+		<m:MaterialSideNav width="500" m:id="mysidebar"
 			alwaysShowActivator="true" allowBodyScroll="true" type="PUSH"
 			closeOnClick="false">
-			<g:HTMLPanel width="200">
-
+			<g:HTMLPanel width="500">
+			<m:MaterialCollapsible ui:field="experimentItemList">
+			
+			</m:MaterialCollapsible>
 
 			</g:HTMLPanel>
 		</m:MaterialSideNav>
+		</header>
+		<g:HTMLPanel ui:field="modalpanel" />		
 		<m:MaterialCollapsible ui:field="projectList">
 		</m:MaterialCollapsible>
 	</g:HTMLPanel>

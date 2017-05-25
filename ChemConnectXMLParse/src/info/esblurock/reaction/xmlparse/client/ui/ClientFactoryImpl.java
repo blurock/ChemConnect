@@ -3,6 +3,7 @@ package info.esblurock.reaction.xmlparse.client.ui;
 import info.esblurock.reaction.client.activity.ClientFactory;
 import info.esblurock.reaction.client.ui.top.ReactionInformationImpl;
 import info.esblurock.reaction.client.ui.view.ExperimentalDataView;
+import info.esblurock.reaction.client.ui.view.NetworkVisualizationView;
 import info.esblurock.reaction.client.ui.view.ReactionFirstView;
 import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
@@ -13,6 +14,7 @@ import info.esblurock.reaction.client.ui.view.XMLParseDocumentView;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
+
 
 public class ClientFactoryImpl implements ClientFactory {
 	private final EventBus eventBus = new SimpleEventBus();
@@ -59,6 +61,11 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 	@Override
 	public ExperimentalDataView getExperimentalDataView() {
+		return null;
+	}
+	@Override
+	public NetworkVisualizationView getNetworkVisualizationView() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

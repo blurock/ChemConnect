@@ -10,14 +10,14 @@
 	<m:MaterialColumn grid="s12">
 		<m:MaterialCard>
 			<m:MaterialCardTitle ui:field="cardtitle" text=""
-				iconType="MORE_VERT" iconPosition="RIGHT" textColor="BLACK"
+				iconType="MORE_VERT" iconPosition="RIGHT" textColor="black"
 				addStyleNames="{style.block}" />
 			<m:MaterialCardContent ui:field="cardContent"
 				addStyleNames="no-padding" />
 
 			<m:MaterialCardReveal>
 				<m:MaterialCardTitle ui:field="calculatetitle" text="" iconType="CLOSE"
-					iconPosition="RIGHT" textColor="BLACK" />
+					iconPosition="RIGHT" textColor="black" />
 				<m:MaterialCardContent ui:field="revealContent"
 					addStyleNames="no-padding">
 					<m:MaterialRow>

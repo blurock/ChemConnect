@@ -5,6 +5,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -15,7 +16,10 @@ import gwt.material.design.client.ui.MaterialNavBrand;
 import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.client.client.info.InformationPageModal;
 import info.esblurock.reaction.client.ui.view.ExperimentalDataView;
+import info.esblurock.reaction.experiment.client.project.AskForItemName;
 import info.esblurock.reaction.experiment.client.project.ExperimentalProjectTop;
+import info.esblurock.reaction.experiment.client.project.items.ChooseExperimentalCollapsibleItem;
+import info.esblurock.reaction.experiment.client.project.items.ExperimentalApparatusTemplatesCollapsibleItem;
 import info.esblurock.reaction.experiment.client.ui.resources.ChemConnectExperimentFiles;
 import info.esblurock.reaction.experiment.client.ui.resources.ChemConnectExperimentKeys;
 
@@ -41,21 +45,32 @@ public class ExperimentalDataImpl extends Composite implements ExperimentalDataV
 	MaterialLink searchProject;
 	@UiField
 	MaterialCollapsible projectList;
-	
-	
+	@UiField
+	MaterialCollapsible experimentItemList;
 	
 	Presenter listener;
-
+	ExperimentalApparatusTemplatesCollapsibleItem apparatus;
+	
 	public ExperimentalDataImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		toptext.setText("Project");
+		init();
 	}
 
 	public ExperimentalDataImpl(String name) {
 		initWidget(uiBinder.createAndBindUi(this));
-		toptext.setText(name);
+		init();
 	}
 
+	void init() {
+		toptext.setText(resource.experimentaldataproject());
+		apparatus = new ExperimentalApparatusTemplatesCollapsibleItem(this);
+		experimentItemList.add(apparatus);
+	}
+	public ExperimentalApparatusTemplatesCollapsibleItem getApparatusTemplates() {
+		return apparatus;
+	}
+	
 	@UiHandler("info")
 	public void infoModal(ClickEvent event) {
 		String title = resource.projecttoptitle();
@@ -78,6 +93,9 @@ public class ExperimentalDataImpl extends Composite implements ExperimentalDataV
 		modalpanel.clear();
 		modalpanel.add(infomodal);
 		infomodal.showModal();		
+	}
+	public HTMLPanel getModalPanel() {
+		return modalpanel;
 	}
 	public void setText(String text) {
 		toptext.setText(text);

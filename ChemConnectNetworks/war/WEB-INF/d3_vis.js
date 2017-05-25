@@ -10,10 +10,10 @@ function d3_barchart(div, data) {
        .text(function(d) { return d; });
      
 }
+
 function d3_forcechart(div,links) {
 		
 	var nodes = {};
-
 	// Compute the distinct nodes from the links.
 	links.forEach(function(link) {
 	  link.source = nodes[link.source] || (nodes[link.source] = {name: link.source});
@@ -31,7 +31,6 @@ function d3_forcechart(div,links) {
 		    .charge(-300)
 		    .on("tick", tick)
 		    .start();
-
 		var svg = d3.select("div").append("svg")
 		    .attr("width", width)
 		    .attr("height", height);

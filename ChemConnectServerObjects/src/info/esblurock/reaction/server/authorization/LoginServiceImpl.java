@@ -189,7 +189,7 @@ public class LoginServiceImpl extends ServerBase implements LoginService {
 				
 				//String host = "http://127.0.0.1:8080/";
 				String host = "http://blurock-reaction.appspot.com/";
-				String webappS = "WebApp.html";
+				String webappS = "ChemConnectCloud.html";
 				String page = "ReactionLoginValidationPlace:validate";
 				String charset = StandardCharsets.UTF_8.name();
 

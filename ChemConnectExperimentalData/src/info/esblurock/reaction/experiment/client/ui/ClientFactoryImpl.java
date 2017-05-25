@@ -3,6 +3,7 @@ package info.esblurock.reaction.experiment.client.ui;
 import info.esblurock.reaction.client.activity.ClientFactory;
 import info.esblurock.reaction.client.ui.top.ReactionInformationImpl;
 import info.esblurock.reaction.client.ui.view.ExperimentalDataView;
+import info.esblurock.reaction.client.ui.view.NetworkVisualizationView;
 import info.esblurock.reaction.client.ui.view.ReactionFirstView;
 import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
@@ -56,6 +57,10 @@ public class ClientFactoryImpl implements ClientFactory {
 	@Override
 	public ExperimentalDataView getExperimentalDataView() {
 		return experimentalDataView;
+	}
+	@Override
+	public NetworkVisualizationView getNetworkVisualizationView() {
+		return null;
 	}
 
 }

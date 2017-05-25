@@ -2,7 +2,7 @@ package info.esblurock.reaction.experiment.client.ui.resources;
 
 /**
  * Interface to represent the constants contained in resource bundle:
- * 	'/Users/edwardblurock/workspace/ChemConnectExperimentalData/src/info/esblurock/reaction/experiment/client/ui/resources/ChemConnectExperimentKeys.properties'.
+ * 	'/Users/edwardblurock/.git/ChemConnect/ChemConnectExperimentalData/src/info/esblurock/reaction/experiment/client/ui/resources/ChemConnectExperimentKeys.properties'.
  */
 public interface ChemConnectExperimentKeys extends com.google.gwt.i18n.client.Constants {
   
@@ -14,6 +14,15 @@ public interface ChemConnectExperimentKeys extends com.google.gwt.i18n.client.Co
   @DefaultStringValue("ChemConnectExperimentKeys")
   @Key("ClassName")
   String ClassName();
+
+  /**
+   * Translated "Experimental Data Project".
+   * 
+   * @return translated "Experimental Data Project"
+   */
+  @DefaultStringValue("Experimental Data Project")
+  @Key("experimentaldataproject")
+  String experimentaldataproject();
 
   /**
    * Translated "Experimental Results".
@@ -52,11 +61,11 @@ public interface ChemConnectExperimentKeys extends com.google.gwt.i18n.client.Co
   String projecttop();
 
   /**
-   * Translated "Information about Projects".
+   * Translated "Information about Project".
    * 
-   * @return translated "Information about Projects"
+   * @return translated "Information about Project"
    */
-  @DefaultStringValue("Information about Projects")
+  @DefaultStringValue("Information about Project")
   @Key("projecttopdescription")
   String projecttopdescription();
 

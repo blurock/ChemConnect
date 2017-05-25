@@ -1,0 +1,37 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
+	xmlns:user="urn:import:info.esblurock.reaction.client.panel" xmlns:ma="urn:import:gwt.material.design.addins.client"
+	xmlns:gwt="urn:import:gwtupload.client">
+	<ui:style>
+	.important {
+		font-weight: bold;
+	}
+	</ui:style>
+<m:MaterialModal ui:field="modal">
+<m:MaterialModalContent ui:field="modalcontent">
+<m:MaterialRow>
+<m:MaterialColumn grid="s3">
+<m:MaterialTextBox ui:field="source" textColor="black"/>
+</m:MaterialColumn>
+<m:MaterialColumn grid="s3">
+<m:MaterialTextBox ui:field="type" textColor="black"/>
+</m:MaterialColumn>
+<m:MaterialColumn grid="s3">
+<m:MaterialTextBox ui:field="subtype" textColor="black"/>
+</m:MaterialColumn>
+<m:MaterialColumn grid="s3">
+<m:MaterialTextBox ui:field="name"  textColor="black"/>
+</m:MaterialColumn>
+</m:MaterialRow>
+</m:MaterialModalContent>
+
+<m:MaterialModalFooter>
+			<m:MaterialButton ui:field="submit" waves="GREEN"
+				type="FLAT" text="Close" />
+			<m:MaterialButton ui:field="close" waves="GREEN"
+				type="FLAT" text="Close" />
+
+</m:MaterialModalFooter>
+</m:MaterialModal>
+</ui:UiBinder> 
