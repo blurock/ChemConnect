@@ -6,11 +6,6 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
-  <servlet>
-    <servlet-name>greetServlet</servlet-name>
-    <servlet-class>info.esblurock.reaction.experiment.server.GreetingServiceImpl</servlet-class>
-  </servlet>
-  
  	<servlet>
 		<servlet-name>loginservice</servlet-name>
 		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>
