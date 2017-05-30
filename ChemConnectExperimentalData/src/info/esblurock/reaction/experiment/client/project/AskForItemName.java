@@ -109,7 +109,6 @@ public class AskForItemName extends Composite implements HasText {
 	}
 	@UiHandler("submit")
 	void onSubmitClick(ClickEvent event) {
-		Window.alert("Clicked");
 		if(askforname.setInResults()) {
 			closeModal();
 		}

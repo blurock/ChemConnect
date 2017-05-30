@@ -15,7 +15,15 @@
 		<url-pattern>/chemconnectexperimentaldata/loginservice</url-pattern>
 		<url-pattern>/loginservice</url-pattern>
 	</servlet-mapping>
-
+	<servlet>
+		<servlet-name>storedescriptiondata</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.description.StoreDescriptionDataImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>storedescriptiondata</servlet-name>
+		<url-pattern>/chemconnectexperimentaldata/storedescriptiondata</url-pattern>
+	</servlet-mapping>
+ 
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>ChemConnectExperimentalData.html</welcome-file>

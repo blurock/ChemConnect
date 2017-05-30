@@ -15,5 +15,7 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-servlet.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtupload-1.0.3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtupload-gae-1.0.3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/yamlbeans"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

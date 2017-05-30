@@ -1,0 +1,8 @@
+RDF:
+        name: Bob
+        age: 29
+        phoneNumbers:
+              name: Home
+              number: 206-555-1234
+              name: Work
+              number: 206-555-5678

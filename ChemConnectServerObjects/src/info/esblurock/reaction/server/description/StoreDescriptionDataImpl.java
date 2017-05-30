@@ -1,8 +1,12 @@
 package info.esblurock.reaction.server.description;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.jdo.PersistenceManager;
 
@@ -23,12 +27,15 @@ import info.esblurock.reaction.server.StringToKeyConversion;
 import info.esblurock.reaction.server.authorization.TaskTypes;
 import info.esblurock.reaction.server.datastore.contact.GeocodingLatituteAndLongitude;
 import info.esblurock.reaction.server.event.RegisterTransaction;
+import info.esblurock.reaction.server.initialization.DatabaseInitializeBase;
 import info.esblurock.reaction.server.process.description.RegisterDataDescription;
 import info.esblurock.reaction.server.queries.QueryBase;
 import info.esblurock.reaction.server.utilities.ContextAndSessionUtilities;
 import info.esblurock.reaction.server.utilities.ManageDataSourceIdentification;
 import info.esblurock.reaction.server.utilities.WriteObjectTransactionToDatabase;
 
+import com.esotericsoftware.yamlbeans.YamlException;
+import com.esotericsoftware.yamlbeans.YamlReader;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
@@ -412,5 +419,16 @@ private String storeContactInfoData(ContactInfoData contact) {
 			}
 		}
 		return user.getKey();
+	}
+	@Override
+	public void initializeDatabaseObjects() throws IOException {
+		
+		String yamlF = "resources/experiment/isAInitialization.yaml";
+		                                         
+		DatabaseInitializeBase base = new DatabaseInitializeBase();
+		if(!base.alreadyRead(yamlF)) {
+			base.readInitializationFile(yamlF, "yaml");
+		}
+		
 	}
 }

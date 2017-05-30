@@ -7,37 +7,65 @@
 	.important {
 		font-weight: bold;
 	}
+	
 	header, main, footer {
 		padding-left: 10px;
 	}
 	</ui:style>
 	<g:HTMLPanel>
-			<header>
-	
-		<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
-			paddingLeft="20">
-			<m:MaterialNavBrand ui:field="toptext"
-				text="Experimental Data Project" />
-			<m:MaterialLink ui:field="info" iconType="INFO"
-				iconColor="white" float="RIGHT" />
-			<m:MaterialLink ui:field="addProject" iconType="INPUT"
-				iconColor="white" float="RIGHT" />
-			<m:MaterialLink ui:field="searchProject" iconType="SEARCH"
-				iconColor="white" float="RIGHT" />
-		</m:MaterialNavBar>
-		<m:MaterialSideNav width="500" m:id="mysidebar"
-			alwaysShowActivator="true" allowBodyScroll="true" type="PUSH"
-			closeOnClick="false">
-			<g:HTMLPanel width="500">
-			<m:MaterialCollapsible ui:field="experimentItemList">
-			
-			</m:MaterialCollapsible>
+		<header>
 
-			</g:HTMLPanel>
-		</m:MaterialSideNav>
+			<m:MaterialNavBar activates="mysidebar" ui:field="navBar"
+				paddingLeft="20">
+				<m:MaterialNavBrand ui:field="toptext"
+					text="Experimental Data Project" />
+				<m:MaterialLink ui:field="info" iconType="INFO"
+					iconColor="white" float="RIGHT" />
+				<m:MaterialLink ui:field="addProject" iconType="INPUT"
+					iconColor="white" float="RIGHT" />
+				<m:MaterialLink ui:field="searchProject" iconType="SEARCH"
+					iconColor="white" float="RIGHT" />
+			</m:MaterialNavBar>
+			<m:MaterialSideNav width="500" m:id="mysidebar"
+				alwaysShowActivator="true" allowBodyScroll="true" type="PUSH"
+				closeOnClick="false">
+				<g:ScrollPanel>
+					<g:HTMLPanel width="500">
+					</g:HTMLPanel>
+				</g:ScrollPanel>
+			</m:MaterialSideNav>
 		</header>
-		<g:HTMLPanel ui:field="modalpanel" />		
-		<m:MaterialCollapsible ui:field="projectList">
-		</m:MaterialCollapsible>
+		<g:HTMLPanel ui:field="modalpanel" />
+		<m:MaterialRow>
+			<m:MaterialColumn grid="s12">
+				<m:MaterialTab ui:field="tab" indicatorColor="YELLOW"
+					shadow="1">
+					<m:MaterialTabItem waves="YELLOW" grid="s4">
+						<m:MaterialLink text="Apparatus" href="#tab1"
+							textColor="WHITE" />
+					</m:MaterialTabItem>
+					<m:MaterialTabItem waves="YELLOW" grid="s4">
+						<m:MaterialLink text="Experiments" href="#tab2"
+							textColor="WHITE" />
+					</m:MaterialTabItem>
+					<m:MaterialTabItem waves="YELLOW" grid="s4">
+						<m:MaterialLink text="Tab 3" href="#tab3"
+							textColor="WHITE" />
+					</m:MaterialTabItem>
+				</m:MaterialTab>
+			</m:MaterialColumn>
+
+			<m:MaterialColumn m:id="tab1" grid="s12">
+						<m:MaterialCollapsible ui:field="experimentItemList">
+						</m:MaterialCollapsible>
+			</m:MaterialColumn>
+			<m:MaterialColumn m:id="tab2" grid="s12">
+				<m:MaterialCollapsible ui:field="projectList">
+				</m:MaterialCollapsible>
+			</m:MaterialColumn>
+			<m:MaterialColumn m:id="tab3" grid="s12">
+				<m:MaterialLabel text="Tab 3 Content" />
+			</m:MaterialColumn>
+		</m:MaterialRow>
 	</g:HTMLPanel>
 </ui:UiBinder> 

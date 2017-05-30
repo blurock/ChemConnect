@@ -3,10 +3,13 @@ package info.esblurock.reaction.experiment.client;
 import info.esblurock.reaction.client.activity.ClientFactory;
 import info.esblurock.reaction.client.async.LoginService;
 import info.esblurock.reaction.client.async.LoginServiceAsync;
+import info.esblurock.reaction.client.async.StoreDescriptionData;
+import info.esblurock.reaction.client.async.StoreDescriptionDataAsync;
 import info.esblurock.reaction.client.mvp.AppActivityMapper;
 import info.esblurock.reaction.client.mvp.AppPlaceHistoryMapper;
 import info.esblurock.reaction.experiment.client.activity.place.ExperimentalDataPlace;
 import info.esblurock.reaction.experiment.client.ui.ExperimentalDataImpl;
+
 
 import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
@@ -16,6 +19,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 
@@ -44,13 +48,26 @@ public class ChemConnectExperimentalData implements EntryPoint {
 		PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
 		historyHandler.register(placeController, eventBus, defaultPlace);
 		
-		ExperimentalDataImpl impl = new ExperimentalDataImpl();
-		RootPanel.get().add(impl);
-		historyHandler.handleCurrentHistory();
+		Window.alert("StoreDescriptionData 1");
+		StoreDescriptionDataAsync asyncStore = StoreDescriptionData.Util.getInstance();
+		Window.alert("StoreDescriptionData 2");
+		DataInitializationCallback callbackStore = new DataInitializationCallback();
+		Window.alert("StoreDescriptionData 3");
+		asyncStore.initializeDatabaseObjects(callbackStore);
+		Window.alert("StoreDescriptionData 4");
+
 		
+		Window.alert("ExperimentalDataImpl 1");
+		ExperimentalDataImpl impl = new ExperimentalDataImpl();
+		Window.alert("ExperimentalDataImpl 2");
+		RootPanel.get().add(impl);
+		Window.alert("ExperimentalDataImpl 3");
+		historyHandler.handleCurrentHistory();
+		Window.alert("ExperimentalDataImpl 4");
+		
+		Window.alert("LoginService 1");
 		LoginServiceAsync async = LoginService.Util.getInstance();
 		SimpleLoginCallback callback = new SimpleLoginCallback();
 		async.loginServer("Administration", "laguna", callback);
-		
 	}
 }

@@ -9,7 +9,6 @@ import info.esblurock.reaction.data.description.DescriptionDataData;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -54,5 +53,7 @@ public interface StoreDescriptionDataAsync {
 	void getDescriptionDataData(String source, String keyword, AsyncCallback<DescriptionDataData> callback);
 
 	void getDataSetReferences(String datakeyword, AsyncCallback<ArrayList<DataSetReference>> callback);
+
+	void initializeDatabaseObjects(AsyncCallback<Void> callback);
 
 }

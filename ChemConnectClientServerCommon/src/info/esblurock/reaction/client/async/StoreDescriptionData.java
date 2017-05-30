@@ -61,4 +61,6 @@ public interface StoreDescriptionData extends RemoteService {
 	
 	public ArrayList<DataSetReference> getDataSetReferences(String datakeyword) throws IOException;
 
+	void initializeDatabaseObjects() throws IOException;
+
 }

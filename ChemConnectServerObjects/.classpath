@@ -14,5 +14,6 @@
 	<classpathentry kind="lib" path="/Users/edwardblurock/.git/WebApp/WebApp/war/WEB-INF/lib/json-20140107.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/yamlbeans"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

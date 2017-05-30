@@ -45,4 +45,5 @@ public class ServerBase  extends RemoteServiceServlet {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 }
