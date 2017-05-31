@@ -63,4 +63,6 @@ public interface StoreDescriptionData extends RemoteService {
 
 	void initializeDatabaseObjects() throws IOException;
 
+	ArrayList<String> getIsAList(String object) throws IOException;
+
 }

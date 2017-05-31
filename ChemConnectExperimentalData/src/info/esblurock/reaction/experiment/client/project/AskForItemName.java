@@ -2,19 +2,22 @@ package info.esblurock.reaction.experiment.client.project;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialButton;
+import gwt.material.design.client.ui.MaterialDropDown;
+import gwt.material.design.client.ui.MaterialLink;
 import gwt.material.design.client.ui.MaterialModal;
 import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
+import info.esblurock.reaction.client.async.StoreDescriptionData;
+import info.esblurock.reaction.client.async.StoreDescriptionDataAsync;
 
 public class AskForItemName extends Composite implements HasText {
 
@@ -30,7 +33,7 @@ public class AskForItemName extends Composite implements HasText {
 	@UiField
 	MaterialTextBox type;
 	@UiField
-	MaterialTextBox subtype;
+	MaterialLink subtype;
 	@UiField
 	MaterialTextBox name;
 	@UiField
@@ -39,13 +42,15 @@ public class AskForItemName extends Composite implements HasText {
 	MaterialButton close;
 	@UiField
 	MaterialModal modal;
+	@UiField
+	MaterialDropDown subtypedropdown;
 	
 	ResultsForAskForName askforname;
 
 	public AskForItemName(String type, ResultsForAskForName askforname) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.type.setText(type);
 		init(askforname);
+		this.type.setText(type);
 	}
 	public AskForItemName(String source, String type, ResultsForAskForName askforname) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -58,12 +63,21 @@ public class AskForItemName extends Composite implements HasText {
 		this.askforname = askforname;
 		source.setPlaceholder("Source");
 		type.setPlaceholder("Item Class");
-		subtype.setPlaceholder("Subtype");
 		name.setPlaceholder("Name");
 		source.setText("");
 		type.setText("");
-		subtype.setText("");
 		name.setText("");
+		
+		StoreDescriptionDataAsync async = GWT.create(StoreDescriptionData.class);
+		ApparatusListCallback callback = new ApparatusListCallback(this);
+		async.getIsAList("apparatus", callback);
+	}
+	
+	public void addDropDownElement(String element) {
+		MaterialLink link = new MaterialLink(element);
+		link.setTextColor("black");
+		link.setStyleName("dropdownlist");
+		subtypedropdown.add(link);
 	}
 	
 	public boolean fullNameGiven() {
@@ -75,10 +89,6 @@ public class AskForItemName extends Composite implements HasText {
 		if(type.getText().length() == 0) {
 			ans = false;
 			MaterialToast.fireToast(type.getPlaceholder() + " not given");
-		}
-		if(subtype.getText().length() == 0) {
-			ans = false;
-			MaterialToast.fireToast(subtype.getPlaceholder() + " not given");
 		}
 		if(name.getText().length() == 0) {
 			ans = false;
@@ -107,12 +117,20 @@ public class AskForItemName extends Composite implements HasText {
 	public void closeModal() {
 		modal.closeModal();
 	}
+
+	@UiHandler("subtypedropdown")
+	void onDropdown(SelectionEvent<Widget> callback) {
+		String selected = ((MaterialLink)callback.getSelectedItem()).getText();
+		subtype.setText(selected);
+	}
+
 	@UiHandler("submit")
 	void onSubmitClick(ClickEvent event) {
 		if(askforname.setInResults()) {
 			closeModal();
 		}
 	}
+
 	@UiHandler("close")
 	void onCloseClick(ClickEvent event) {
 		closeModal();

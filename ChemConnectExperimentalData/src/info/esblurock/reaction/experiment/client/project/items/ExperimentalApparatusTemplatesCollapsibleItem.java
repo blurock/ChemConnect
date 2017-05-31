@@ -1,6 +1,5 @@
 package info.esblurock.reaction.experiment.client.project.items;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.HTMLPanel;
 
 import info.esblurock.reaction.experiment.client.project.AskForItemName;

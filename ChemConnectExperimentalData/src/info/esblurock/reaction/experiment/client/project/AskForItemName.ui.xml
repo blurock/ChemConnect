@@ -7,31 +7,47 @@
 	.important {
 		font-weight: bold;
 	}
+	.textBoxFontSize {
+        color: black !important;
+        font-size: 8px !important;
+        font-style: bold !important;
+        font-family: Arial !important;
+		}
+		
+	.dropdownlist {
+        color: black !important;
+        font-size: 20px !important;
+        font-style: bold !important;
+        font-family: Arial !important;
+}
 	</ui:style>
-<m:MaterialModal ui:field="modal">
-<m:MaterialModalContent ui:field="modalcontent">
-<m:MaterialRow>
-<m:MaterialColumn grid="s3">
-<m:MaterialTextBox ui:field="source" textColor="black"/>
-</m:MaterialColumn>
-<m:MaterialColumn grid="s3">
-<m:MaterialTextBox ui:field="type" textColor="black"/>
-</m:MaterialColumn>
-<m:MaterialColumn grid="s3">
-<m:MaterialTextBox ui:field="subtype" textColor="black"/>
-</m:MaterialColumn>
-<m:MaterialColumn grid="s3">
-<m:MaterialTextBox ui:field="name"  textColor="black"/>
-</m:MaterialColumn>
-</m:MaterialRow>
-</m:MaterialModalContent>
+	<m:MaterialModal ui:field="modal">
+		<m:MaterialModalContent ui:field="modalcontent">
+			<m:MaterialRow>
+				<m:MaterialColumn grid="s3">
+					<m:MaterialTextBox ui:field="source" styleName='{style.textBoxFontSize}'/>
+				</m:MaterialColumn>
+				<m:MaterialColumn grid="s3">
+					<m:MaterialTextBox ui:field="type" styleName='{style.textBoxFontSize}'/>
+				</m:MaterialColumn>
+				<m:MaterialColumn grid="s3">
+					<m:MaterialLink ui:field="subtype" text="Subtype" activates="dp-1" styleName='{style.dropdownlist}'
+						textColor="black" iconType="ARROW_DROP_DOWN" iconPosition="RIGHT" />
+					<m:MaterialDropDown ui:field="subtypedropdown" 
+						activator="dp-1" constrainWidth="true" />
+				</m:MaterialColumn>
+				<m:MaterialColumn grid="s3">
+					<m:MaterialTextBox ui:field="name" styleName='{style.textBoxFontSize}'/>
+				</m:MaterialColumn>
+			</m:MaterialRow>
+		</m:MaterialModalContent>
 
-<m:MaterialModalFooter>
+		<m:MaterialModalFooter>
 			<m:MaterialButton ui:field="submit" waves="GREEN"
-				type="FLAT" text="Close" />
+				type="FLAT" text="Create" />
 			<m:MaterialButton ui:field="close" waves="GREEN"
-				type="FLAT" text="Close" />
+				type="FLAT" text="Quit" />
 
-</m:MaterialModalFooter>
-</m:MaterialModal>
+		</m:MaterialModalFooter>
+	</m:MaterialModal>
 </ui:UiBinder> 

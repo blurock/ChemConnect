@@ -20,6 +20,7 @@ import info.esblurock.reaction.data.contact.entities.OrganizationDescriptionData
 import info.esblurock.reaction.data.contact.entities.UserDescriptionData;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
+import info.esblurock.reaction.data.rdf.KeywordRDF;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.data.user.UnverifiedUserAccount;
 import info.esblurock.reaction.server.ServerBase;
@@ -430,5 +431,30 @@ private String storeContactInfoData(ContactInfoData contact) {
 			base.readInitializationFile(yamlF, "yaml");
 		}
 		
+	}
+	
+	@Override
+	public ArrayList<String> getIsAList(String object) throws IOException {
+		ArrayList<String> lst = new ArrayList<String>();
+		ArrayList<String> propertynames = new ArrayList<String>();
+		ArrayList<String> propertyvalues = new ArrayList<String>();
+		String objectS = "object";
+		String predicateS = "predicate";
+		propertynames.add(objectS);
+		propertynames.add(predicateS);
+		String isaS = "isA#String";
+		propertyvalues.add(object);
+		propertyvalues.add(isaS);
+		String classname = KeywordRDF.class.getName();
+
+		List<DatabaseObject> objectsRDF = QueryBase.getDatabaseObjectsFromProperties(classname, 
+				propertynames, propertyvalues);
+		System.out.println("getIsAList: " + objectsRDF.size());
+		for(DatabaseObject obj : objectsRDF) {
+			KeywordRDF rdf = (KeywordRDF) obj;
+			String ans = rdf.getSubject();
+			lst.add(ans);
+		}
+		return lst;
 	}
 }

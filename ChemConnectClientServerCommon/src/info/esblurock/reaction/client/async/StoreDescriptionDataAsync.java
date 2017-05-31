@@ -56,4 +56,6 @@ public interface StoreDescriptionDataAsync {
 
 	void initializeDatabaseObjects(AsyncCallback<Void> callback);
 
+	void getIsAList(String object, AsyncCallback<ArrayList<String>> callback);
+
 }
