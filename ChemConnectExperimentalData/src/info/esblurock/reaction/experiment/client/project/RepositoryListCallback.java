@@ -5,11 +5,10 @@ import java.util.ArrayList;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
-public class ApparatusListCallback implements AsyncCallback<ArrayList<String>> {
+public class RepositoryListCallback implements AsyncCallback<ArrayList<String>> {
 
 	AskForItemName ask;
-	
-	ApparatusListCallback(AskForItemName ask) {
+	public RepositoryListCallback(AskForItemName ask) {
 		this.ask = ask;
 	}
 	
@@ -21,9 +20,8 @@ public class ApparatusListCallback implements AsyncCallback<ArrayList<String>> {
 	@Override
 	public void onSuccess(ArrayList<String> result) {
 		for(String element : result) {
-			ask.addDropDownElement(element);
+			ask.addDropDownRepositoryElement(element);
 		}
-		//Window.alert("ApparatusListCallback: " + result);
 	}
 
 }

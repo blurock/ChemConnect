@@ -25,10 +25,13 @@
 		<m:MaterialModalContent ui:field="modalcontent">
 			<m:MaterialRow>
 				<m:MaterialColumn grid="s3">
-					<m:MaterialTextBox ui:field="source" styleName='{style.textBoxFontSize}'/>
+					<m:MaterialLink ui:field="source" text="Source" activates="dp-2" styleName='{style.dropdownlist}'
+						textColor="black" iconType="ARROW_DROP_DOWN" iconPosition="RIGHT" />
+					<m:MaterialDropDown ui:field="sourcedropdown" 
+						activator="dp-2" constrainWidth="true" />
 				</m:MaterialColumn>
 				<m:MaterialColumn grid="s3">
-					<m:MaterialTextBox ui:field="type" styleName='{style.textBoxFontSize}'/>
+					<m:MaterialLink ui:field="type" styleName='{style.dropdownlist}'/>
 				</m:MaterialColumn>
 				<m:MaterialColumn grid="s3">
 					<m:MaterialLink ui:field="subtype" text="Subtype" activates="dp-1" styleName='{style.dropdownlist}'

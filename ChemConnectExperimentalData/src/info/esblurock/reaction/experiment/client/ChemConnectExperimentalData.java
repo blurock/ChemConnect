@@ -1,6 +1,7 @@
 package info.esblurock.reaction.experiment.client;
 
 import info.esblurock.reaction.client.activity.ClientFactory;
+import info.esblurock.reaction.client.activity.place.ReactionFirstPlace;
 import info.esblurock.reaction.client.async.LoginService;
 import info.esblurock.reaction.client.async.LoginServiceAsync;
 import info.esblurock.reaction.client.async.StoreDescriptionData;
@@ -51,13 +52,15 @@ public class ChemConnectExperimentalData implements EntryPoint {
 		StoreDescriptionDataAsync asyncStore = StoreDescriptionData.Util.getInstance();
 		DataInitializationCallback callbackStore = new DataInitializationCallback();
 		asyncStore.initializeDatabaseObjects(callbackStore);
-		
-		ExperimentalDataImpl impl = new ExperimentalDataImpl();
-		RootPanel.get().add(impl);
-		historyHandler.handleCurrentHistory();
-		
+
 		LoginServiceAsync async = LoginService.Util.getInstance();
 		SimpleLoginCallback callback = new SimpleLoginCallback();
 		async.loginServer("Administration", "laguna", callback);
+		
+		RootPanel.get().add(appWidget);
+		historyHandler.handleCurrentHistory();
+		
+		ExperimentalDataImpl impl = new ExperimentalDataImpl();
+		appWidget.add(impl);
 	}
 }

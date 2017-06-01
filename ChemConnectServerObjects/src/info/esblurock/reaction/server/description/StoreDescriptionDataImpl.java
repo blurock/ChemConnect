@@ -42,53 +42,48 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 /**
  * The Class StoreDescriptionDataImpl.
  */
-public class StoreDescriptionDataImpl extends ServerBase implements
-		StoreDescriptionData {
-	
+public class StoreDescriptionDataImpl extends ServerBase implements StoreDescriptionData {
+
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
-	
+
 	/** The organization description. */
 	static String organizationDescription = "OrganizationDescription";
-	
+
 	/** The user description. */
 	static String userDescription = "UserDescription";
 
 	/** The pm. */
 	PersistenceManager pm = PMF.get().getPersistenceManager();
-	
+
 	/** The conversion. */
 	StringToKeyConversion conversion = new StringToKeyConversion();
 
 	/**
 	 * Gets the organization description data.
 	 *
-	 * @param input the input
+	 * @param input
+	 *            the input
 	 * @return the organization description data
-	 
-	private OrganizationDescriptionData getOrganizationDescriptionData(
-			OrganizationInput input) {
-		DescriptionDataData description = getDescriptionDataData(input
-				.getDescription());
-		ContactInfoData contactinfodata = getContactInfoData(input
-				.getContactinfo());
-		ContactLocationData locationdata = getContactLocationData(input
-				.getLocationinfo());
-		OrganizationDescriptionData organization = new OrganizationDescriptionData(
-				input.getOrgtype(), description, contactinfodata, locationdata);
-		return organization;
-	}
-	*/
+	 * 
+	 *         private OrganizationDescriptionData
+	 *         getOrganizationDescriptionData( OrganizationInput input) {
+	 *         DescriptionDataData description = getDescriptionDataData(input
+	 *         .getDescription()); ContactInfoData contactinfodata =
+	 *         getContactInfoData(input .getContactinfo()); ContactLocationData
+	 *         locationdata = getContactLocationData(input .getLocationinfo());
+	 *         OrganizationDescriptionData organization = new
+	 *         OrganizationDescriptionData( input.getOrgtype(), description,
+	 *         contactinfodata, locationdata); return organization; }
+	 */
 	public UserDescriptionData getUserDescriptionData(String keyword) throws IOException {
 		PersistenceManager pm = PMF.get().getPersistenceManager();
 		UserDescriptionData userdata = null;
 		try {
 			System.out.println("Get User Description, keyword='" + keyword + "'");
-			List<DatabaseObject> objs = 
-					QueryBase.getDatabaseObjectsFromSingleProperty(
-							UserDescriptionData.class.getName(), 
-							"keyword", keyword);
-			if(objs.size() > 0) {
+			List<DatabaseObject> objs = QueryBase
+					.getDatabaseObjectsFromSingleProperty(UserDescriptionData.class.getName(), "keyword", keyword);
+			if (objs.size() > 0) {
 				userdata = (UserDescriptionData) objs.get(0);
 				DescriptionDataData descr = userdata.getDescription();
 			}
@@ -97,7 +92,9 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		}
 		return userdata;
 	}
-	private List<DatabaseObject> getDatabaseObjectsFromSourceAndKeyword(Class classname,String source, String keyword) throws IOException {
+
+	private List<DatabaseObject> getDatabaseObjectsFromSourceAndKeyword(Class classname, String source, String keyword)
+			throws IOException {
 		ArrayList<String> propnames = new ArrayList<String>();
 		ArrayList<String> propvalues = new ArrayList<String>();
 		propnames.add("sourcekey");
@@ -106,7 +103,7 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		propvalues.add(keyword);
 		return QueryBase.getDatabaseObjectsFromProperties(classname.getName(), propnames, propvalues);
 	}
-	
+
 	public DescriptionDataData getDescriptionDataData(String source, String keyword) throws IOException {
 		ArrayList<String> propnames = new ArrayList<String>();
 		ArrayList<String> propvalues = new ArrayList<String>();
@@ -114,63 +111,60 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		propvalues.add(source);
 		propnames.add("keyword");
 		propvalues.add(keyword);
-		DescriptionDataData data = (DescriptionDataData)
-				QueryBase.getFirstOjbectFromProperties(DescriptionDataData.class.getName(), 
-				propnames, propvalues);
+		DescriptionDataData data = (DescriptionDataData) QueryBase
+				.getFirstOjbectFromProperties(DescriptionDataData.class.getName(), propnames, propvalues);
 		return data;
 	}
-	
+
 	public ArrayList<DataSetReference> getDataSetReferences(String datakeyword) throws IOException {
 		ArrayList<DataSetReference> references = new ArrayList<DataSetReference>();
-		List<DatabaseObject> objs = QueryBase.getDatabaseObjectsFromSingleProperty(DataSetReference.class.getName(), 
+		List<DatabaseObject> objs = QueryBase.getDatabaseObjectsFromSingleProperty(DataSetReference.class.getName(),
 				"DatasetKeyword", datakeyword);
-		for(DatabaseObject obj: objs) {
+		for (DatabaseObject obj : objs) {
 			references.add((DataSetReference) obj);
 		}
 		return references;
 	}
+
 	/**
 	 * Gets the contact info data.
 	 *
-	 * @param contact the contact
+	 * @param contact
+	 *            the contact
 	 * @return the contact info data
-	 
-	private ContactInfoData getContactInfoData(ContactInfoPanel contact) {
-		ContactInfoData data = new ContactInfoData(contact.getEmail(),
-				contact.getPhone(), contact.getMainhomepage());
-		return data;
-	}
-*/
+	 * 
+	 *         private ContactInfoData getContactInfoData(ContactInfoPanel
+	 *         contact) { ContactInfoData data = new
+	 *         ContactInfoData(contact.getEmail(), contact.getPhone(),
+	 *         contact.getMainhomepage()); return data; }
+	 */
 	/**
 	 * Gets the contact location data.
 	 *
-	 * @param input the input
+	 * @param input
+	 *            the input
 	 * @return the contact location data
-	
-	private ContactLocationData getContactLocationData(
-			ContactLocationPanel input) {
-		ContactLocationData location = new ContactLocationData(
-				input.getAddressAddress(),
-				input.getCity(), input.getCountry(), input.getPostcode(),
-				input.getGpslatitude(), input.getGpslongitude());
-		return location;
-	}
- */
+	 * 
+	 *         private ContactLocationData getContactLocationData(
+	 *         ContactLocationPanel input) { ContactLocationData location = new
+	 *         ContactLocationData( input.getAddressAddress(), input.getCity(),
+	 *         input.getCountry(), input.getPostcode(), input.getGpslatitude(),
+	 *         input.getGpslongitude()); return location; }
+	 */
 	/**
 	 * Gets the description data data.
 	 *
-	 * @param input the input
+	 * @param input
+	 *            the input
 	 * @return the description data data
-	
-	private DescriptionDataData getDescriptionDataData(DataDescription input) {
-		DescriptionDataData data = new DescriptionDataData(input.getKeyWord(),
-				input.getOneLineDescription(), input.getDescription(),
-				input.getSourceDate(), input.getSource(), 
-				input.getInputKey(),
-				userDescription,
-				input.getKeywords());
-		return data;
-	}
+	 * 
+	 *         private DescriptionDataData
+	 *         getDescriptionDataData(DataDescription input) {
+	 *         DescriptionDataData data = new
+	 *         DescriptionDataData(input.getKeyWord(),
+	 *         input.getOneLineDescription(), input.getDescription(),
+	 *         input.getSourceDate(), input.getSource(), input.getInputKey(),
+	 *         userDescription, input.getKeywords()); return data; }
 	 */
 	@Override
 	public String getCoordinates(String city, String country) throws IOException {
@@ -180,7 +174,6 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		return coordinates;
 	}
 
-	
 	@Override
 	public String removeOrganizationDescriptionData(String key) {
 		String ans = "";
@@ -195,8 +188,12 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		return ans;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#removeContactInfoData(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * info.esblurock.reaction.client.StoreDescriptionData#removeContactInfoData
+	 * (java.lang.String)
 	 */
 	@Override
 	public String removeContactInfoData(String key) {
@@ -206,14 +203,17 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 			pm.deletePersistent(u);
 			ans = "SUCCESS: Deleted id: " + key;
 		} catch (Exception e) {
-			ans = "ERROR: Unable to delete id: "+ key;
+			ans = "ERROR: Unable to delete id: " + key;
 			throw e;
 		}
 		return ans;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#removeContactLocationData(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * removeContactLocationData(java.lang.String)
 	 */
 	@Override
 	public String removeContactLocationData(String key) {
@@ -229,8 +229,11 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		return ans;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#removeDescriptionDataData(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * removeDescriptionDataData(java.lang.String)
 	 */
 	@Override
 	public String removeDescriptionDataData(String key) {
@@ -246,8 +249,11 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		return ans;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#getListOfOrganizationsKeywords()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * getListOfOrganizationsKeywords()
 	 */
 	@Override
 	public List<String> getListOfOrganizationsKeywords() {
@@ -264,8 +270,11 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		return names;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#getListOfContactsKeywords()
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * getListOfContactsKeywords()
 	 */
 	@Override
 	public List<String> getListOfContactsKeywords() {
@@ -275,7 +284,7 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		if (!results.isEmpty()) {
 			for (UserDescriptionData data : results) {
 				DescriptionDataData description = data.getDescription();
-				if(description != null) {
+				if (description != null) {
 					String keyword = description.getKeyword();
 					names.add(keyword);
 				}
@@ -284,14 +293,14 @@ public class StoreDescriptionDataImpl extends ServerBase implements
 		return names;
 	}
 
-	
 	/**
- * Store contact info data.
- *
- * @param contact the contact
- * @return the string
- */
-private String storeContactInfoData(ContactInfoData contact) {
+	 * Store contact info data.
+	 *
+	 * @param contact
+	 *            the contact
+	 * @return the string
+	 */
+	private String storeContactInfoData(ContactInfoData contact) {
 		pm.makePersistent(contact);
 		pm.detachCopy(contact);
 		return contact.getKey();
@@ -300,7 +309,8 @@ private String storeContactInfoData(ContactInfoData contact) {
 	/**
 	 * Store contact location data.
 	 *
-	 * @param location the location
+	 * @param location
+	 *            the location
 	 * @return the string
 	 */
 	private String storeContactLocationData(ContactLocationData location) {
@@ -312,7 +322,8 @@ private String storeContactInfoData(ContactInfoData contact) {
 	/**
 	 * Store description data data.
 	 *
-	 * @param data the data
+	 * @param data
+	 *            the data
 	 * @return the string
 	 */
 	private String storeDescriptionDataData(DescriptionDataData data) {
@@ -321,29 +332,36 @@ private String storeContactInfoData(ContactInfoData contact) {
 		return data.getKey();
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#storeOrganizationDescriptionData(info.esblurock.reaction.data.contact.entities.OrganizationDescriptionData)
-*/
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * storeOrganizationDescriptionData(info.esblurock.reaction.data.contact.
+	 * entities.OrganizationDescriptionData)
+	 */
 	@Override
-	public String storeOrganizationDescriptionData(
-			OrganizationDescriptionData organization) {
+	public String storeOrganizationDescriptionData(OrganizationDescriptionData organization) {
 		/*
-		String keyword = organization.getDescription().getKeyword();
-		String user = organization.getDescription().getInputkey();
-		String idCode = ManageDataSourceIdentification.getDataSourceIdentification(user);
-		TransactionInfo transaction = new TransactionInfo(user, keyword, organization.getClass().getName(),idCode);
-		
-		StoreOrganizationDescriptionData store 
-			= new StoreOrganizationDescriptionData(keyword, organization, transaction);
-		store.finish();
-		return transaction.getKey();
-		*/
+		 * String keyword = organization.getDescription().getKeyword(); String
+		 * user = organization.getDescription().getInputkey(); String idCode =
+		 * ManageDataSourceIdentification.getDataSourceIdentification(user);
+		 * TransactionInfo transaction = new TransactionInfo(user, keyword,
+		 * organization.getClass().getName(),idCode);
+		 * 
+		 * StoreOrganizationDescriptionData store = new
+		 * StoreOrganizationDescriptionData(keyword, organization, transaction);
+		 * store.finish(); return transaction.getKey();
+		 */
 		return null;
 	}
 
-
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#storeContactInfo(java.lang.String, info.esblurock.reaction.data.contact.entities.ContactInfoData)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * info.esblurock.reaction.client.StoreDescriptionData#storeContactInfo(java
+	 * .lang.String,
+	 * info.esblurock.reaction.data.contact.entities.ContactInfoData)
 	 */
 	@Override
 	public String storeContactInfo(String key, ContactInfoData contact) {
@@ -352,8 +370,13 @@ private String storeContactInfoData(ContactInfoData contact) {
 		return id;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#storeContactLocation(java.lang.String, info.esblurock.reaction.data.contact.entities.ContactLocationData)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * info.esblurock.reaction.client.StoreDescriptionData#storeContactLocation(
+	 * java.lang.String,
+	 * info.esblurock.reaction.data.contact.entities.ContactLocationData)
 	 */
 	@Override
 	public String storeContactLocation(String key, ContactLocationData location) {
@@ -362,8 +385,12 @@ private String storeContactInfoData(ContactInfoData contact) {
 		return id;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#storeDescriptionDataData(java.lang.String, info.esblurock.reaction.data.description.DescriptionDataData)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * storeDescriptionDataData(java.lang.String,
+	 * info.esblurock.reaction.data.description.DescriptionDataData)
 	 */
 	@Override
 	public String storeDescriptionDataData(String key, DescriptionDataData data) {
@@ -372,8 +399,11 @@ private String storeContactInfoData(ContactInfoData contact) {
 		return id;
 	}
 
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#removeUserDescriptionData(java.lang.String)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * removeUserDescriptionData(java.lang.String)
 	 */
 	@Override
 	public String removeUserDescriptionData(String key) {
@@ -388,9 +418,13 @@ private String storeContactInfoData(ContactInfoData contact) {
 		}
 		return ans;
 	}
-	
-	/* (non-Javadoc)
-	 * @see info.esblurock.reaction.client.StoreDescriptionData#storeUserDescriptionData(info.esblurock.reaction.data.contact.entities.UserDescriptionData)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see info.esblurock.reaction.client.StoreDescriptionData#
+	 * storeUserDescriptionData(info.esblurock.reaction.data.contact.entities.
+	 * UserDescriptionData)
 	 */
 	@Override
 	public String storeUserDescriptionData(UserDescriptionData user) throws IOException {
@@ -400,61 +434,101 @@ private String storeContactInfoData(ContactInfoData contact) {
 		try {
 			UserDescriptionData databaseUser = getUserDescriptionData(userS);
 			QueryBase.deleteFromIdentificationCode(UserDescriptionData.class, "keyword", userS);
-		} catch(IOException ex) {
+		} catch (IOException ex) {
 			update = false;
-		}		
-		
+		}
+
 		String idCode = "0";
-		if(userS == null) {
+		if (userS == null) {
 			userS = user.getDescription().getInputkey();
 			idCode = ManageDataSourceIdentification.getDataSourceIdentification(userS);
 		}
 		WriteObjectTransactionToDatabase.writeObjectWithTransaction(userS, keyword, idCode, user);
-		if(update) {
+		if (update) {
 			ContextAndSessionUtilities util = getUtilities();
 			UserDTO userdto = util.getUserInfo();
-			if(userdto != null) {
+			if (userdto != null) {
 				String transaction = keyword + ":ProfileUpdate";
-				RegisterTransaction.register(userdto,TaskTypes.login, 
-						transaction, RegisterTransaction.checkLevel0);
+				RegisterTransaction.register(userdto, TaskTypes.login, transaction, RegisterTransaction.checkLevel0);
 			}
 		}
 		return user.getKey();
 	}
+
 	@Override
 	public void initializeDatabaseObjects() throws IOException {
-		
+
 		String yamlF = "resources/experiment/isAInitialization.yaml";
-		                                         
+
 		DatabaseInitializeBase base = new DatabaseInitializeBase();
-		if(!base.alreadyRead(yamlF)) {
+		if (!base.alreadyRead(yamlF)) {
 			base.readInitializationFile(yamlF, "yaml");
 		}
-		
+
+	}
+
+	@Override
+	public ArrayList<String> getIsAList(String object) throws IOException {
+		ArrayList<String> lst = getRelationList(object, true, "isA#String");
+		System.out.println("getIsAList: " + object + ":   "+ lst);
+		return lst;
 	}
 	
 	@Override
-	public ArrayList<String> getIsAList(String object) throws IOException {
+	public ArrayList<String> getUserRepositoryList(String username) throws IOException {
+		System.out.println("getUserRepositoryList: " + username);
+		if(username == null) {
+			username = this.getUtilities().getUserName();
+		}
+		System.out.println("getUserRepositoryList: " + username);
+		ArrayList<String> lst = getRelationList(username, true, "managesRepository#String");
+		lst.add(username);
+		System.out.println("getUserRepositoryList: " + lst);
+		return lst;
+	}
+	
+	/*
+	 * 
+	 */
+	/**
+	 * @param value value to test for object or subject
+	 * @param isObject true if value is an object false if value is subject
+	 * @param relationvalue the predicate relation
+	 * @return
+	 * @throws IOException
+	 * 
+	 * 
+	 * isObject is true
+	 * answer -> relation -> value
+	 * isObject is false
+	 * value -> relation -> answer
+	 */
+	public ArrayList<String> getRelationList(String value, boolean isObject, String relation)
+			throws IOException {
 		ArrayList<String> lst = new ArrayList<String>();
 		ArrayList<String> propertynames = new ArrayList<String>();
 		ArrayList<String> propertyvalues = new ArrayList<String>();
-		String objectS = "object";
+		String objectS;
+		if(isObject) {
+			objectS = "object";
+		} else {
+			objectS = "subject";
+		}
 		String predicateS = "predicate";
 		propertynames.add(objectS);
 		propertynames.add(predicateS);
-		String isaS = "isA#String";
-		propertyvalues.add(object);
-		propertyvalues.add(isaS);
+		propertyvalues.add(value);
+		propertyvalues.add(relation);
 		String classname = KeywordRDF.class.getName();
 
-		List<DatabaseObject> objectsRDF = QueryBase.getDatabaseObjectsFromProperties(classname, 
-				propertynames, propertyvalues);
-		System.out.println("getIsAList: " + objectsRDF.size());
-		for(DatabaseObject obj : objectsRDF) {
+		List<DatabaseObject> objectsRDF = QueryBase.getDatabaseObjectsFromProperties(classname, propertynames,
+				propertyvalues);
+		for (DatabaseObject obj : objectsRDF) {
 			KeywordRDF rdf = (KeywordRDF) obj;
 			String ans = rdf.getSubject();
 			lst.add(ans);
 		}
 		return lst;
 	}
+
 }

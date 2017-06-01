@@ -14,6 +14,7 @@ import info.esblurock.reaction.client.ui.view.XMLParseDocumentView;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.user.client.Window;
 
 public class ClientFactoryImpl implements ClientFactory {
 	private final EventBus eventBus = new SimpleEventBus();

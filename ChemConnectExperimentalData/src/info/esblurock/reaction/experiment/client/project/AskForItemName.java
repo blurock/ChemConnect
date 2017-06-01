@@ -1,11 +1,15 @@
 package info.esblurock.reaction.experiment.client.project;
 
+import java.util.Date;
+
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
+import com.google.gwt.user.client.Cookies;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
@@ -29,9 +33,9 @@ public class AskForItemName extends Composite implements HasText {
 	public static String delimitorS = "#";
 	
 	@UiField
-	MaterialTextBox source;
+	MaterialLink source;
 	@UiField
-	MaterialTextBox type;
+	MaterialLink type;
 	@UiField
 	MaterialLink subtype;
 	@UiField
@@ -44,6 +48,8 @@ public class AskForItemName extends Composite implements HasText {
 	MaterialModal modal;
 	@UiField
 	MaterialDropDown subtypedropdown;
+	@UiField
+	MaterialDropDown sourcedropdown;
 	
 	ResultsForAskForName askforname;
 
@@ -61,34 +67,52 @@ public class AskForItemName extends Composite implements HasText {
 	void init(ResultsForAskForName askforname) {
 		askforname.initialize(this);
 		this.askforname = askforname;
-		source.setPlaceholder("Source");
-		type.setPlaceholder("Item Class");
+		//source.setPlaceholder("Source");
+		//type.setPlaceholder("Item Class");
 		name.setPlaceholder("Name");
-		source.setText("");
+		//source.setText("");
 		type.setText("");
-		name.setText("");
+		
+		
+		String defaultname = todaysdate();
+		name.setText(defaultname);
 		
 		StoreDescriptionDataAsync async = GWT.create(StoreDescriptionData.class);
 		ApparatusListCallback callback = new ApparatusListCallback(this);
 		async.getIsAList("apparatus", callback);
+		
+		RepositoryListCallback repository = new RepositoryListCallback(this);
+		String user = Cookies.getCookie("user");
+		async.getUserRepositoryList(user,repository);
 	}
 	
+	private String todaysdate() {
+		Date date = new Date();
+		DateTimeFormat fmt = DateTimeFormat.getFormat("yyyyMMdd");
+		return fmt.format( date );
+	}
 	public void addDropDownElement(String element) {
 		MaterialLink link = new MaterialLink(element);
 		link.setTextColor("black");
 		link.setStyleName("dropdownlist");
 		subtypedropdown.add(link);
 	}
-	
+	public void addDropDownRepositoryElement(String element) {
+		MaterialLink link = new MaterialLink(element);
+		link.setTextColor("black");
+		link.setStyleName("dropdownlist");
+		sourcedropdown.add(link);
+		source.setText(element);
+	}
 	public boolean fullNameGiven() {
 		boolean ans = true;
 		if(source.getText().length() == 0) {
 			ans = false;
-			MaterialToast.fireToast(source.getPlaceholder() + " not given");
+			//MaterialToast.fireToast(source.getPlaceholder() + " not given");
 		}
 		if(type.getText().length() == 0) {
 			ans = false;
-			MaterialToast.fireToast(type.getPlaceholder() + " not given");
+			//MaterialToast.fireToast(type.getPlaceholder() + " not given");
 		}
 		if(name.getText().length() == 0) {
 			ans = false;
@@ -122,6 +146,11 @@ public class AskForItemName extends Composite implements HasText {
 	void onDropdown(SelectionEvent<Widget> callback) {
 		String selected = ((MaterialLink)callback.getSelectedItem()).getText();
 		subtype.setText(selected);
+	}
+	@UiHandler("sourcedropdown")
+	void onSourceDropdown(SelectionEvent<Widget> callback) {
+		String selected = ((MaterialLink)callback.getSelectedItem()).getText();
+		source.setText(selected);
 	}
 
 	@UiHandler("submit")
