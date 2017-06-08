@@ -11,37 +11,38 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.ui.MaterialImage;
 import gwt.material.design.client.ui.MaterialLink;
-import gwt.material.design.client.ui.MaterialTextBox;
+import gwt.material.design.client.ui.MaterialTextArea;
 
-public class PropertyValueSpecification extends Composite implements HasText {
+public class ImageSpecification extends Composite implements HasText {
 
-	private static PropertyValueSpecificationUiBinder uiBinder = GWT.create(PropertyValueSpecificationUiBinder.class);
+	private static ImageSpecificationUiBinder uiBinder = GWT.create(ImageSpecificationUiBinder.class);
 
-	interface PropertyValueSpecificationUiBinder extends UiBinder<Widget, PropertyValueSpecification> {
+	interface ImageSpecificationUiBinder extends UiBinder<Widget, ImageSpecification> {
 	}
 
+	public ImageSpecification() {
+		initWidget(uiBinder.createAndBindUi(this));
+	}
 
 	@UiField
 	MaterialLink specification;
 	@UiField
-	MaterialTextBox value;
+	MaterialLink delete;
 	@UiField
-	MaterialTextBox units;
+	MaterialImage imageObject;
+	@UiField
+	MaterialTextArea imageDescription;
 
-	public PropertyValueSpecification() {
+	public ImageSpecification(String firstName) {
 		initWidget(uiBinder.createAndBindUi(this));
+		specification.setText(firstName);
 	}
 
-	public PropertyValueSpecification(String text) {
-		initWidget(uiBinder.createAndBindUi(this));
-		init(text);
-	}
-	
-	private void init(String text) {
-		specification.setText(text);
-		value.setPlaceholder("value");
-		units.setPlaceholder("units");		
+	@UiHandler("delete")
+	void onClick(ClickEvent e) {
+		Window.alert("Hello!");
 	}
 
 	public void setText(String text) {

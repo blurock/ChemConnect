@@ -13,8 +13,6 @@ import gwt.material.design.client.ui.MaterialTitle;
 
 import info.esblurock.reaction.client.async.TextToDatabase;
 import info.esblurock.reaction.client.async.TextToDatabaseAsync;
-import info.esblurock.reaction.client.async.TransactionService;
-import info.esblurock.reaction.client.async.TransactionServiceAsync;
 import info.esblurock.reaction.client.panel.description.DataDescription;
 import info.esblurock.reaction.client.panel.description.DataDescriptionAsRows;
 import info.esblurock.reaction.client.panel.description.ReferenceDescriptions;

@@ -32,6 +32,7 @@ public class ChooseExperimentalCollapsibleItem extends Composite implements HasT
 	protected MaterialCollapsible itemsList;
 		
 	protected ExperimentalDataImpl experimentalData;
+	protected String subtype;
 
 	public ChooseExperimentalCollapsibleItem(ExperimentalDataImpl experimentalData) {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -59,11 +60,14 @@ public class ChooseExperimentalCollapsibleItem extends Composite implements HasT
 
 	public void setText(String text) {
 		listTitle.setText(text);
-		info.setText(text);
+		//info.setText(text);
 	}
 
 	public String getText() {
 		return listTitle.getText();
 	}
 
+	public void setSubType(String subtype) {
+		this.subtype = subtype;
+	}
 }

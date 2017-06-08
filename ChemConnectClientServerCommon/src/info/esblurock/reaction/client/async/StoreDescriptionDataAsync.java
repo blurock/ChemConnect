@@ -60,4 +60,6 @@ public interface StoreDescriptionDataAsync {
 
 	void getUserRepositoryList(String username, AsyncCallback<ArrayList<String>> callback);
 
+	void getSubjectPropertyList(String subject, AsyncCallback<ArrayList<String>> callback);
+
 }

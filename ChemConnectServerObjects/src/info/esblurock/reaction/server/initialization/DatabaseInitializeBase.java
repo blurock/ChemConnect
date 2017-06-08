@@ -9,7 +9,6 @@ import java.util.Map;
 import com.esotericsoftware.yamlbeans.YamlException;
 import com.esotericsoftware.yamlbeans.YamlReader;
 
-import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.initialization.InitializationFile;
 import info.esblurock.reaction.server.queries.QueryBase;
 import info.esblurock.reaction.server.utilities.WriteObjectTransactionToDatabase;
@@ -38,7 +37,7 @@ public class DatabaseInitializeBase {
 		
 		InitializationFile filetowrite = new InitializationFile(fileS);
 		WriteObjectTransactionToDatabase.writeObjectWithoutTransaction(filetowrite);
-		
+		System.out.println("readInitializationFile: '" + filetypeS + "' " + filetypeS.compareToIgnoreCase("yaml"));
 		if(filetypeS.compareToIgnoreCase("yaml") == 0) {
 			readInitializationYamlFile(in);
 		} else {

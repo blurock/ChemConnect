@@ -12,16 +12,18 @@
 		<m:MaterialCollapsibleHeader
 			backgroundColor="grey">
 			<m:MaterialLink ui:field="specification" textColor="black" />
-			<m:MaterialLink ui:field="deleteProject" iconType="CLOSE"
+			<m:MaterialLink ui:field="delete" iconType="CLOSE"
 				iconPosition="RIGHT" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
 			<m:MaterialRow>
-				<m:MaterialColumn grid="s6">
-					<m:MaterialTextBox ui:field="value"/>
+				<m:MaterialColumn grid="s12">
+					<m:MaterialImage ui:field="imageObject"/>
 				</m:MaterialColumn>
-				<m:MaterialColumn grid="s6">
-					<m:MaterialTextBox ui:field="units"/>
+			</m:MaterialRow>
+			<m:MaterialRow>
+				<m:MaterialColumn grid="s12">
+					<m:MaterialTextArea ui:field="imageDescription"/>
 				</m:MaterialColumn>
 			</m:MaterialRow>
 		</m:MaterialCollapsibleBody>

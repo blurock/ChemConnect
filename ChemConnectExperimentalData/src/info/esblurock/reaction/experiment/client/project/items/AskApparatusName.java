@@ -36,6 +36,7 @@ public class AskApparatusName extends ResultsForAskForName {
 		if(ans) {
 			String fullname = askforname.getFullName();
 			item.setText(fullname);
+			item.setSubType(askforname.getSubtype());
 		}
 		return ans;
 	}

@@ -6,6 +6,10 @@
 
 	<!-- Servlets -->
 	<servlet>
+		<servlet-name>images</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.image.UploadImageService</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>greetServlet</servlet-name>
 		<servlet-class>info.esblurock.reaction.server.server.GreetingServiceImpl</servlet-class>
 	</servlet>
@@ -15,8 +19,12 @@
 	</servlet>
 
 	<servlet-mapping>
+		<servlet-name>images</servlet-name>
+		<url-pattern>/chemconnectexperimentaldata/images</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
 		<servlet-name>greetServlet</servlet-name>
-		<url-pattern>/chemconnectserverobjects/greet</url-pattern>
+		<url-pattern>/chemconnectexperimentaldata/greet</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>loginservice</servlet-name>

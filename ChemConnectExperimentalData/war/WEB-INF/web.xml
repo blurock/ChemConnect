@@ -6,6 +6,26 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
+	<servlet>
+		<servlet-name>images</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.image.UserImageServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>images</servlet-name>
+		<url-pattern>/chemconnectexperimentaldata/images</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+		<servlet-name>uploadServlet</servlet-name>
+		<servlet-class>info.esblurock.reaction.server.image.UploadServlet</servlet-class>
+	</servlet>
+		<servlet-mapping>
+		<servlet-name>uploadServlet</servlet-name>
+		<url-pattern>/upload</url-pattern>
+	</servlet-mapping>
+	
  	<servlet>
 		<servlet-name>loginservice</servlet-name>
 		<servlet-class>info.esblurock.reaction.server.authorization.LoginServiceImpl</servlet-class>

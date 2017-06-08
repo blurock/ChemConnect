@@ -67,4 +67,6 @@ public interface StoreDescriptionData extends RemoteService {
 
 	ArrayList<String> getUserRepositoryList(String username) throws IOException;
 
+	ArrayList<String> getSubjectPropertyList(String subject) throws IOException;
+
 }

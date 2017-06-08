@@ -1,12 +1,8 @@
 package info.esblurock.reaction.server.description;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.jdo.PersistenceManager;
 
@@ -21,23 +17,16 @@ import info.esblurock.reaction.data.contact.entities.UserDescriptionData;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
 import info.esblurock.reaction.data.rdf.KeywordRDF;
-import info.esblurock.reaction.data.transaction.TransactionInfo;
-import info.esblurock.reaction.data.user.UnverifiedUserAccount;
 import info.esblurock.reaction.server.ServerBase;
 import info.esblurock.reaction.server.StringToKeyConversion;
 import info.esblurock.reaction.server.authorization.TaskTypes;
 import info.esblurock.reaction.server.datastore.contact.GeocodingLatituteAndLongitude;
 import info.esblurock.reaction.server.event.RegisterTransaction;
 import info.esblurock.reaction.server.initialization.DatabaseInitializeBase;
-import info.esblurock.reaction.server.process.description.RegisterDataDescription;
 import info.esblurock.reaction.server.queries.QueryBase;
 import info.esblurock.reaction.server.utilities.ContextAndSessionUtilities;
 import info.esblurock.reaction.server.utilities.ManageDataSourceIdentification;
 import info.esblurock.reaction.server.utilities.WriteObjectTransactionToDatabase;
-
-import com.esotericsoftware.yamlbeans.YamlException;
-import com.esotericsoftware.yamlbeans.YamlReader;
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 /**
  * The Class StoreDescriptionDataImpl.
@@ -458,11 +447,15 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	@Override
 	public void initializeDatabaseObjects() throws IOException {
 
-		String yamlF = "resources/experiment/isAInitialization.yaml";
+		String isAInitialization = "resources/experiment/isAInitialization.yaml";
+		String apparatusProperties = "resources/experiment/ApparatusPropertiesInitialization.yaml";
 
 		DatabaseInitializeBase base = new DatabaseInitializeBase();
-		if (!base.alreadyRead(yamlF)) {
-			base.readInitializationFile(yamlF, "yaml");
+		if (!base.alreadyRead(isAInitialization)) {
+			base.readInitializationFile(isAInitialization, "yaml");
+		}
+		if (!base.alreadyRead(apparatusProperties)) {
+			base.readInitializationFile(apparatusProperties, "yaml");
 		}
 
 	}
@@ -486,7 +479,11 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 		System.out.println("getUserRepositoryList: " + lst);
 		return lst;
 	}
-	
+	@Override
+	public ArrayList<String> getSubjectPropertyList(String subject) throws IOException {
+		System.out.println("getSubjectPropertyList: " + subject);
+		return getRelationList(subject, false, "ApparatusAttributeValuePair#String");
+	}
 	/*
 	 * 
 	 */
@@ -525,7 +522,12 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 				propertyvalues);
 		for (DatabaseObject obj : objectsRDF) {
 			KeywordRDF rdf = (KeywordRDF) obj;
-			String ans = rdf.getSubject();
+			String ans = null;
+			if(isObject) {
+				ans = rdf.getSubject();
+			} else {
+				ans = rdf.getObject();
+			}
 			lst.add(ans);
 		}
 		return lst;

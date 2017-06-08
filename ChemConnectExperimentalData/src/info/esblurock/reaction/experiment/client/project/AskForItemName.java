@@ -108,11 +108,9 @@ public class AskForItemName extends Composite implements HasText {
 		boolean ans = true;
 		if(source.getText().length() == 0) {
 			ans = false;
-			//MaterialToast.fireToast(source.getPlaceholder() + " not given");
 		}
 		if(type.getText().length() == 0) {
 			ans = false;
-			//MaterialToast.fireToast(type.getPlaceholder() + " not given");
 		}
 		if(name.getText().length() == 0) {
 			ans = false;
