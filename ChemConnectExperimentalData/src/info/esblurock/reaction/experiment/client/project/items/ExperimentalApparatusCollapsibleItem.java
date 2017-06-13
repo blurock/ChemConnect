@@ -30,7 +30,7 @@ public class ExperimentalApparatusCollapsibleItem extends ChooseExperimentalColl
 		super.setSubType(subtype);
 		ExperimentalAttributeProperties props = new ExperimentalAttributeProperties("Properties", subtype, experimentalData);
 		itemsList.add(props);
-		UploadPhoto photo = new UploadPhoto();
+		UploadPhoto photo = new UploadPhoto(listTitle.getText());
 		itemsList.add(photo);
 	}
 

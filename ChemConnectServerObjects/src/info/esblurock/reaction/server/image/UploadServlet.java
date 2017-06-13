@@ -1,6 +1,7 @@
 package info.esblurock.reaction.server.image;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -13,15 +14,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.blobstore.FileInfo;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.ServingUrlOptions;
+import com.google.appengine.tools.cloudstorage.GcsFilename;
 
+import info.esblurock.reaction.client.async.UserImageService;
 import info.esblurock.reaction.data.UserDTO;
+import info.esblurock.reaction.data.image.ImageUploadTransaction;
+import info.esblurock.reaction.data.image.UploadedImage;
+import info.esblurock.reaction.data.store.StoreObject;
 import info.esblurock.reaction.server.utilities.ContextAndSessionUtilities;
 import info.esblurock.reaction.server.utilities.ManageDataSourceIdentification;
+import info.esblurock.reaction.server.utilities.WriteObjectTransactionToDatabase;
 
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.blobstore.BlobKey;
@@ -48,71 +56,62 @@ public class UploadServlet extends HttpServlet {
 	private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+		System.out.println("UploadServlet: doPost");
+		System.out.println("doPost: source =" + req.getParameter(UserImageService.sourceFileParameter));
+		System.out.println("doPost: keyword=" + req.getParameter(UserImageService.keywordNameParameter));
+		System.out.println("doPost: URI: " + req.getRequestURI());
+		
 		Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 		List<BlobKey> blobKey = blobs.get("image");
-
+		Map<String,List<FileInfo>> mapinfos = blobstoreService.getFileInfos(req);
+		List<FileInfo> infos = mapinfos.get("image");
+		
+		String fileCode = req.getParameter(UserImageService.sourceFileParameter);
+		String keyword = req.getParameter(UserImageService.keywordNameParameter);
+		
+		System.out.println("Source: " + fileCode + ", KeywordName: " + keyword);
+		
 		HttpSession session = req.getSession();
 		ContextAndSessionUtilities util = new ContextAndSessionUtilities(getServletContext(), session);
 		UserDTO user = util.getUserInfo();
-
+		
 		if (blobKey == null) {
 			System.out.println("blobkey is null");
 		} else {
 
 			ImagesService imagesService = ImagesServiceFactory.getImagesService();
-			//ServletOutputStream out = res.getOutputStream();
-			//res.setBufferSize(32768);
-			//res.setContentType("text/html; charset=UTF-8");
-			//res.setCharacterEncoding("UTF-8");
-			String outputSourceCode = ManageDataSourceIdentification.getDataSourceIdentification(user.getName());
-
-			//boolean notfirst = false;
+			Iterator<FileInfo> infoiter = infos.iterator();
+			StoreObject store = new StoreObject(user.getName(),keyword,fileCode);
 			for (BlobKey key : blobKey) {
-				ServingUrlOptions options = ServingUrlOptions.Builder.withBlobKey(key);
-				// Get the image serving URL
-				String imageUrl = imagesService.getServingUrl(options);
+				FileInfo fileinfo = infoiter.next();
 				/*
-				if (notfirst) {
-					out.print(",");
-				} else {
-					notfirst = true;
-				}
-				out.println(imageUrl);
-*/
-				// For the sake of clarity, we'll use low-level entities
-				Entity uploadedImage = new Entity("UploadedImage");
-				uploadedImage.setProperty("blobKey", key);
-				// uploadedImage.setProperty(UploadedImage.CREATED_AT, new
-				// Date());
+				System.out.println("UploadServlet: " + fileinfo);
+				System.out.println("UploadServlet: " + fileinfo.toString());
+				System.out.println("UploadServlet: " + UserImageServiceImpl.bucketName);
+				System.out.println("UploadServlet: " + fileinfo.getFilename());
+				System.out.println("UploadServlet: " + fileinfo.getGsObjectName());
+				System.out.println("UploadServlet: " + fileinfo.getSize());
+				System.out.println("UploadServlet: " + fileinfo.getContentType());
+				String blobS = "/gs/" + UserImageServiceImpl.bucketName + "/" + fileinfo.getFilename();
+				System.out.println("UploadServlet: " + blobS);
 
-				// Highly unlikely we'll ever filter on this property
-				// uploadedImage.setUnindexedProperty(UploadedImage.SERVING_URL,
-				// imageUrl);
+				BlobKey blobKeyGS = blobstoreService.createGsBlobKey(blobS);
+				System.out.println("UploadServlet: " + blobKeyGS);				
+				*/
+				ServingUrlOptions options = ServingUrlOptions.Builder.withGoogleStorageFileName(fileinfo.getGsObjectName());
+				String imageUrl = imagesService.getServingUrl(options);
 
-				DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-				datastore.put(uploadedImage);
+				System.out.println("KeywordName: "+ keyword);
+				
+				UploadedImage uploadedImage = new UploadedImage(user.getName(),fileCode,keyword, 
+						key, imageUrl,fileinfo.getFilename());
+				store.store(uploadedImage);
 
-				System.out.println("servername: " + req.getServerName());
-				//String url = "http://" + req.getServerName() + ":" + req.getServerPort() + "/upload?imageUrl="
-				//		+ imageUrl;
 				String url = "/upload?imageUrl=" + imageUrl;
-				System.out.println("Redirect url: " + url);
 				res.setHeader("Content-Type", "text/html");
 				res.sendRedirect(url);
-				System.out.println("UploadServlet doPost:   /upload?imageUrl=" + imageUrl);
-
-				System.out.println("UploadServlet doPost: " + imageUrl);
-				// res.getWriter().write(imageUrl);
-				// res.getWriter().flush();
-				/*
-				 * ServletOutputStream out = null;
-				 * res.setContentType("text/html; charset=UTF-8");
-				 * res.setCharacterEncoding("UTF-8"); out =
-				 * res.getOutputStream(); out.print(imageUrl); out.flush();
-				 */
-
 			}
+			store.finish();
 		}
 	}
 
@@ -120,24 +119,14 @@ public class UploadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		System.out.println("UploadServlet doGet: ");
 		String imageUrl = req.getParameter("imageUrl");
-		//resp.setHeader("Content-Type", "text/html");
-		// This is a bit hacky, but it'll work. We'll use this key in an Async
-		// service to
-		// fetch the image and image information
-		//imageUrl = "<pre>" + imageUrl +  "</pre>";
-		resp.setContentType("text/html");
-		resp.setHeader("Pragma", "No-cache");
-		resp.setDateHeader("Expires", 0);
-		resp.setHeader("Cache-Control", "no-cache");
-		resp.getWriter().println(imageUrl);
-		System.out.println("UploadServlet doGet: " + imageUrl);
-
-		//ServletOutputStream out = null;
-		//resp.setContentType("text/html; charset=UTF-8");
-		//resp.setCharacterEncoding("UTF-8");
-		//out = resp.getOutputStream();
-		//out.print(imageUrl);
-		//out.flush();
-
+    	resp.setHeader("Content-Type", "text/html");
+    	System.out.println("doGet  : " + imageUrl);
+    	
+    	// This is a bit hacky, but it'll work. We'll use this key in an Async service to
+    	// fetch the image and image information
+    	resp.getWriter().println(imageUrl);
+		
+        //BlobKey blobKey = new BlobKey(imageUrl);
+        //blobstoreService.serve(blobKey, resp);
 	}
 }

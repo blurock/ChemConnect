@@ -13,8 +13,7 @@ import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 
-import gwt.material.design.addins.client.fileuploader.base.UploadFile;
-import gwt.material.design.addins.client.fileuploader.events.SuccessEvent;
+import gwt.material.design.client.ui.MaterialToast;
 
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Image;
@@ -23,6 +22,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 import info.esblurock.reaction.client.async.UserImageService;
 import info.esblurock.reaction.client.async.UserImageServiceAsync;
+import info.esblurock.reaction.data.image.ImageServiceInformation;
 
 public class UploadPhoto extends Composite implements HasText {
 
@@ -35,76 +35,80 @@ public class UploadPhoto extends Composite implements HasText {
 
 	@UiField
 	Button uploadButton;
-
 	@UiField
 	FormPanel uploadForm;
-
 	@UiField
 	FileUpload uploadField;
-	
 
-	public UploadPhoto() {
+	String keywordName;
+	ImageServiceInformation serviceInformation;
+	
+	public UploadPhoto(String keywordName) {
 		initWidget(uiBinder.createAndBindUi(this));
-		uploadButton.setText("Loading...");
-		uploadButton.setEnabled(false);
-		uploadField.setName("image");
+		this.keywordName = keywordName;
 		// Now we use out GWT-RPC service and get an URL
-		startNewBlobstoreSession();
+		startNewBlobstoreSession(true);
+
+		uploadButton.setText("Loading...");
+		uploadButton.setEnabled(true);
+
 		uploadForm.addSubmitCompleteHandler(new FormPanel.SubmitCompleteHandler() {
 
 			@Override
 			public void onSubmitComplete(SubmitCompleteEvent event) {
-				Window.alert("UploadPhoto() 4" + event.getResults());
+				Window.alert("Complete result: " + event.getResults());
 				uploadForm.reset();
-				startNewBlobstoreSession();
-				// This is what gets the result back - the content-type *must*
-				// be
-				// text-html
+				startNewBlobstoreSession(false);
 				String imageUrl = event.getResults();
-				
-				if(imageUrl == null) 
-					imageUrl = "http://0.0.0.0:8888/_ah/img/7lBwuUzlzHmYxWhfSDLNXQ";
-				Image image = new Image();
-				
-				image.setUrl(imageUrl);
 
-				final PopupPanel imagePopup = new PopupPanel(true);
-				imagePopup.setWidget(image);
+				if (imageUrl == null) {
+					MaterialToast.fireToast("Image result is null");
+				} else {
+					
+					
+					Image image = new Image();
 
-				// Add some effects
-				imagePopup.setAnimationEnabled(true); // animate opening the
+					image.setUrl(imageUrl);
+
+					final PopupPanel imagePopup = new PopupPanel(true);
+					imagePopup.setWidget(image);
+
+					// Add some effects
+					imagePopup.setAnimationEnabled(true); // animate opening the
+															// image
+					imagePopup.setGlassEnabled(true); // darken everything under
+														// the
 														// image
-				imagePopup.setGlassEnabled(true); // darken everything under the
-													// image
-				imagePopup.setAutoHideEnabled(true); // close image when the
-														// user clicks
-														// outside it
-				imagePopup.center(); // center the image
-				
+					imagePopup.setAutoHideEnabled(true); // close image when the
+															// user clicks
+															// outside it
+					imagePopup.center(); // center the image
+
+				}
 			}
 		});
 	}
 
-	private void startNewBlobstoreSession() {
-		userImageService.getBlobstoreUploadUrl(new AsyncCallback<String>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				Window.alert("startNewBlobstoreSession: " + caught.toString());
-			}
-
-			@Override
-			public void onSuccess(String result) {
-				uploadForm.setAction(result);
-				uploadButton.setText("Upload");
-				uploadButton.setEnabled(true);
-				uploadForm.setEncoding(FormPanel.ENCODING_MULTIPART);
-				uploadForm.setMethod(FormPanel.METHOD_POST);
-			}
-
-		} );
+	private void startNewBlobstoreSession(boolean uploadService) {
+		ImageServiceCallback callback = new ImageServiceCallback(this);
+		userImageService.getBlobstoreUploadUrl(keywordName, uploadService, callback);
 	}
 
+	public void fillUpload(ImageServiceInformation result) {
+		uploadField.setName("image");
+		uploadForm.setAction(result.getUploadUrl());
+		uploadButton.setText("Upload");
+		uploadButton.setEnabled(true);
+		uploadForm.setEncoding(FormPanel.ENCODING_MULTIPART);
+		uploadForm.setMethod(FormPanel.METHOD_POST);
+		if(result.getFileCode() != null) {
+			serviceInformation = result;
+			Window.alert("Set up service information: " + serviceInformation.getFileCode() + " for user: " + serviceInformation.getUser());			
+		} else {
+			Window.alert("Find images with fileCode: " + serviceInformation.getFileCode() + " for user: " + serviceInformation.getUser());			
+		}
+	}
+	
 	@UiHandler("uploadButton")
 	void onSubmit(ClickEvent e) {
 		Window.alert("Filename: " + uploadField.getFilename() + "  Name: " + uploadField.getName());

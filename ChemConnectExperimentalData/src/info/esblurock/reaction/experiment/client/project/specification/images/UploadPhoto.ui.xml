@@ -3,21 +3,46 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:m="urn:import:gwt.material.design.client.ui"
 	xmlns:user="urn:import:info.esblurock.reaction.client.panel" xmlns:ma="urn:import:gwt.material.design.addins.client"
 	xmlns:gwt="urn:import:gwtupload.client">
+
+	<ui:with field='res'
+		type='info.esblurock.reaction.client.ui.resource.MaterialResources' />
+
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader
 			backgroundColor="grey">
-			<m:MaterialLink ui:field="specification" text="Image" textColor="black" />
+			<m:MaterialLink ui:field="specification" text="Image"
+				textColor="black" />
 			<m:MaterialLink ui:field="delete" iconType="CLOSE"
 				iconPosition="RIGHT" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
-			<g:FormPanel ui:field="uploadForm">
-				<g:HorizontalPanel>
-					<g:FileUpload ui:field="uploadField"></g:FileUpload>
-					<g:Button ui:field="uploadButton" text="Upload"></g:Button>
-				</g:HorizontalPanel>
+			<g:HorizontalPanel>
+				<!-- ma:fileuploader.MaterialFileUploader ui:field="cardUploader" grid="l4" 
+					url="/fileupload" preview="false" maxFileSize="20" shadow="0" clickable="cardUpload" -->
+				<m:MaterialCard>
+					<m:MaterialCardImage>
+						<m:MaterialImage ui:field="imgPreview" resource="{res.RDF_ReactionData}"
+							height="30px" />
+					</m:MaterialCardImage>
+					<m:MaterialCardContent layoutPosition="RELATIVE">
+						<!-- <m:MaterialLabel ui:field="lblName" text="Drag file here" fontSize="1.5em" 
+							/> <m:MaterialLabel ui:field="lblSize" text="text file" fontSize="0.8em" 
+							/> <m:MaterialProgress ui:field="progress" layoutPosition="ABSOLUTE" bottom="0" 
+							left="0" type="DETERMINATE" percent="0" /> <m:MaterialButton ui:field="cardUpload" 
+							m:id="cardUpload" layoutPosition="ABSOLUTE" top="-25" right="25" type="FLOATING" 
+							backgroundColor="pink" size="LARGE" iconType="CLOUD_UPLOAD" iconColor="white" 
+							/> -->
+						<g:FormPanel ui:field="uploadForm">
+							<g:HorizontalPanel>
+								<g:FileUpload ui:field="uploadField"></g:FileUpload>
+								<g:Button ui:field="uploadButton"></g:Button>
+							</g:HorizontalPanel>
+						</g:FormPanel>
+					</m:MaterialCardContent>
+				</m:MaterialCard>
+				<!-- /ma:fileuploader.MaterialFileUploader -->
 
-			</g:FormPanel>
+			</g:HorizontalPanel>
 		</m:MaterialCollapsibleBody>
 	</m:MaterialCollapsibleItem>
 </ui:UiBinder> 

@@ -15,5 +15,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectClientServerCommon"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ChemConnectDatabaseObjects"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/yamlbeans"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/appengine-gcs-client-0.3.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>
