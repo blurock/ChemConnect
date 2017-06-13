@@ -84,27 +84,13 @@ public class UploadServlet extends HttpServlet {
 			StoreObject store = new StoreObject(user.getName(),keyword,fileCode);
 			for (BlobKey key : blobKey) {
 				FileInfo fileinfo = infoiter.next();
-				/*
-				System.out.println("UploadServlet: " + fileinfo);
-				System.out.println("UploadServlet: " + fileinfo.toString());
-				System.out.println("UploadServlet: " + UserImageServiceImpl.bucketName);
-				System.out.println("UploadServlet: " + fileinfo.getFilename());
-				System.out.println("UploadServlet: " + fileinfo.getGsObjectName());
-				System.out.println("UploadServlet: " + fileinfo.getSize());
-				System.out.println("UploadServlet: " + fileinfo.getContentType());
-				String blobS = "/gs/" + UserImageServiceImpl.bucketName + "/" + fileinfo.getFilename();
-				System.out.println("UploadServlet: " + blobS);
-
-				BlobKey blobKeyGS = blobstoreService.createGsBlobKey(blobS);
-				System.out.println("UploadServlet: " + blobKeyGS);				
-				*/
 				ServingUrlOptions options = ServingUrlOptions.Builder.withGoogleStorageFileName(fileinfo.getGsObjectName());
 				String imageUrl = imagesService.getServingUrl(options);
 
 				System.out.println("KeywordName: "+ keyword);
 				
 				UploadedImage uploadedImage = new UploadedImage(user.getName(),fileCode,keyword, 
-						key, imageUrl,fileinfo.getFilename());
+						key.getKeyString(), imageUrl,fileinfo.getFilename());
 				store.store(uploadedImage);
 
 				String url = "/upload?imageUrl=" + imageUrl;

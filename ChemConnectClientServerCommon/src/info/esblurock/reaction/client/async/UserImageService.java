@@ -1,9 +1,14 @@
 package info.esblurock.reaction.client.async;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 import info.esblurock.reaction.data.image.ImageServiceInformation;
+import info.esblurock.reaction.data.image.UploadedImage;
+
 
 @RemoteServiceRelativePath("images")
 public interface UserImageService  extends RemoteService  {
@@ -14,4 +19,6 @@ public interface UserImageService  extends RemoteService  {
 	static public String keywordNameParameter = "keywordName";
 	
 	ImageServiceInformation getBlobstoreUploadUrl(String keywordName, boolean uploadService);
+
+	ArrayList<UploadedImage> getUploadedImageSet(ImageServiceInformation serviceInfo) throws IOException;
 }

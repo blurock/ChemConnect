@@ -6,20 +6,18 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.Window;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FileUpload;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.FormPanel.SubmitCompleteEvent;
 
-import gwt.material.design.client.ui.MaterialToast;
 
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import gwt.material.design.client.ui.MaterialCollapsible;
 import info.esblurock.reaction.client.async.UserImageService;
 import info.esblurock.reaction.client.async.UserImageServiceAsync;
 import info.esblurock.reaction.data.image.ImageServiceInformation;
@@ -39,6 +37,8 @@ public class UploadPhoto extends Composite implements HasText {
 	FormPanel uploadForm;
 	@UiField
 	FileUpload uploadField;
+	@UiField
+	MaterialCollapsible collapsible;
 
 	String keywordName;
 	ImageServiceInformation serviceInformation;
@@ -48,7 +48,6 @@ public class UploadPhoto extends Composite implements HasText {
 		this.keywordName = keywordName;
 		// Now we use out GWT-RPC service and get an URL
 		startNewBlobstoreSession(true);
-
 		uploadButton.setText("Loading...");
 		uploadButton.setEnabled(true);
 
@@ -56,23 +55,18 @@ public class UploadPhoto extends Composite implements HasText {
 
 			@Override
 			public void onSubmitComplete(SubmitCompleteEvent event) {
-				Window.alert("Complete result: " + event.getResults());
 				uploadForm.reset();
 				startNewBlobstoreSession(false);
-				String imageUrl = event.getResults();
-
+				//String imageUrl = event.getResults();
+/*
 				if (imageUrl == null) {
 					MaterialToast.fireToast("Image result is null");
 				} else {
-					
-					
 					Image image = new Image();
-
 					image.setUrl(imageUrl);
-
+					
 					final PopupPanel imagePopup = new PopupPanel(true);
 					imagePopup.setWidget(image);
-
 					// Add some effects
 					imagePopup.setAnimationEnabled(true); // animate opening the
 															// image
@@ -85,7 +79,9 @@ public class UploadPhoto extends Composite implements HasText {
 					imagePopup.center(); // center the image
 
 				}
+				*/
 			}
+			
 		});
 	}
 
@@ -105,12 +101,20 @@ public class UploadPhoto extends Composite implements HasText {
 			serviceInformation = result;
 		} else {
 			Window.alert("Find images with fileCode: " + serviceInformation.getFileCode() + " for user: " + serviceInformation.getUser());			
+			UploadPhotosCallback callback = new UploadPhotosCallback(this);
+			userImageService.getUploadedImageSet(serviceInformation, callback);
 		}
+	}
+	
+	public void addImage(String title, Image image) {
+		Window.alert("addImage: " + title);
+		Window.alert("addImage: " + image);
+		ImageColumn imagecollapse = new ImageColumn(title, image);
+		collapsible.add(imagecollapse);
 	}
 	
 	@UiHandler("uploadButton")
 	void onSubmit(ClickEvent e) {
-		Window.alert("Filename: " + uploadField.getFilename() + "  Name: " + uploadField.getName());
 		uploadForm.submit();
 	}
 

@@ -21,7 +21,7 @@ public class UploadedImage extends DatabaseObject {
     String keyWord;
     
     @Persistent
-    BlobKey blobKey;
+    String blobKey;
 
     @Persistent
     String imageUrl;
@@ -29,7 +29,10 @@ public class UploadedImage extends DatabaseObject {
     @Persistent
     String filename;
 
-	public UploadedImage(String user, String fileCode, String keyWord, BlobKey blobKey, String imageUrl, String filename) {
+    public UploadedImage() {
+    }
+    
+	public UploadedImage(String user, String fileCode, String keyWord, String blobKey, String imageUrl, String filename) {
 		super();
 		this.user = user;
 		this.fileCode = fileCode;
@@ -51,7 +54,7 @@ public class UploadedImage extends DatabaseObject {
 		return keyWord;
 	}
 
-	public BlobKey getBlobKey() {
+	public String getBlobKey() {
 		return blobKey;
 	}
 
