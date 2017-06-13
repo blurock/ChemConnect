@@ -103,7 +103,6 @@ public class UploadPhoto extends Composite implements HasText {
 		uploadForm.setMethod(FormPanel.METHOD_POST);
 		if(result.getFileCode() != null) {
 			serviceInformation = result;
-			Window.alert("Set up service information: " + serviceInformation.getFileCode() + " for user: " + serviceInformation.getUser());			
 		} else {
 			Window.alert("Find images with fileCode: " + serviceInformation.getFileCode() + " for user: " + serviceInformation.getUser());			
 		}

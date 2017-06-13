@@ -1,5 +1,7 @@
 package info.esblurock.reaction.server.image;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import com.google.appengine.api.blobstore.BlobstoreService;
@@ -11,6 +13,7 @@ import info.esblurock.reaction.client.async.UserImageService;
 import info.esblurock.reaction.data.UserDTO;
 import info.esblurock.reaction.data.image.ImageServiceInformation;
 import info.esblurock.reaction.data.image.ImageUploadTransaction;
+import info.esblurock.reaction.data.image.UploadedImage;
 import info.esblurock.reaction.server.utilities.ContextAndSessionUtilities;
 import info.esblurock.reaction.server.utilities.ManageDataSourceIdentification;
 import info.esblurock.reaction.server.utilities.WriteObjectTransactionToDatabase;
@@ -46,4 +49,14 @@ public class UserImageServiceImpl extends RemoteServiceServlet implements UserIm
         return returninfo;
     }
  
+    public ArrayList<UploadedImage> getUploadedImageSet(ImageServiceInformation serviceInfo) {
+    	ArrayList<UploadedImage> imagelst = new ArrayList<UploadedImage>();
+    	
+    	
+    	
+    	return imagelst;
+    	
+    	
+    }
+    
 }
