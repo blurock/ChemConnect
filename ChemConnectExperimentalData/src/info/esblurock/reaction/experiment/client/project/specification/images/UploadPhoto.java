@@ -5,7 +5,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FileUpload;
@@ -76,22 +75,18 @@ public class UploadPhoto extends Composite implements HasText {
 		if(result.getFileCode() != null) {
 			serviceInformation = result;
 		} else {
-			Window.alert("UploadPhoto.fillUpload: " + serviceInformation.getFileCode());
 			UploadPhotosCallback callback = new UploadPhotosCallback(this);
 			userImageService.getUploadedImageSet(serviceInformation, callback);
 		}
 	}
 	
 	public void addImage(UploadedImage imageinfo) {
-		Window.alert("UploadPhoto.addImage: " + imageinfo.getFileCode());
-		
 		ImageColumn imagecollapse = new ImageColumn(imageinfo);
 		collapsible.add(imagecollapse);
 	}
 	
 	@UiHandler("uploadButton")
 	void onSubmit(ClickEvent e) {
-		Window.alert("UploadPhoto.onSubmit: " + serviceInformation.getUploadUrl());
 		uploadForm.setAction(serviceInformation.getUploadUrl());
 		uploadForm.submit();
 	}

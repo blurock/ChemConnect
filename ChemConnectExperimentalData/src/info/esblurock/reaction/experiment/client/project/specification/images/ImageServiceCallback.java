@@ -2,7 +2,6 @@ package info.esblurock.reaction.experiment.client.project.specification.images;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.FormPanel;
 
 import info.esblurock.reaction.data.image.ImageServiceInformation;
 
@@ -21,7 +20,6 @@ public class ImageServiceCallback implements AsyncCallback<ImageServiceInformati
 
 	@Override
 	public void onSuccess(ImageServiceInformation result) {
-		Window.alert("ImageServiceCallback:   startNewBlobstoreSession(): Success fileCode=" + result.getFileCode());
 		uploadPhoto.fillUpload(result);
 	}
 

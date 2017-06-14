@@ -19,7 +19,6 @@ public class PropertyListCallback implements AsyncCallback<ArrayList<String>> {
 
 	@Override
 	public void onSuccess(ArrayList<String> result) {
-		Window.alert("PropertyListCallback: " + result);
 		for(String element : result) {
 			top.addAttributeValuePair(element);
 		}

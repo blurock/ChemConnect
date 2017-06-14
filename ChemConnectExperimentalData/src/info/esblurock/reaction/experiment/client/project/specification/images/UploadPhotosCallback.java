@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.Image;
 
 import info.esblurock.reaction.data.image.UploadedImage;
 
@@ -24,7 +23,6 @@ public class UploadPhotosCallback implements AsyncCallback<ArrayList<UploadedIma
 
 	@Override
 	public void onSuccess(ArrayList<UploadedImage> result) {
-		Window.alert("UploadPhotosCallback: " + result.size());
 		for(UploadedImage imageinfo : result) {
 			upload.addImage(imageinfo);
 		}

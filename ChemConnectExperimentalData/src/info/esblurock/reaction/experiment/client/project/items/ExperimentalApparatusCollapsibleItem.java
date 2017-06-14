@@ -1,7 +1,5 @@
 package info.esblurock.reaction.experiment.client.project.items;
 
-import com.google.gwt.user.client.Window;
-
 import gwt.material.design.client.ui.MaterialToast;
 import info.esblurock.reaction.experiment.client.project.specification.images.UploadPhoto;
 import info.esblurock.reaction.experiment.client.ui.ExperimentalDataImpl;
