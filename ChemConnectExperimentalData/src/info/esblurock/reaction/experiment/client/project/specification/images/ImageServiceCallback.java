@@ -21,7 +21,7 @@ public class ImageServiceCallback implements AsyncCallback<ImageServiceInformati
 
 	@Override
 	public void onSuccess(ImageServiceInformation result) {
-		Window.alert("ImageServiceCallback:   startNewBlobstoreSession(): Success");
+		Window.alert("ImageServiceCallback:   startNewBlobstoreSession(): Success fileCode=" + result.getFileCode());
 		uploadPhoto.fillUpload(result);
 	}
 

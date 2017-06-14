@@ -3,12 +3,15 @@ package info.esblurock.reaction.experiment.client.project.specification.images;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HasText;
 import com.google.gwt.user.client.ui.Widget;
 
 import gwt.material.design.client.ui.MaterialLink;
+import info.esblurock.reaction.data.image.UploadedImage;
+
 import com.google.gwt.user.client.ui.Image;
 
 
@@ -29,13 +32,19 @@ public class ImageColumn extends Composite implements HasText {
 	@UiField
 	HTMLPanel imagepanel;
 	
+	UploadedImage imageinfo;
+	
 	public ImageColumn(UploadPhoto upload) {
 		initWidget(uiBinder.createAndBindUi(this));
+		imageinfo = null;
 	}
 
-	public ImageColumn(String title, Image image) {
+	public ImageColumn(UploadedImage imageinfo) {
 		initWidget(uiBinder.createAndBindUi(this));
-		this.title.setText(title);
+		this.imageinfo = imageinfo;
+		Image image = new Image();
+		image.setUrl(imageinfo.getImageUrl());
+		this.title.setText(imageinfo.getFilename());
 		imagepanel.add(image);
 	}
 	

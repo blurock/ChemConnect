@@ -26,11 +26,9 @@ public class UploadPhotosCallback implements AsyncCallback<ArrayList<UploadedIma
 	public void onSuccess(ArrayList<UploadedImage> result) {
 		Window.alert("UploadPhotosCallback: " + result.size());
 		for(UploadedImage imageinfo : result) {
-			Window.alert("UploadPhotosCallback: " + imageinfo.getFilename() + ":     " + imageinfo.getImageUrl());
-			Image image = new Image();
-			image.setUrl(imageinfo.getImageUrl());
-			upload.addImage(imageinfo.getFilename(), image);
+			upload.addImage(imageinfo);
 		}
+		upload.startNewBlobstoreSession(true);
 	}
 
 }
