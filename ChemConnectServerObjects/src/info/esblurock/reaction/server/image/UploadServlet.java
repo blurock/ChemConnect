@@ -89,8 +89,9 @@ public class UploadServlet extends HttpServlet {
 
 				System.out.println("KeywordName: "+ keyword);
 				
+				String description = keyword + "\n" + fileinfo.getFilename() + "\n" + user.getName() + "\n";
 				UploadedImage uploadedImage = new UploadedImage(user.getName(),fileCode,keyword, 
-						key.getKeyString(), imageUrl,fileinfo.getFilename());
+						key.getKeyString(), imageUrl,fileinfo.getFilename(), description);
 				store.store(uploadedImage);
 
 				String url = "/upload?imageUrl=" + imageUrl;

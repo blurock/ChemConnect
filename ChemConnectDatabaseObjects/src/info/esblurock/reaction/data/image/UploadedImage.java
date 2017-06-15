@@ -29,10 +29,14 @@ public class UploadedImage extends DatabaseObject {
     @Persistent
     String filename;
 
+    @Persistent
+    String description;
+
     public UploadedImage() {
     }
     
-	public UploadedImage(String user, String fileCode, String keyWord, String blobKey, String imageUrl, String filename) {
+	public UploadedImage(String user, String fileCode, String keyWord, String blobKey, 
+			String imageUrl, String filename, String description) {
 		super();
 		this.user = user;
 		this.fileCode = fileCode;
@@ -40,6 +44,7 @@ public class UploadedImage extends DatabaseObject {
 		this.blobKey = blobKey;
 		this.imageUrl = imageUrl;
 		this.filename = filename;
+		this.description = description;
 	}
 
 	public String getUser() {
@@ -64,6 +69,14 @@ public class UploadedImage extends DatabaseObject {
 
 	public String getFilename() {
 		return filename;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
     
     

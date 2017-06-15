@@ -16,6 +16,7 @@ import info.esblurock.reaction.data.contact.entities.OrganizationDescriptionData
 import info.esblurock.reaction.data.contact.entities.UserDescriptionData;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
+import info.esblurock.reaction.data.description.ObjectLinkDescription;
 import info.esblurock.reaction.data.rdf.KeywordRDF;
 import info.esblurock.reaction.server.ServerBase;
 import info.esblurock.reaction.server.StringToKeyConversion;
@@ -66,7 +67,6 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	 *         contactinfodata, locationdata); return organization; }
 	 */
 	public UserDescriptionData getUserDescriptionData(String keyword) throws IOException {
-		PersistenceManager pm = PMF.get().getPersistenceManager();
 		UserDescriptionData userdata = null;
 		try {
 			System.out.println("Get User Description, keyword='" + keyword + "'");
@@ -74,14 +74,14 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 					.getDatabaseObjectsFromSingleProperty(UserDescriptionData.class.getName(), "keyword", keyword);
 			if (objs.size() > 0) {
 				userdata = (UserDescriptionData) objs.get(0);
-				DescriptionDataData descr = userdata.getDescription();
+				//DescriptionDataData descr = userdata.getDescription();
 			}
 		} catch (Exception e) {
 			throw new IOException(e.toString());
 		}
 		return userdata;
 	}
-
+/*
 	private List<DatabaseObject> getDatabaseObjectsFromSourceAndKeyword(Class classname, String source, String keyword)
 			throws IOException {
 		ArrayList<String> propnames = new ArrayList<String>();
@@ -92,7 +92,7 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 		propvalues.add(keyword);
 		return QueryBase.getDatabaseObjectsFromProperties(classname.getName(), propnames, propvalues);
 	}
-
+*/
 	public DescriptionDataData getDescriptionDataData(String source, String keyword) throws IOException {
 		ArrayList<String> propnames = new ArrayList<String>();
 		ArrayList<String> propvalues = new ArrayList<String>();
@@ -247,6 +247,7 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	@Override
 	public List<String> getListOfOrganizationsKeywords() {
 		javax.jdo.Query q = pm.newQuery(OrganizationDescriptionData.class);
+		@SuppressWarnings("unchecked")
 		List<OrganizationDescriptionData> results = (List<OrganizationDescriptionData>) q.execute();
 		ArrayList<String> names = new ArrayList<String>();
 		if (!results.isEmpty()) {
@@ -268,6 +269,7 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	@Override
 	public List<String> getListOfContactsKeywords() {
 		javax.jdo.Query q = pm.newQuery(UserDescriptionData.class);
+		@SuppressWarnings("unchecked")
 		List<UserDescriptionData> results = (List<UserDescriptionData>) q.execute();
 		ArrayList<String> names = new ArrayList<String>();
 		if (!results.isEmpty()) {
@@ -420,12 +422,9 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 		String keyword = user.getDescription().getKeyword();
 		String userS = keyword;
 		boolean update = true;
-		try {
-			UserDescriptionData databaseUser = getUserDescriptionData(userS);
+	
+			//UserDescriptionData databaseUser = getUserDescriptionData(userS);
 			QueryBase.deleteFromIdentificationCode(UserDescriptionData.class, "keyword", userS);
-		} catch (IOException ex) {
-			update = false;
-		}
 
 		String idCode = "0";
 		if (userS == null) {
@@ -532,5 +531,16 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 		}
 		return lst;
 	}
-
+	@Override
+	public ArrayList<ObjectLinkDescription> getDataSetOfLinks(String datasetkeyword) throws IOException {
+		ArrayList<ObjectLinkDescription> links = new ArrayList<ObjectLinkDescription>();
+		String propertyname = "DatasetKeyword";
+		List<DatabaseObject> objs = QueryBase.getDatabaseObjectsFromSingleProperty(ObjectLinkDescription.class.getName(), 
+				propertyname, datasetkeyword);
+		for(DatabaseObject obj : objs) {
+			ObjectLinkDescription link = (ObjectLinkDescription) obj;
+			links.add(link);
+		}
+		return links;
+	}
 }

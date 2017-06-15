@@ -12,8 +12,8 @@
 	</ui:style>
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader
-			backgroundColor="cyan lighten-5">
-			<m:MaterialLink ui:field="objecttitle" textColor="blue"
+			backgroundColor="grey">
+			<m:MaterialLink ui:field="objecttitle" textColor="black"
 				iconType="CREATE" iconPosition="LEFT" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>

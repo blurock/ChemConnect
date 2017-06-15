@@ -164,6 +164,26 @@ public class DataDescription extends Composite implements HasText {
 		description.setText(descriptionConstants.userdescriptionplaceholder());
 		description.setPlaceholder(descriptionConstants.userdescriptionplaceholder());
 	}
+
+	public void setTextAsObjectDescription(String objectname, String objectnameplaceholder) {
+		sourcekey.setText(objectname);
+		sourcekey.setVisible(false);
+		inputkey.setText(objectname);
+		inputkey.setVisible(false);
+
+		keyword.setPlaceholder(objectnameplaceholder);
+		keyword.setText(objectname);
+		keyword.setVisible(false);
+		keywordChanged = true;
+		sourcekeyChanged = true;
+
+		objecttitle.setTitle(descriptionConstants.descriptionpaneltitle());
+		date.setVisible(false);
+		oneline.setText(descriptionConstants.onelinetext());
+		oneline.setPlaceholder(descriptionConstants.onelineplaceholder());
+		description.setText(descriptionConstants.descriptionplaceholder());
+		description.setPlaceholder(descriptionConstants.descriptiontext());
+	}
 	public void fill(String keywordS, String onlineS, String descriptionS) {
 		keyword.setText(keywordS);
 		oneline.setText(onlineS);

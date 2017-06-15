@@ -8,6 +8,12 @@
 	.important {
 		font-weight: bold;
 	}
+		.panel {
+		font-family: monospace;
+		color: black;
+		background: white;
+	}
+	
 	</ui:style>
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader
@@ -18,7 +24,15 @@
 				iconPosition="RIGHT" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
-			<g:HTMLPanel ui:field="imagepanel"/>
+		<m:MaterialRow>
+		<m:MaterialColumn grid="s6">
+		<g:HTMLPanel ui:field="imagepanel"/>
+		</m:MaterialColumn>
+		<m:MaterialColumn grid="s6">
+		<m:MaterialTextArea ui:field="textDescription" placeholder="Description" styleName="{style.panel}"/>
+		</m:MaterialColumn>
+		</m:MaterialRow>
+			
 		</m:MaterialCollapsibleBody>
 	</m:MaterialCollapsibleItem>
 </ui:UiBinder> 

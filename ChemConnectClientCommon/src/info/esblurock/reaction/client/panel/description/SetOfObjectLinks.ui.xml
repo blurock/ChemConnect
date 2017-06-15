@@ -10,19 +10,19 @@
 	<m:MaterialCollapsibleItem>
 		<m:MaterialCollapsibleHeader
 			backgroundColor="grey">
-			<m:MaterialLink ui:field="referenceheader" text="References"
+			<m:MaterialLink ui:field="linkheader" text="Links"
 				iconType="CREATE" iconPosition="LEFT" textColor="black" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
 			<m:MaterialRow>
 				<m:MaterialColumn grid="s12">
-					<m:MaterialLink ui:field="addreference" text="Add Reference"
+					<m:MaterialLink ui:field="addlink" text="Add Link"
 						textColor="black" iconType="CREATE" iconPosition="LEFT" />
 				</m:MaterialColumn>
 			</m:MaterialRow>
 			<m:MaterialRow>
 				<m:MaterialColumn grid="s12">
-					<m:MaterialCollapsible ui:field="references" />
+					<m:MaterialCollapsible ui:field="links" />
 				</m:MaterialColumn>
 			</m:MaterialRow>
 		</m:MaterialCollapsibleBody>

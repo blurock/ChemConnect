@@ -15,11 +15,12 @@ public class ImageServiceInformation implements Serializable{
 	String bucketName;
 	
 	String uploadUrl;
-
+	
 	public ImageServiceInformation() {
 	}
 	
-	public ImageServiceInformation(String user, String fileCode, String keyWord, String bucketName, String uploadUrl) {
+	public ImageServiceInformation(String user, String fileCode, String keyWord, 
+			String bucketName, String uploadUrl) {
 		super();
 		this.user = user;
 		this.fileCode = fileCode;
@@ -47,4 +48,6 @@ public class ImageServiceInformation implements Serializable{
 	public String getUploadUrl() {
 		return uploadUrl;
 	}
+
+	
 }

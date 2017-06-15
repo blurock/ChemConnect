@@ -10,6 +10,7 @@ import info.esblurock.reaction.data.contact.entities.OrganizationDescriptionData
 import info.esblurock.reaction.data.contact.entities.UserDescriptionData;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
+import info.esblurock.reaction.data.description.ObjectLinkDescription;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -68,5 +69,7 @@ public interface StoreDescriptionData extends RemoteService {
 	ArrayList<String> getUserRepositoryList(String username) throws IOException;
 
 	ArrayList<String> getSubjectPropertyList(String subject) throws IOException;
+
+	ArrayList<ObjectLinkDescription> getDataSetOfLinks(String datasetkeyword) throws IOException;
 
 }

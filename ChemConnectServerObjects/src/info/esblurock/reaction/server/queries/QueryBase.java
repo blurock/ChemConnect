@@ -64,7 +64,18 @@ public class QueryBase {
 			Object objectById = pm.getObjectById(cls, key);
 			pm.deletePersistent(objectById);
 		} catch (Exception ex) {
-			System.out.println("Exception on deleteWithStringKey assuming can't be found: " + ex.toString());
+			System.out.println("Exception on deleteWithStringKey assuming can't be found: " + key 
+					+ "      \n" + ex.toString());
+			throw new IOException(notfound);
+		}
+	}
+	@SuppressWarnings("rawtypes")
+	static public void deleteWithStringKeyList(Class cls, ArrayList<String> keys) throws IOException {
+		try {
+			for(int i=0;i<keys.size();i++) {
+				deleteWithStringKey(cls,keys.get(i));
+			}
+		} catch (Exception ex) {
 			throw new IOException(notfound);
 		}
 	}

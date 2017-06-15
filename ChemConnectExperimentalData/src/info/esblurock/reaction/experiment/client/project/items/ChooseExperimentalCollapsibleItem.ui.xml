@@ -8,7 +8,7 @@
 		font-weight: bold;
 	}
 	</ui:style>
-	<m:MaterialCollapsibleItem>
+	<m:MaterialCollapsibleItem backgroundColor="grey">
 		<m:MaterialCollapsibleHeader
 			backgroundColor="grey">
 			<m:MaterialRow>

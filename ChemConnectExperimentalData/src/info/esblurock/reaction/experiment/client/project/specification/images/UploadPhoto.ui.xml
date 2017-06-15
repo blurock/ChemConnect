@@ -14,6 +14,8 @@
 				textColor="black" />
 			<m:MaterialLink ui:field="delete" iconType="CLOSE"
 				iconPosition="RIGHT" />
+			<m:MaterialLink ui:field="save" iconType="SAVE"
+				iconPosition="RIGHT" />
 		</m:MaterialCollapsibleHeader>
 		<m:MaterialCollapsibleBody>
 			<m:MaterialCard>

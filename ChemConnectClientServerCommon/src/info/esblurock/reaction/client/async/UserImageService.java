@@ -21,4 +21,10 @@ public interface UserImageService  extends RemoteService  {
 	ImageServiceInformation getBlobstoreUploadUrl(String keywordName, boolean uploadService);
 
 	ArrayList<UploadedImage> getUploadedImageSet(ImageServiceInformation serviceInfo) throws IOException;
+
+	ArrayList<UploadedImage> getUploadedImageSetFromKeywordAndUser(String keyword) throws IOException;
+
+	String deleteFromStorage(String blobkey) throws IOException;
+
+	String updateImages(ArrayList<UploadedImage> images) throws IOException;
 }

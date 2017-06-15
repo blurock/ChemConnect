@@ -13,15 +13,12 @@ import javax.jdo.FetchGroup;
 import javax.jdo.PersistenceManager;
 import static com.google.appengine.api.taskqueue.RetryOptions.Builder.*;
 
-import info.esblurock.reaction.data.upload.UploadFileTransaction;
 import info.esblurock.reaction.client.async.TransactionService;
 import info.esblurock.reaction.data.DatabaseObject;
 import info.esblurock.reaction.data.PMF;
 import info.esblurock.reaction.data.rdf.KeywordRDF;
-import info.esblurock.reaction.data.store.StoreObject;
 import info.esblurock.reaction.data.store.UserObjectStorage;
 import info.esblurock.reaction.data.store.UserStorageObjectTreeNode;
-import info.esblurock.reaction.data.transaction.ProcessInProgress;
 import info.esblurock.reaction.data.transaction.TransactionInfo;
 import info.esblurock.reaction.data.upload.FileUploadTextBlock;
 import info.esblurock.reaction.data.upload.TextSetUploadData;
@@ -32,9 +29,7 @@ import info.esblurock.reaction.server.event.RegisterTransaction;
 import info.esblurock.reaction.server.process.DataProcesses;
 import info.esblurock.reaction.server.process.ProcessBase;
 import info.esblurock.reaction.server.process.ProcessInputSpecificationsBase;
-import info.esblurock.reaction.server.process.ProcessUtilities;
 import info.esblurock.reaction.server.process.RegisteredProcesses;
-import info.esblurock.reaction.server.process.upload.ReadFileBaseProcess;
 import info.esblurock.reaction.server.queries.QueryBase;
 import info.esblurock.reaction.server.utilities.ContextAndSessionUtilities;
 

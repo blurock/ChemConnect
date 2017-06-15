@@ -6,6 +6,7 @@ import info.esblurock.reaction.data.contact.entities.OrganizationDescriptionData
 import info.esblurock.reaction.data.contact.entities.UserDescriptionData;
 import info.esblurock.reaction.data.description.DataSetReference;
 import info.esblurock.reaction.data.description.DescriptionDataData;
+import info.esblurock.reaction.data.description.ObjectLinkDescription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,5 +62,7 @@ public interface StoreDescriptionDataAsync {
 	void getUserRepositoryList(String username, AsyncCallback<ArrayList<String>> callback);
 
 	void getSubjectPropertyList(String subject, AsyncCallback<ArrayList<String>> callback);
+
+	void getDataSetOfLinks(String datasetkeyword, AsyncCallback<ArrayList<ObjectLinkDescription>> callback);
 
 }
