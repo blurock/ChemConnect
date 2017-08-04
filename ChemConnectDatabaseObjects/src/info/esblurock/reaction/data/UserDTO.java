@@ -14,6 +14,7 @@ public class UserDTO implements Serializable {
 	String userLevel;
 	ArrayList<String> privledges;
 	
+	
 	public UserDTO() {
 	}
 	

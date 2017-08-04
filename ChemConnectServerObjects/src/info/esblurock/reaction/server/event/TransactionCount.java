@@ -6,11 +6,10 @@ import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
 public class TransactionCount {
-	
+
 	@PrimaryKey
 	@Persistent
 	String userName;
-	
 	@Persistent
 	Integer transactionCount;
 	

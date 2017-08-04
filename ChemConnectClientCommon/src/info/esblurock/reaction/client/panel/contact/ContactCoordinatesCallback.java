@@ -1,6 +1,5 @@
 package info.esblurock.reaction.client.panel.contact;
 
-import com.google.gwt.thirdparty.javascript.jscomp.Result;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import gwt.material.design.client.ui.MaterialToast;

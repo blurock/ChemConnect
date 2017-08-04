@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.TextToDatabase
+path: F3DC776B25B28DE82DE0D6921562D1E2.gwt.rpc

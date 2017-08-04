@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.ProcessReSpecTh
+path: C70C3D700810C004F79902A3DED60CC1.gwt.rpc

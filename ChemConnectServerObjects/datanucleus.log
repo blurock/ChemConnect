@@ -1,0 +1,16 @@
+22:12:41,378 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+22:12:41,586 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+22:13:54,928 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+22:13:55,227 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+22:15:35,355 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+22:15:35,624 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+22:16:08,611 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+22:16:08,876 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+22:18:10,154 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+22:18:10,418 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+22:25:07,800 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer for API "JDO"
+22:25:08,084 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer (version 3.1.1) : Enhancement of classes
+22:25:08,872 (main) INFO  [DataNucleus.Enhancer] - Class "info.esblurock.reaction.server.event.SessionEvent" is already enhanced.
+22:25:08,886 (main) INFO  [DataNucleus.Enhancer] - Class "info.esblurock.reaction.server.event.TransactionCount" is already enhanced.
+22:25:08,886 (main) INFO  [DataNucleus.Enhancer] - Class "info.esblurock.reaction.server.image.StoredImage" is already enhanced.
+22:25:08,886 (main) INFO  [DataNucleus.Enhancer] - DataNucleus Enhancer completed with success for 3 classes. Timings : input=777 ms, enhance=23 ms, total=800 ms. Consult the log for full details
