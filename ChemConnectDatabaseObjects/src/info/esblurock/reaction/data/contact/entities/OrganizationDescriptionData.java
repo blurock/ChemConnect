@@ -9,7 +9,16 @@ import javax.jdo.annotations.Persistent;
 @PersistenceCapable
 public class OrganizationDescriptionData extends DatabaseObject {
     @Persistent
-    String organizationtype;
+    String identifier;
+    
+    @Persistent
+    String organization;
+    @Persistent
+    String subOrganizationOf;
+    @Persistent
+    String OrganizationalUnit;
+    @Persistent
+    String classification;
     
     @Persistent(dependent = "true")
     DescriptionDataData description;
@@ -23,12 +32,20 @@ public class OrganizationDescriptionData extends DatabaseObject {
     public OrganizationDescriptionData() {
     }
 	public OrganizationDescriptionData(
-			String organizationtype,
+			String identifier,
+			String organization,
+			String subOrganizationOf,
+			String OrganizationalUnit,
+			String classification,
 			DescriptionDataData description,
 			ContactInfoData contactinfo, 
 			ContactLocationData location) {
 		super();
-		this.organizationtype = organizationtype;
+		this.identifier = identifier;
+		this.organization = organization;
+		this.subOrganizationOf = subOrganizationOf;
+		this.OrganizationalUnit = OrganizationalUnit;
+		this.classification = classification;
 		this.description = description;
 		this.contactinfo = contactinfo;
 		this.location = location;
@@ -52,7 +69,19 @@ public class OrganizationDescriptionData extends DatabaseObject {
 		this.location = location;
 	}
 	public String getOrganizationtype() {
-		return organizationtype;
+		return classification;
+	}
+	public String getOrganization() {
+		return organization;
+	}
+	public String getSubOrganizationOf() {
+		return subOrganizationOf;
+	}
+	public String getOrganizationalUnit() {
+		return OrganizationalUnit;
+	}
+	public String getIdentifier() {
+		return identifier;
 	}
 	
 }

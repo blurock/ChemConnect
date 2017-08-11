@@ -9,7 +9,7 @@ import info.esblurock.reaction.data.description.DescriptionDataData;
 @PersistenceCapable
 public class UserDescriptionData  extends DatabaseObject {
     @Persistent
-    String keyword;
+    String identifier;
 
     @Persistent
     String userrole;
@@ -26,12 +26,13 @@ public class UserDescriptionData  extends DatabaseObject {
     public UserDescriptionData() {
     }
 	public UserDescriptionData(
+			String identifier,
 			String userrole,
 			DescriptionDataData description,
 			ContactInfoData contactinfo, 
 			ContactLocationData location) {
 		super();
-		keyword = description.getKeyword();
+		this.identifier = identifier;
 		this.userrole = userrole;
 		this.description = description;
 		this.contactinfo = contactinfo;
@@ -58,8 +59,8 @@ public class UserDescriptionData  extends DatabaseObject {
 	public String getUserRole() {
 		return userrole;
 	}
-	public String getKeyword() {
-		return keyword;
+	public String getIdentifier() {
+		return identifier;
 	}
 	
 

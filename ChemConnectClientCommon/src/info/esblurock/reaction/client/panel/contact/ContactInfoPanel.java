@@ -63,8 +63,8 @@ public class ContactInfoPanel extends Composite implements HasText {
 	}
 	public void fill(ContactInfoData contact) {
 		email.setText(contact.getEmail());
-		phone.setText(contact.getPhone());
-		mainhomepage.setText(contact.getWebpage());
+		phone.setText(contact.getTopSite());
+		mainhomepage.setText(contact.getWebSite());
 	}
 	
 	public void fill(String emailS) {

@@ -8,6 +8,8 @@
 <module rename-to='chemconnectexperimentaldata'>
   <!-- Inherit the core Web Toolkit stuff.                        -->
   <inherits name='com.google.gwt.user.User'/>
+  
+  
 	<inherits name="gwtupload.GWTUpload" />
 	<inherits name='info.esblurock.reaction.ChemConnectClientServerCommon' />
 	<inherits name='info.esblurock.reaction.ChemConnectDatabaseObjects' />

@@ -1,6 +1,6 @@
 # Module chemconnectexperimentaldata
 # RPC service class, partial path of RPC policy file
-info.esblurock.reaction.client.async.TextToDatabase, B0F10277EB6E01D6995DA2A86169B2C4.gwt.rpc
-info.esblurock.reaction.client.async.LoginService, E9865FC6AC22F663418EA16A9EDDED90.gwt.rpc
-info.esblurock.reaction.client.async.UserImageService, FDA8DF50DE00DCA0B7DA46BFEF8B0CC2.gwt.rpc
-info.esblurock.reaction.client.async.StoreDescriptionData, 659BFF9A47CBAB66268C6CBA9EC08EFB.gwt.rpc
+info.esblurock.reaction.client.async.StoreDescriptionData, DD698FC8A89AA5D6A32365FA98DFF1BC.gwt.rpc
+info.esblurock.reaction.client.async.LoginService, F4BDD40C08F272A86DA1DED20B68996B.gwt.rpc
+info.esblurock.reaction.client.async.TextToDatabase, F3DC776B25B28DE82DE0D6921562D1E2.gwt.rpc
+info.esblurock.reaction.client.async.UserImageService, B26C67A91FFB8DF660E4B5D3D0077D3C.gwt.rpc

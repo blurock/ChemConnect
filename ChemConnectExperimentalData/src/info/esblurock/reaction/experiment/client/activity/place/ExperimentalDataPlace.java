@@ -4,13 +4,13 @@ import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class ExperimentalDataPlace extends Place {
-	private String helloName;
+	private String placeName;
 
 	public ExperimentalDataPlace(String token) {
-		this.helloName = token;
+		this.placeName = token;
 	}
 	public String getHelloName() {
-		return helloName;
+		return placeName;
 	}
 
 	public static class Tokenizer implements PlaceTokenizer<ExperimentalDataPlace> {

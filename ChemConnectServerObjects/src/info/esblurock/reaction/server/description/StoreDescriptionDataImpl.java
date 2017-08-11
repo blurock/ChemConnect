@@ -356,7 +356,6 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	 */
 	@Override
 	public String storeContactInfo(String key, ContactInfoData contact) {
-		contact.setParentKey(key);
 		String id = storeContactInfoData(contact);
 		return id;
 	}
@@ -371,7 +370,6 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	 */
 	@Override
 	public String storeContactLocation(String key, ContactLocationData location) {
-		location.setParentKey(key);
 		String id = storeContactLocationData(location);
 		return id;
 	}
@@ -385,7 +383,6 @@ public class StoreDescriptionDataImpl extends ServerBase implements StoreDescrip
 	 */
 	@Override
 	public String storeDescriptionDataData(String key, DescriptionDataData data) {
-		data.setParentKey(key);
 		String id = storeDescriptionDataData(data);
 		return id;
 	}

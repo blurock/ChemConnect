@@ -88,12 +88,14 @@ public class StandardNavigation extends Composite implements HasText {
 	}
 	
 	private void handleHistoryToken(String token) {
+		Window.alert("Token: 1  " + token);
 		toptext.setText(token);
 		Place place = Place.organization;
 		if (!"".equals(token)) {
 			place = Place.valueOf(token);
 			toptext.setText(place.getTitle());
 		}
+		Window.alert("Token: 2  " + token);
 		changeNav(place);
 	}
 
@@ -101,6 +103,7 @@ public class StandardNavigation extends Composite implements HasText {
 		Window.scrollTo(0, 0);
 		content.clear();
 		Widget widget = place.getContent();
+		Window.alert("changeNav:  " + widget.getClass().getCanonicalName());
 		content.add(widget);
 	}
 

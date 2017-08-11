@@ -8,32 +8,33 @@ import info.esblurock.reaction.data.DatabaseObject;
 @PersistenceCapable
 public class ContactInfoData  extends DatabaseObject {
 
-    @Persistent
-    String parentKey = "";
-
+	@Persistent
+    String identifier;
+    
     @Persistent
     String email;
 
     @Persistent
-    String phone;
+    String topSite;
 
     @Persistent
-    String webpage;
+    String hasSite;
 
     public ContactInfoData() {
     	
     }
-	public ContactInfoData(String email, String phone, String webpage) {
+	public ContactInfoData(String identifier, String email, String topSite, String webpage) {
 		super();
+		this.identifier = identifier;
 		this.email = email;
-		this.phone = phone;
-		this.webpage = webpage;
+		this.topSite = topSite;
+		this.hasSite = webpage;
 	}
 	
-	public void fill(String email, String phone, String webpage) {
+	public void fill(String email, String topSite, String webpage) {
 		this.email = email;
-		this.phone = phone;
-		this.webpage = webpage;		
+		this.topSite = topSite;
+		this.hasSite = webpage;		
 	}
 	/*
 	public ContactInfoData(String keyset, ContactInfo info) {
@@ -49,30 +50,27 @@ public class ContactInfoData  extends DatabaseObject {
 		}
 	}
 	*/
-	public String getParentKey() {
-		return parentKey;
-	}
-	
 	public String getEmail() {
 		return email;
 	}
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhone() {
-		return phone;
+	public String getTopSite() {
+		return topSite;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setTopSite(String topSite) {
+		this.topSite = topSite;
 	}
-	public String getWebpage() {
-		return webpage;
+	public String getWebSite() {
+		return hasSite;
 	}
-	public void setWebpage(String webpage) {
-		this.webpage = webpage;
+	public void setWebSite(String webpage) {
+		this.hasSite = webpage;
 	}
-	public void setParentKey(String parentkey) {
-		this.parentKey = parentkey;
+	public String getIdentifier() {
+		return identifier;
 	}
-    
+
+	
 }

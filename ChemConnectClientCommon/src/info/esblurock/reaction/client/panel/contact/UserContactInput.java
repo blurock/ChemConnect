@@ -31,8 +31,6 @@ public class UserContactInput extends Composite implements HasText {
 	interface UserContactInputUiBinder extends UiBinder<Widget, UserContactInput> {
 	}
 
-	private static final long serialVersionUID = 1L;
-
 	private String descriptionKey = "User";
 
 	DescriptionConstants descriptionconstants = GWT.create(DescriptionConstants.class);
@@ -60,6 +58,7 @@ public class UserContactInput extends Composite implements HasText {
 	@UiField
 	MaterialLink otherchoice;
 	
+		
 	@UiField
 	MaterialCollapsible datasets;
 
@@ -136,9 +135,10 @@ public class UserContactInput extends Composite implements HasText {
 
 			}
 		};
-		ContactInfoData contact = new ContactInfoData(contactinfo.getEmail(), contactinfo.getPhone(),
+		ContactInfoData contact = new ContactInfoData(description.getKeyWord(),
+				contactinfo.getEmail(), contactinfo.getPhone(),
 				contactinfo.getMainhomepage());
-		ContactLocationData location = new ContactLocationData(
+		ContactLocationData location = new ContactLocationData(description.getKeyWord(),
 				locationinfo.getAddressAddress(), 
 				locationinfo.getCity(), locationinfo.getCountry(),locationinfo.getPostcode(), 
 				locationinfo.getGpslatitude(), locationinfo.getGpslongitude());
@@ -147,7 +147,8 @@ public class UserContactInput extends Composite implements HasText {
 				description.getSource(), description.getInputKey(), 
 				descriptionKey,description.getKeywords());
 
-		UserDescriptionData user = new UserDescriptionData(userrole, descrdata, contact, location);
+		UserDescriptionData user = new UserDescriptionData(description.getKeyWord(),
+				userrole, descrdata, contact, location);
 		async.storeUserDescriptionData(user, callback);
 
 	}

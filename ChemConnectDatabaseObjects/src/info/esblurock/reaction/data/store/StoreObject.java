@@ -64,6 +64,10 @@ public class StoreObject {
 	/** The string type. String information is stored in the object */
 	public static String setType = "Set";
 
+	public static String makeStringPredicate(String predicate) {
+		return predicate + typeDelimiter + stringType;
+	}
+	
 	/** The keyword. */
 	protected String keyword;
 

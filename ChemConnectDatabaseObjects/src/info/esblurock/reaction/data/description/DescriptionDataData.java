@@ -15,9 +15,6 @@ import info.esblurock.reaction.data.DatabaseObject;
 public class DescriptionDataData extends DatabaseObject {
 
 	@Persistent
-	String parentKey;
-	
-	@Persistent
 	String keyword;
 
 	@Persistent
@@ -43,10 +40,6 @@ public class DescriptionDataData extends DatabaseObject {
 	@Persistent
 	@Unindexed
 	HashSet<String> keywords;
-
-	@Persistent
-	@Unindexed
-	ArrayList<String> dataSetPath;
 
 	public DescriptionDataData() {
 	}
@@ -91,13 +84,6 @@ public class DescriptionDataData extends DatabaseObject {
 
 	public void setFulldescription(String fulldescription) {
 		this.fulldescription = fulldescription;
-	}
-
-	public String getParentKey() {
-		return parentKey;
-	}
-	public void setParentKey(String parentkey) {
-		this.parentKey = parentkey;
 	}
 
 	public String getSourcekey() {

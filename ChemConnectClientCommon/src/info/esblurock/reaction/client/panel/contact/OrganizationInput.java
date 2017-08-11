@@ -15,6 +15,7 @@ import gwt.material.design.client.ui.MaterialButton;
 import gwt.material.design.client.ui.MaterialCollapsible;
 import gwt.material.design.client.ui.MaterialLabel;
 import gwt.material.design.client.ui.MaterialLink;
+import gwt.material.design.client.ui.MaterialTextBox;
 import gwt.material.design.client.ui.MaterialToast;
 
 import com.google.gwt.core.client.GWT;
@@ -41,7 +42,7 @@ public class OrganizationInput extends Composite implements HasText,
 
 	DescriptionConstants descriptionconstants = GWT
 			.create(DescriptionConstants.class);
-
+/*
 	@UiField
 	MaterialLabel title;
 	@UiField
@@ -58,9 +59,18 @@ public class OrganizationInput extends Composite implements HasText,
 	MaterialLink govchoice;
 	@UiField
 	MaterialLink instchoice;
+	*/
 	@UiField
 	MaterialCollapsible datasets;
 
+	@UiField
+	MaterialTextBox organization;
+	@UiField
+	MaterialTextBox subOrganizationOf;
+	@UiField
+	MaterialTextBox OrganizationalUnit;
+
+	
 	DataDescription description;
 	ContactInfoPanel contactinfo;
 	ContactLocationPanel locationinfo;
@@ -73,6 +83,7 @@ public class OrganizationInput extends Composite implements HasText,
 	InputConstants constants = GWT.create(InputConstants.class);
 
 	private void setText() {
+		/*
 		title.setText(constants.organizationcontacttitle());
 		submit.setText(constants.submit());
 
@@ -84,6 +95,7 @@ public class OrganizationInput extends Composite implements HasText,
 		
 		orgtype.setText(constants.university());
 		organizationtype = "University";
+		*/
 	}
 
 	private void init() {
@@ -112,7 +124,7 @@ public class OrganizationInput extends Composite implements HasText,
 		setText();
 		init();
 	}
-
+/*
 	@UiHandler("submit")
 	void onSubmit(ClickEvent e) {
 		
@@ -130,10 +142,11 @@ public class OrganizationInput extends Composite implements HasText,
 			}
 		};
 		
-		ContactInfoData contact = new ContactInfoData(contactinfo.getEmail(), 
+		ContactInfoData contact = new ContactInfoData(description.getKeyWord(),
+				contactinfo.getEmail(), 
 				contactinfo.getPhone(), 
 				contactinfo.getMainhomepage());
-		ContactLocationData location = new ContactLocationData(
+		ContactLocationData location = new ContactLocationData(description.getKeyWord(),
 				locationinfo.getAddressAddress(), locationinfo.getCity(), 
 				locationinfo.getCountry(), locationinfo.getPostcode(),
 				locationinfo.getGpslatitude(), locationinfo.getGpslongitude());
@@ -146,11 +159,16 @@ public class OrganizationInput extends Composite implements HasText,
 				organizationS,
 				description.getKeywords());
 		
-		OrganizationDescriptionData org = new OrganizationDescriptionData(orgtype.getText(), 
+		OrganizationDescriptionData org = new OrganizationDescriptionData(description.getKeyWord(),
+				organization.getText(),
+				subOrganizationOf.getText(),
+				OrganizationalUnit.getText(),
+				orgtype.getText(), 
 				descrdata, contact, location);
+				
 		async.storeOrganizationDescriptionData(org, callback);
 		
-		/*
+		
 		async.createSingleOrganizationDescription(description.getKeyWord(),
 				description.getOneLineDescription(),
 				description.getDescription(), contactinfo.getEmail(),
@@ -160,40 +178,40 @@ public class OrganizationInput extends Composite implements HasText,
 				locationinfo.getCountry(), locationinfo.getPostcode(),
 				locationinfo.getGpslatitude(), locationinfo.getGpslongitude(),
 				callback);
-				*/
+				
 
 	}
 
 	@UiHandler("unichoice")
 	void onUniClick(ClickEvent e) {
-		orgtype.setText(constants.university());
+		//orgtype.setText(constants.university());
 		organizationtype = "University";
 	}
 
 	@UiHandler("indchoice")
 	void onIndClick(ClickEvent e) {
-		orgtype.setText(constants.industry());
+		//orgtype.setText(constants.industry());
 		organizationtype = "Industry";
 	}
 
 	@UiHandler("otherchoice")
 	void onOtherClick(ClickEvent e) {
-		orgtype.setText(constants.other());
+		//orgtype.setText(constants.other());
 		organizationtype = "Other";
 	}
 
 	@UiHandler("govchoice")
 	void onGovClick(ClickEvent e) {
-		orgtype.setText(constants.government());
+		//orgtype.setText(constants.government());
 		organizationtype = "Goverment";
 	}
 
 	@UiHandler("instchoice")
 	void onInstClick(ClickEvent e) {
-		orgtype.setText(constants.institute());
+		//orgtype.setText(constants.institute());
 		organizationtype = "Institute";
 	}
-
+*/
 	@Override
 	public void setText(String text) {
 		// button.setText(text);
@@ -229,7 +247,8 @@ public class OrganizationInput extends Composite implements HasText,
 	}
 
 	public String getOrgtype() {
-		return orgtype.getText();
+		//return orgtype.getText();
+		return null;
 	}
 
 	public void setOrgtype(String type) {

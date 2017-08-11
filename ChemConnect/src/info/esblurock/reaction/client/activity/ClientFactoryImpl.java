@@ -4,7 +4,8 @@ import info.esblurock.reaction.client.activity.ClientFactory;
 import info.esblurock.reaction.client.ui.login.ReactionLoginValidationImpl;
 import info.esblurock.reaction.client.ui.top.ReactionInformationImpl;
 import info.esblurock.reaction.client.ui.top.ReactionTopImpl;
-
+import info.esblurock.reaction.client.ui.view.ExperimentalDataView;
+import info.esblurock.reaction.client.ui.view.NetworkVisualizationView;
 import info.esblurock.reaction.client.ui.view.ReactionFirstView;
 import info.esblurock.reaction.client.ui.view.ReactionInformationView;
 import info.esblurock.reaction.client.ui.view.ReactionLoginValidationView;
@@ -19,7 +20,7 @@ import com.google.gwt.event.shared.SimpleEventBus;
 import com.google.gwt.place.shared.PlaceController;
 
 public class ClientFactoryImpl implements ClientFactory {
-	private final EventBus eventBus = new SimpleEventBus();
+	private final SimpleEventBus eventBus = new SimpleEventBus();
 	private final PlaceController placeController = new PlaceController(eventBus);
 	private final ReactionTopView reactionTopView = new ReactionTopImpl();
 	private final ReactionFirstView reactionFirstView = new ReactionFirstImpl();
@@ -57,6 +58,16 @@ public class ClientFactoryImpl implements ClientFactory {
 	}
 	@Override
 	public XMLParseDocumentView getXMLParseDocumentView() {
+		return null;
+	}
+	@Override
+	public ExperimentalDataView getExperimentalDataView() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public NetworkVisualizationView getNetworkVisualizationView() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -8,9 +8,9 @@ import info.esblurock.reaction.data.DatabaseObject;
 @PersistenceCapable
 public class ContactLocationData extends DatabaseObject  {
     @Persistent
-    String parentKey = "";
+    String identifier;
 
-    @Persistent
+   @Persistent
     String addressAddress;
 	
     @Persistent
@@ -31,10 +31,12 @@ public class ContactLocationData extends DatabaseObject  {
     public ContactLocationData() {
     	
     }
-	public ContactLocationData(String addressAddress,
+	public ContactLocationData(String identifier,
+			String addressAddress,
 			String city, String country, String postcode, 
 			String gpslatitute, String gpslongitude) {
 		super();
+		this.identifier = identifier;
 		this.addressAddress = addressAddress;
 		this.city = city;
 		this.country = country;
@@ -77,13 +79,9 @@ public class ContactLocationData extends DatabaseObject  {
 	}
 	public void setGpslongitude(String gpslongitude) {
 		this.gpslongitude = gpslongitude;
+	}	
+	public String getIdentifier() {
+		return identifier;
 	}
-	public String getParentKey() {
-		return parentKey;
-	}
-	public void setParentKey(String parentkey) {
-		this.parentKey = parentkey;
-	}
-	
 
 }

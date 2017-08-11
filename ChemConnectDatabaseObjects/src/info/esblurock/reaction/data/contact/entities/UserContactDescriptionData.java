@@ -17,7 +17,7 @@ public class UserContactDescriptionData  implements Serializable{
     @Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
     private Long key;
 
-    @Persistent
+     @Persistent
     String userrole;
     
     @Persistent(dependent = "true")
