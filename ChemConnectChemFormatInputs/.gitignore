@@ -2,6 +2,9 @@
 /classes/
 **/*.jar
 **/*.cache.js
+**/*.cache.jpg
+**/*.cache.jpg
+**/*.cache.png
 **/*.gwt.rpc
 **/*.symbolMap
 **/gwt-unitCache*

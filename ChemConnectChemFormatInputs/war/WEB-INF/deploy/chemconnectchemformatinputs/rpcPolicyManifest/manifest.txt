@@ -1,0 +1,9 @@
+# Module chemconnectchemformatinputs
+# RPC service class, partial path of RPC policy file
+info.esblurock.reaction.client.async.TextToDatabase, 0135E95B3E9B61319C53735DE91EB809.gwt.rpc
+info.esblurock.reaction.client.async.ReactionProcessUploadedLines, 1742A0E6E4E6B064D748BB1C94DCBBD8.gwt.rpc
+info.esblurock.reaction.datainput.client.GreetingService, 4C029CD185C0FE881994F689FF37023C.gwt.rpc
+info.esblurock.reaction.client.async.StoreDescriptionData, 320E477AAE65130397376B764F39F141.gwt.rpc
+info.esblurock.reaction.client.async.TransactionService, 9A62B032CE32DFEC73AC53A8173F67EC.gwt.rpc
+info.esblurock.reaction.client.async.LoginService, 96CF3B50C728A5A4CCDA971154446D66.gwt.rpc
+info.esblurock.reaction.client.async.ReactionSearchService, F2051589F3706BEDFC4B81EE0E7D6064.gwt.rpc

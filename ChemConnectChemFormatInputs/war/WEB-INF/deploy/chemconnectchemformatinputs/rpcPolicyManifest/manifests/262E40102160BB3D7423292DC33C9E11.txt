@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.ReactionProcessUploadedLines
+path: 1742A0E6E4E6B064D748BB1C94DCBBD8.gwt.rpc

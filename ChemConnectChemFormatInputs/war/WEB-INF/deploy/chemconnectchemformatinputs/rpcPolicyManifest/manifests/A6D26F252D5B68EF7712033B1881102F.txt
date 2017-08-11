@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.TransactionService
+path: 9A62B032CE32DFEC73AC53A8173F67EC.gwt.rpc

@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.ReactionSearchService
+path: F2051589F3706BEDFC4B81EE0E7D6064.gwt.rpc

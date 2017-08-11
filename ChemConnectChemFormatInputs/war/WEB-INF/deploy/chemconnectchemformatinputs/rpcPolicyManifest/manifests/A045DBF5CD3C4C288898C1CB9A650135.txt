@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.client.async.StoreDescriptionData
+path: 320E477AAE65130397376B764F39F141.gwt.rpc

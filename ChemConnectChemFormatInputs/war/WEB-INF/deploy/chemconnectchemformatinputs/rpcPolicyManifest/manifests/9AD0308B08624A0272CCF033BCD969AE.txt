@@ -1,0 +1,2 @@
+serviceClass: info.esblurock.reaction.datainput.client.GreetingService
+path: 4C029CD185C0FE881994F689FF37023C.gwt.rpc
